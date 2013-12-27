@@ -4,6 +4,10 @@
     
     "store": {
         "url": "mongodb://localhost/satisfeet"
+    },
+
+    "static": {
+        "maxAge": 864000000
     }
 
 }
