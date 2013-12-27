@@ -1,0 +1,10 @@
+{% spaceless %}
+<div id="{{ product._id }}" class="col-md-4">
+  <a class="anchor-unstyled" href="/store/{{ product._id }}">
+    <h4 class="text-center">{{ product.name }}</h4>
+    <div class="thumbnail">
+      <img class="img-rounded img-responsive" src="{{ product.image.path }}" />
+    </div>
+  </a>
+</div>
+{% endspaceless %}

@@ -1,0 +1,9 @@
+{
+
+    "port": 80,
+    
+    "store": {
+        "url": "mongodb://localhost/satisfeet"
+    }
+
+}

@@ -1,0 +1,48 @@
+@font-family: 'raleway', 'Neue Helvetica', 'Helvetica';
+@font-weight: 100;
+
+@font-face {
+    font-family: 'raleway';
+    font-weight: 100;
+    src: url('/fonts/Raleway-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'raleway';
+    font-weight: 300;
+    src: url('/fonts/Raleway-Regular.ttf');
+}
+
+@blue:  #4A5963;
+@sand:  #C8AA78;
+@gray:  #666666;
+@white: #FFFFFF;
+@creme: #DDDDDD;
+@olive: #929F88;
+
+body {
+    padding-top: 70px;
+    font-family: raleway;
+    font-weight: 100;
+}
+
+.lead {
+    color: #777;
+    font-size: 30px;
+}
+
+.thumbnail {
+    border: none;
+}
+
+@import './elements/text.less';
+@import './elements/list.less';
+@import './elements/anchor.less';
+@import './elements/button.less';
+@import './elements/heading.less';
+
+@import './components/navbar.less';
+@import './components/footer.less';
+@import './components/aside.less';
+@import './components/section.less';
+@import './components/custom.less';
