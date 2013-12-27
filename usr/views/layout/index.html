@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+
+{% block body %}
+{% include './header.html' %}
+{% spaceless %}
+<main>
+  {% block content %}{% endblock %}
+</main>
+{% endspaceless %}
+{% include './footer.html' %}
+{% endblock %}
+
+{% block script %}
+{% include './scripts.html' %}
+{% endblock %}

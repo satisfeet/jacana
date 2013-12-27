@@ -1,0 +1,9 @@
+{% spaceless %}
+<section id="content" class="col-md-8">
+{% if not client %}
+  {% for product in products %}
+  {% include './product.html' %}
+  {% endfor %}
+{% endif %}
+</section>
+{% endspaceless %}

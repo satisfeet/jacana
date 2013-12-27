@@ -1,0 +1,16 @@
+{% spaceless %}
+<section id="store" class="section">
+  <div class="container">
+    <div class="page-header">
+      <h2 class="text-center">Shop</h2>
+      <h3 class="text-center">Nimm deine Chance wahr!</h3>
+    </div>
+    <div class="row">
+      {% if not client %}
+      {% include './content/index.html' %}
+      {% include './sidebar/index.html' %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endspaceless %}

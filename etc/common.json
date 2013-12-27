@@ -1,0 +1,37 @@
+{
+
+    "name": "satisfeet",
+
+    "store": {
+        "mapper": {
+            "db": {
+                "safe": true
+            }
+        }
+    },
+
+    "static": {
+        "path": "srv"
+    },
+
+    "engine": {
+        "views": {
+            "path": "usr/views"
+        },
+        "styles": {
+            "files": [
+                {
+                    "input": "usr/styles/bootstrap-theme/index.less",
+                    "output": "srv/stylesheets/bootstrap-theme.css"
+                }
+            ]
+        },
+        "builder": {
+            "entries": [
+                "app/index.js"
+            ],
+            "output": "srv/javascripts/build.js"
+        }
+    }
+    
+}

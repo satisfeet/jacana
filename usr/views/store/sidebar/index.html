@@ -1,0 +1,25 @@
+{% spaceless %}
+<aside id="sidebar" class="col-md-4 aside aside-inverse">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-header text-center">
+        <div class="btn-group btn-group-md">
+          <button class="btn btn-primary" name="info">Details</button> 
+          <button class="btn btn-primary" name="order">Warenkorb</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div id="sidebar-inner">
+        {% if not product %}
+        {% include './help.html' %}
+        {% else %}
+        {% include './product.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</aside>
+{% endspaceless %}

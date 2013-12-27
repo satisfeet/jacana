@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% spaceless %}
+<html>
+  <head>
+    <title>{{ title }}</title>
+    {% include './meta.html' %}
+    {% include './link.html' %}
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+    {% block script %}{% endblock %}
+  </body>
+</html>
+{% endspaceless %}

@@ -1,0 +1,19 @@
+{% spaceless %}
+<meta charset="utf-8" />
+
+{% if meta.author %}
+<meta name="author" content="{{ meta.author }}" />
+{% endif %}
+
+{% if meta.keywords %}
+<meta name="keywords" content="{{ meta.keywords }}" />
+{% endif %}
+
+{% if meta.description %}
+<meta name="description" content="{{ meta.description }}" />
+{% endif %}
+
+{% if meta.viewport %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% endif %}
+{% endspaceless %}
