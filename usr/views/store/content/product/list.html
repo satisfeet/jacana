@@ -1,0 +1,9 @@
+{% spaceless %}
+<ul id="product-list" class="list-unstyled">
+  {% if not client %}
+  {% for product in products %}
+  {% include './item.html' %}
+  {% endfor %}
+  {% endif %}
+</ul>
+{% endspaceless %}
