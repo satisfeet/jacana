@@ -1,6 +1,6 @@
 var domify = require('domify');
 
-var template = require('../../../../../../usr/views/store/sidebar/order/list.html');
+var template = require('views/store/sidebar/order/list.html');
 
 var OrderItem = require('./item');
 

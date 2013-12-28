@@ -1,6 +1,6 @@
 var domify = require('domify');
 
-var template = require('../../../../../usr/views/store/layout.html');
+var template = require('views/store/layout.html');
 
 function Layout(element) {
     this.element = element || domify(template);

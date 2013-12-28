@@ -30,8 +30,11 @@
             "entries": [
                 "app/index.js"
             ],
-            "output": "srv/javascripts/build.js"
+            "output": "srv/javascripts/build.js",
+            "aliases": {
+                "views": "./usr/views/"
+            }
         }
     }
-    
+
 }
