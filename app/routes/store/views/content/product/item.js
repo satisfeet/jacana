@@ -2,7 +2,7 @@ var util   = require('util');
 var events = require('events');
 var domify = require('domify');
 
-var template = require('../../../../../../usr/views/store/content/product/item.html');
+var template = require('views/store/content/product/item.html');
 
 function ProductItem(element) {
     this.element = element || domify(template);
