@@ -4,14 +4,18 @@ var domify = require('domify');
 
 var template = require('../../../../../usr/views/store/sidebar/index.html');
 
-var Help    = require('./help');
-var Orders  = require('./orders');
-var Product = require('./product');
+var HelpInfo    = require('./help/info');
+var ProductInfo = require('./product/info');
+var OrderList   = require('./order/list');
 
 function Sidebar(element) {
     this.element = element || domify(template);
  
-    bindToClickEvents(this.element, this);
+    createHelpInfo(this.element, this);
+    createProductInfo(this.element, this);
+    createOrderList(this.element, this);
+
+    bindToButtonClickEvent(this.element, this);
 
     events.EventEmitter.call(this);
 }
@@ -21,63 +25,74 @@ util.inherits(Sidebar, events.EventEmitter);
 Sidebar.prototype.showHelp = function() {
     var element = this.element.querySelector('#help');
 
-    if (element) {
-        new Help(element);
-    } else {
-        this.replace(new Help());
+    if (!element) {
+        replace(this.element, this.help);
     }
     
     return this;
 };
 
 Sidebar.prototype.showProduct = function(product) {
-    var element = this.element.querySelector('#info');
- 
-    createProduct(element, product, this);   
+    var element = this.element.querySelector('#product-info');
 
+    this.productInfo.show(product);
+    
     if (!element) {
-        this.replace(this.info);
+        replace(this.element, this.productInfo);
     }
 
     return this;
 };
 
 Sidebar.prototype.listOrders = function(orders) {
-    var element = this.element.querySelector('#orders');
+    var element = this.element.querySelector('#order-list');
  
-    if (element) {
-        new Orders(orders, element);
-    } else {
-        this.replace(new Orders(orders));
+    this.orderList.empty();
+    this.orderList.list(orders);
+
+    if (!element) {
+        replace(this.element, this.orderList);
     }
-
-    return this;
-};
-
-Sidebar.prototype.replace = function(view) {
-    var element = this.element.querySelector('#sidebar-inner');
-
-    while (element.lastElementChild) {
-        element.lastElementChild.remove();
-    }
-
-    element.appendChild(view.element);
 
     return this;
 };
 
 module.exports = Sidebar;
 
-function createProduct(element, model, view) {
-    view.info = new Product(model, element);
-    view.info.on('click:add', function(model) {
-        view.emit('click:product:add', model);
+function createHelpInfo(sidebar, view) {
+    var element = sidebar.querySelector('#help-info');
+
+    view.helpInfo = new HelpInfo(element);
+}
+
+function createProductInfo(sidebar, view) {
+    var element = sidebar.querySelector('#product-info');
+
+    view.productInfo = new ProductInfo(element);
+    view.productInfo.on('click:add', function(product) {
+        view.emit('click:product:add', product);
     });
 }
 
-function bindToClickEvents(element, view) {
-    element.querySelector('button[name="order"]')
+function createOrderList(sidebar, view) {
+    var element = sidebar.querySelector('#order-list');
+
+    view.orderList = new OrderList(element);
+}
+
+function bindToButtonClickEvent(element, view) {
+    element.querySelector('button[name="orders"]')
         .addEventListener('click', function(e) {
             view.emit('click:orders');
         });
+}
+
+function replace(element, view) {
+    element = element.querySelector('#sidebar-inner');
+
+    while (element.lastElementChild) {
+        element.lastElementChild.remove();
+    }
+
+    element.appendChild(view.element);
 }

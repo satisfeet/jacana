@@ -4,69 +4,37 @@ var domify = require('domify');
 
 var template = require('../../../../../usr/views/store/content/index.html');
 
-var ProductView = require('./product');
+var ProductList = require('./product/list');
 
 function Content(element) {
     this.element = element || domify(template);
+
+    createProductList(this.element, this);
 
     events.EventEmitter.call(this);
 }
 
 util.inherits(Content, events.EventEmitter);
 
-Content.prototype.empty = function() {
-    var element = this.element;
-
-    while (element.lastElementChild) {
-        element.lastElementChild.remove();
-    }
+Content.prototype.listProducts = function(products) {
+    this.productList.list(products);
 
     return this;
 };
 
-Content.prototype.listProducts = function(models) {
-   var elements = [].slice.call(this.element.children);
-
-    var self = this;
-    models.forEach(function(model) {
-        var element = elements.filter(function(element) {
-            if (element.dataset.id === model._id) {
-                return element;
-            }
-        }).shift();
-
-        createProductView(element, model, self);
-    });
-
-    return this;
-};
-
-Content.prototype.select = function(model) {
-    var elements = [].slice.call(this.element.children);
-
-    elements.forEach(function(element) {
-        if (element.dataset.id === model._id) {
-            element.classList.add('selected');
-        } else {
-            element.classList.remove('selected');
-        }
-    });
+Content.prototype.selectProduct = function(product) {
+    this.productList.select(product);
 
     return this;
 };
 
 module.exports = Content;
 
-function createProductView(element, model, view) {
-    var productView = new ProductView(model, element);
+function createProductList(content, view) {
+    var element = content.querySelector('#product-list');
 
-    if (!element) {
-        view.element.appendChild(productView.element);
-    }
-
-    productView.on('click', function(model) {
-        view.select(model);
-
-        view.emit('click:product', model);
+    view.productList = new ProductList(element);
+    view.productList.on('click:product', function(product) {
+        view.emit('click:product', product);
     });
 }
