@@ -2,7 +2,8 @@ var app = require('../../');
 
 describe('lib/routes', function() {
 
-    require('./application')(app);
+    require('./app')(app);
+
     require('./products')(app);
 
 });
