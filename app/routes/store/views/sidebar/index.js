@@ -57,6 +57,12 @@ Sidebar.prototype.listOrders = function(orders) {
     return this;
 };
 
+Sidebar.prototype.removeOrder = function(order) {
+    this.orderList.remove(order);
+
+    return this;
+};
+
 module.exports = Sidebar;
 
 function createHelpInfo(sidebar, view) {
@@ -70,7 +76,7 @@ function createProductInfo(sidebar, view) {
 
     view.productInfo = new ProductInfo(element);
     view.productInfo.on('click:add', function(product) {
-        view.emit('click:product:add', product);
+        view.emit('click:products:add', product);
     });
 }
 
@@ -78,12 +84,18 @@ function createOrderList(sidebar, view) {
     var element = sidebar.querySelector('#order-list');
 
     view.orderList = new OrderList(element);
+    view.orderList.on('click:submit', function() {
+        view.emit('click:orders:submit');
+    });
+    view.orderList.on('click:remove', function(order) {
+        view.emit('click:orders:remove', order);
+    });
 }
 
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="orders"]')
         .addEventListener('click', function(e) {
-            view.emit('click:orders');
+            view.emit('click:orders:list');
         });
 }
 

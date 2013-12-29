@@ -7,18 +7,27 @@ module.exports = function(app) {
         context.orders.on('find', function(orders) {
             context.sidebar.listOrders(orders);
         });
+        context.orders.on('remove', function(order) {
+            context.sidebar.removeOrder(order);
+        });
+        context.sidebar.on('click:orders:list', function() {
+            context.orders.find();
+        });
+        context.sidebar.on('click:orders:remove', function(order) {
+            context.orders.remove(order);
+        });
+        context.sidebar.on('click:orders:submit', function() {
+            context.orders.submit();
+        });
+ 
         context.products.on('find', function(products) {
             context.content.listProducts(products);
         });
-        
-        context.sidebar.on('click:orders', function() {
-            context.orders.find();
-        });
-        context.content.on('click:product', function(product) {
+        context.content.on('click:products:show', function(product) {
             context.content.selectProduct(product);
             context.sidebar.showProduct(product);
         });
-        context.sidebar.on('click:product:add', function(product) {
+        context.sidebar.on('click:products:add', function(product) {
             context.orders.persist(product);
         });
     });

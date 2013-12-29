@@ -16,7 +16,7 @@ util.inherits(ProductList, events.EventEmitter);
 
 ProductList.prototype.list = function(products) {
     var elements = [].slice.call(this.element.children);
-    
+ 
     products.forEach(function(product) {
         var element = elements.filter(function(element) {
             if (element.dataset.id === product._id) return element;
@@ -48,10 +48,10 @@ function createProductItem(element, model, view) {
     var productItem = new ProductItem(element).show(model);
 
     productItem.on('click', function() {
-        view.emit('click:product', model);
+        view.emit('click:show', model);
     });
 
     if (!element) {
-       view.element.appendChild(productItem.element);
+        view.element.appendChild(productItem.element);
     }
 }
