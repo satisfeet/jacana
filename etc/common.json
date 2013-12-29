@@ -35,6 +35,14 @@
                 "views": "./usr/views/"
             }
         }
+    },
+
+    "mailer": {
+        "service": "gmail",
+        "account": {
+            "username": "i@bodokaiser.io",
+            "password": "1234"
+        }
     }
 
 }
