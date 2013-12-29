@@ -1,12 +1,24 @@
 {% spaceless %}
-<div id="info" data-id="{{ product._id }}">
-  <p class="text-md text-justify">
+<div id="product-info" data-id="{{ product._id }}">
+  <p class="text-sm text-justify">
     {{ product.description }}
   </p>
-  <ul class="list-unstyled list-md">
-    <li>
-      <button class="btn btn-primary btn-sm" name="add">Hinzufügen</button>
-    </li>
-  </ul>
+  <div>
+    <hr />
+    <form class="form" role="form">
+      <div class="form-group col-md-12">
+        <label class="radio-inline">
+          <input type="radio" value="38-40" /> 38-40
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="40-42" /> 40-42
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="42-44" /> 42-44
+        </label>
+      </div>
+      <button type="button" class="btn btn-xs pull-right" name="add">Hinzufügen</button>
+    </form>
+  </div>
 </div>
 {% endspaceless %}
