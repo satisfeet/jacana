@@ -18,6 +18,7 @@
     },
 
     "dependencies": {
+        "st": "0.2.3",
         "clone": "0.1.11",
         "mongoose": "3.8.3",
         "express": "3.4.7",
