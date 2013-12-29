@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 17.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px"
-	 height="500px" viewBox="0 0 1000 500" enable-background="new 0 0 1000 500" xml:space="preserve">
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 500" enable-background="new 0 0 1000 500">
 <style type="text/css">
 <![CDATA[
 @font-face{font-family:'Raleway';src:url("data:;base64,\
@@ -330,18 +327,9 @@ AAEAFP/5AAIADQABAAEAAAADAAUAAQAHAAkABAALABwABwAeAB4AGQAhACgAGgAqAC0AIgAwADwA\
 JgA/AEsAMwBNAE4AQABQAFkAQgBcAFwATABjAGMATQ==")}
 ]]>
 </style>
-<g id="Background">
-	<g id="Frame">
-	</g>
-	<g id="Text">
-	</g>
-</g>
-<g id="Logo">
-	<path fill="#4A5963" d="M260.25,366.02c-42.9-32.87-100.67-111.64-100.67-111.64S141,233.3,147,207.45V86h118.52
-		c0,0-5.91,104.11,0,120.37c5.91,16.26,84.33,97.42,88.6,120.73C369.81,385.64,303.15,398.89,260.25,366.02z"/>
-	<text transform="matrix(0.885 0 0 1 301.2798 238.0269)" fill="#4A5963" font-family="'Raleway'" font-size="165.114">satisfeet</text>
-	<text transform="matrix(0.8988 0 0 1 367.5063 289.5762)" fill="#4A5963" font-family="'Raleway'" font-size="39.5452">these socks make you happy</text>
-	<path fill="#929F88" d="M210.58,415.91c-46.24-35.44-106.77-120.35-106.77-120.35S87,272.83,92,244.97V116h124.26
-		c0,0-6.37,111.25,0,128.78c6.37,17.53,90.91,104.53,95.51,129.66C328.68,437.54,256.82,451.34,210.58,415.91z"/>
-</g>
+<g fill="#4A5963">
+	<path d="m260.25 366.02c-42.9-32.87-100.67-111.64-100.67-111.64s-18.58-21.08-12.58-46.93v-121.45h118.52s-5.91 104.11 0 120.37 84.33 97.42 88.6 120.73c15.69 58.54-50.97 71.79-93.87 38.92z"/>
+	<text font-size="165.11" font-family="&apos;Raleway&apos;" transform="matrix(.885 0 0 1 301.28 238.03)">satisfeet</text>
+	<text font-size="39.545" font-family="&apos;Raleway&apos;" transform="matrix(.8988 0 0 1 367.51 289.58)">these socks make you happy</text>
+	</g><path d="m210.58 415.91c-46.24-35.44-106.77-120.35-106.77-120.35s-16.81-22.73-11.81-50.59v-128.97h124.26s-6.37 111.25 0 128.78 90.91 104.53 95.51 129.66c16.91 63.1-54.95 76.9-101.19 41.47z" fill="#929F88"/>
 </svg>
