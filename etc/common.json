@@ -35,6 +35,14 @@
                 "views": "./usr/views/"
             }
         }
+    },
+
+    "mailer": {
+        "service": "gmail",
+        "account": {
+            "username": "info@example.org",
+            "password": "1234"
+        }
     }
 
 }
