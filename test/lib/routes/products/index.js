@@ -8,9 +8,13 @@ module.exports = function(app) {
     };
 
     require('./search')(app, mockup);
+ 
     require('./create')(app, mockup);
+ 
     require('./display')(app, mockup);
+ 
     require('./update')(app, mockup);
+ 
     require('./remove')(app, mockup);
 
 };
