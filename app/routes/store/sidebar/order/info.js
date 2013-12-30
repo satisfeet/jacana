@@ -4,9 +4,9 @@ var domify = require('domify');
 
 var template = require('views/store/sidebar/order/info.html');
 
-var ProductItem = require('./item');
+var ProductItemView = require('./item');
 
-function OrderInfo(element) {
+function OrderInfoView(element) {
     this.element = element || domify(template);
 
     bindToButtonClickEvent(this.element, this);
@@ -14,9 +14,9 @@ function OrderInfo(element) {
     events.EventEmitter.call(this);
 }
 
-util.inherits(OrderInfo, events.EventEmitter);
+util.inherits(OrderInfoView, events.EventEmitter);
 
-OrderInfo.prototype.show = function(order) {
+OrderInfoView.prototype.show = function(order) {
     var element = this.element.querySelector('ul');
 
     while (element.lastElementChild) {
@@ -24,26 +24,26 @@ OrderInfo.prototype.show = function(order) {
     }
  
     order.products.forEach(function(product) {
-        var productItem = createProductItem(element, product, this);
+        var productItemView = createProductItemView(element, product, this);
 
-        element.appendChild(productItem.element);
+        element.appendChild(productItemView.element);
     }, this);
 
     return this;
 };
 
-module.exports = OrderInfo;
+module.exports = OrderInfoView;
 
-function createProductItem(element, model, view) {
-    var productItem = new ProductItem().show(model);
+function createProductItemView(element, model, view) {
+    var productItemView = new ProductItemView().show(model);
  
-    element.appendChild(productItem.element);
+    element.appendChild(productItemView.element);
 
-    productItem.on('click:remove', function() {
+    productItemView.on('click:remove', function() {
         view.emit('click:product:remove', model);
     });
 
-    return productItem;
+    return productItemView;
 }
 
 function bindToButtonClickEvent(element, view) {

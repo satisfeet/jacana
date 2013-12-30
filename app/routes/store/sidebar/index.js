@@ -4,16 +4,16 @@ var domify = require('domify');
 
 var template = require('views/store/sidebar/index.html');
 
-var HelpInfo    = require('./help/info');
-var OrderInfo   = require('./order/info');
-var ProductInfo = require('./product/info');
+var HelpInfoView    = require('./help/info');
+var OrderInfoView   = require('./order/info');
+var ProductInfoView = require('./product/info');
 
 function Sidebar(element) {
     this.element = element || domify(template);
  
-    createHelpInfo(this.element, this);
-    createOrderInfo(this.element, this);
-    createProductInfo(this.element, this);
+    createHelpInfoView(this.element, this);
+    createOrderInfoView(this.element, this);
+    createProductInfoView(this.element, this);
 
     bindToButtonClickEvent(this.element, this);
 
@@ -35,10 +35,10 @@ Sidebar.prototype.showHelp = function() {
 Sidebar.prototype.showOrder = function(order) {
     var element = this.element.querySelector('#order-info');
  
-    this.orderInfo.show(order);
+    this.orderInfoView.show(order);
 
     if (!element) {
-        replace(this.element, this.orderInfo);
+        replace(this.element, this.orderInfoView);
     }
 
     return this;
@@ -47,10 +47,10 @@ Sidebar.prototype.showOrder = function(order) {
 Sidebar.prototype.showProduct = function(product) {
     var element = this.element.querySelector('#product-info');
 
-    this.productInfo.show(product);
+    this.productInfoView.show(product);
     
     if (!element) {
-        replace(this.element, this.productInfo);
+        replace(this.element, this.productInfoView);
     }
 
     return this;
@@ -58,29 +58,29 @@ Sidebar.prototype.showProduct = function(product) {
 
 module.exports = Sidebar;
 
-function createHelpInfo(sidebar, view) {
+function createHelpInfoView(sidebar, view) {
     var element = sidebar.querySelector('#help-info');
 
-    view.helpInfo = new HelpInfo(element);
+    view.helpInfoView = new HelpInfoView(element);
 }
-function createOrderInfo(sidebar, view) {
+function createOrderInfoView(sidebar, view) {
     var element = sidebar.querySelector('#order-info');
 
-    view.orderInfo = new OrderInfo(element);
-    view.orderInfo.on('click:submit', function() {
+    view.orderInfoView = new OrderInfoView(element);
+    view.orderInfoView.on('click:submit', function() {
         view.emit('click:order:submit');
     });
-    view.orderInfo.on('click:product:remove', function(product) {
+    view.orderInfoView.on('click:product:remove', function(product) {
         view.emit('click:order:product:remove', product);
     });
 }
 
 
-function createProductInfo(sidebar, view) {
+function createProductInfoView(sidebar, view) {
     var element = sidebar.querySelector('#product-info');
 
-    view.productInfo = new ProductInfo(element);
-    view.productInfo.on('click:add', function(product) {
+    view.productInfoView = new ProductInfoView(element);
+    view.productInfoView.on('click:add', function(product) {
         view.emit('click:product:add', product);
     });
 }
