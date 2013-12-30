@@ -34,8 +34,8 @@ function createProductList(content, view) {
     var element = content.querySelector('#product-list');
 
     view.productList = new ProductList(element);
-    view.productList.on('click:show', function(product) {
-        view.emit('click:products:show', product);
+    view.productList.on('click:product', function(product) {
+        view.emit('click:products:product', product);
     });
 
     if (!element) {
