@@ -4,7 +4,7 @@ var domify = require('domify');
 
 var template = require('views/store/sidebar/order/item.html');
 
-function OrderItem(element) {
+function ProductItemView(element) {
     this.element = element || domify(template);
 
     bindToButtonClickEvent(this.element, this);
@@ -12,9 +12,9 @@ function OrderItem(element) {
     events.EventEmitter.call(this);
 }
 
-util.inherits(OrderItem, events.EventEmitter);
+util.inherits(ProductItemView, events.EventEmitter);
 
-OrderItem.prototype.show = function(order) {
+ProductItemView.prototype.show = function(order) {
     if (this.element.dataset.id !== order._id) {
         this.element.dataset.id = order._id;
         this.element.querySelector('h5').innerText = order.name;
@@ -23,7 +23,7 @@ OrderItem.prototype.show = function(order) {
     return this;
 };
 
-module.exports = OrderItem;
+module.exports = ProductItemView;
 
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="remove"]')

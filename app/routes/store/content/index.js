@@ -4,42 +4,42 @@ var domify = require('domify');
 
 var template = require('views/store/content/index.html');
 
-var ProductList = require('./product/list');
+var ProductListView = require('./product/list');
 
-function Content(element) {
+function ContentView(element) {
     this.element = element || domify(template);
 
-    createProductList(this.element, this);
+    createProductListView(this.element, this);
 
     events.EventEmitter.call(this);
 }
 
-util.inherits(Content, events.EventEmitter);
+util.inherits(ContentView, events.EventEmitter);
 
-Content.prototype.listProducts = function(products) {
-    this.productList.list(products);
-
-    return this;
-};
-
-Content.prototype.selectProduct = function(product) {
-    this.productList.select(product);
+ContentView.prototype.listProducts = function(products) {
+    this.productListView.list(products);
 
     return this;
 };
 
-module.exports = Content;
+ContentView.prototype.selectProduct = function(product) {
+    this.productListView.select(product);
 
-function createProductList(content, view) {
+    return this;
+};
+
+module.exports = ContentView;
+
+function createProductListView(content, view) {
     var element = content.querySelector('#product-list');
 
-    view.productList = new ProductList(element);
-    view.productList.on('click:product', function(product) {
+    view.productListView = new ProductListView(element);
+    view.productListView.on('click:product', function(product) {
         view.emit('click:products:product', product);
     });
 
     if (!element) {
         view.element.querySelector('#content-inner')
-            .appendChild(view.productList.element);
+            .appendChild(view.productListView.element);
     }
 }
