@@ -22,6 +22,9 @@ ProductInfoView.prototype.show = function(product) {
         this.element.querySelector('p').innerText = product.description;
     }
 
+    buildSizeFormGroup(this.element, product, this);
+    buildColorFormGroup(this.element, product, this);
+
     return this;
 };
 
@@ -32,4 +35,56 @@ function bindToButtonClickEvent(element, view) {
         .addEventListener('click', function(e) {
             view.emit('click:add', view.model);
         });
+}
+
+function buildSizeFormGroup(element, model, view) {
+    element = element.querySelector('#sizes');
+
+    while (element.lastElementChild) {
+        element.lastElementChild.remove();
+    }
+
+    model.variations.sizes.forEach(function(size) {
+        var label = document.createElement('label');
+        var input = document.createElement('input');
+        var info = document.createElement('span');
+ 
+        info.innerText = size;
+
+        input.type = 'radio';
+        input.value = size;
+
+        label.classList.add('radio-inline');
+        
+        label.appendChild(input);
+        label.appendChild(info);
+    
+        element.appendChild(label);
+    });
+}
+
+function buildColorFormGroup(element, model, view) {
+    element = element.querySelector('#colors');
+
+    while (element.lastElementChild) {
+        element.lastElementChild.remove();
+    }
+
+    model.variations.colors.forEach(function(color) {
+        var label = document.createElement('label');
+        var input = document.createElement('input');
+        var info = document.createElement('span');
+ 
+        info.innerText = color;
+        
+        input.type = 'radio';
+        input.value = color;
+
+        label.classList.add('radio-inline');
+        
+        label.appendChild(input);
+        label.appendChild(info);
+    
+        element.appendChild(label);
+    });
 }
