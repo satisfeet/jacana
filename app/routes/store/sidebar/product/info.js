@@ -33,7 +33,13 @@ module.exports = ProductInfoView;
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="add"]')
         .addEventListener('click', function(e) {
-            view.emit('click:add', view.model);
+            var size = element.querySelector('input[name="size"]:checked').value;
+            var color = element.querySelector('input[name="color"]:checked').value;
+
+            view.emit('click:add', view.model, {
+                size: size,
+                color: color
+            });
         });
 }
 
@@ -51,6 +57,7 @@ function buildSizeFormGroup(element, model, view) {
  
         info.innerText = size;
 
+        input.name = 'size';
         input.type = 'radio';
         input.value = size;
 
@@ -77,6 +84,7 @@ function buildColorFormGroup(element, model, view) {
  
         info.innerText = color;
         
+        input.name = 'color';
         input.type = 'radio';
         input.value = color;
 
