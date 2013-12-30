@@ -8,46 +8,49 @@ module.exports = function(app) {
         context.contentView = createContentView(context);
         context.sidebarView = createSidebarView(context);
         context.layoutView = createLayoutView(context);
-        
-        context.events.on('products:found', function(products) {
+ 
+        context.productManager.find(null, function(err, products) {
             context.contentView.listProducts(products);
-        }).emit('products:find');
+        });
         
         context.sidebarView.on('click:order', function() {
-            context.events.once('orders:foundOne', function(order) {
+            context.orderManager.findOne(null, function(err, order) {
                 if (order) return context.sidebarView.showOrder(order);
 
-                context.events.once('orders:created', function(order) {
+                context.orderManager.create(null, function(order) {
                     context.sidebarView.showOrder(order);
-                }).emit('orders:create');
-            }).emit('orders:findOne');
+                });
+            });
         });
         context.sidebarView.on('click:order:product:remove', function(product) {
-            context.events.once('orders:foundOne', function(order) {
+            context.orderManager.findOne(null, function(err, order) {
                 var index = order.products.indexOf(product);
 
                 order.products.splice(index, 1);
 
-                context.sidebarView.showOrder(order);
-                context.events.emit('orders:update', order);
-            }).emit('orders:findOne');
+                context.orderManager.update(order, function(err, order) {
+                    context.sidebarView.showOrder(order);
+                });
+            });
         });
         
         context.sidebarView.on('click:product:add', function(product) {
-            context.events.once('orders:foundOne', function(order) {
+            context.orderManager.findOne(null, function(err, order) {
                 if (order.products.indexOf(product) !== -1) return;
                 
                 order.products.push(product);
-                
-                context.events.emit('orders:update', order);
-            }).emit('orders:findOne');
+         
+                context.orderManager.update(order, function(err, order) {
+                    context.sidebarView.showOrder(order);
+                });
+            });
         });
         
         context.contentView.on('click:products:product', function(product) {
-            context.events.once('products:foundOne', function(product) {
+            context.productManager.findOne(product, function(err, product) {
                 context.contentView.selectProduct(product);
                 context.sidebarView.showProduct(product);
-            }).emit('products:foundOne', product);
+            });
         });
     });
 
