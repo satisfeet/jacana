@@ -4,17 +4,17 @@ var domify = require('domify');
 
 var template = require('views/store/content/product/list.html');
 
-var ProductItem = require('./item');
+var ProductItemView = require('./item');
 
-function ProductList(element) {
+function ProductListView(element) {
     this.element = element || domify(template);
 
     events.EventEmitter.call(this);
 }
 
-util.inherits(ProductList, events.EventEmitter);
+util.inherits(ProductListView, events.EventEmitter);
 
-ProductList.prototype.list = function(products) {
+ProductListView.prototype.list = function(products) {
     var elements = [].slice.call(this.element.children);
  
     products.forEach(function(product) {
@@ -22,13 +22,13 @@ ProductList.prototype.list = function(products) {
             if (element.dataset.id === product._id) return element;
         }).shift();
 
-        createProductItem(element, product, this);
+        createProductItemView(element, product, this);
     }, this);
 
     return this;
 };
 
-ProductList.prototype.select = function(product) {
+ProductListView.prototype.select = function(product) {
     var elements = [].slice.call(this.element.children);
 
     elements.forEach(function(element) {
@@ -42,17 +42,17 @@ ProductList.prototype.select = function(product) {
     return this;
 };
 
-module.exports = ProductList;
+module.exports = ProductListView;
 
-function createProductItem(element, model, view) {
-    var productItem = new ProductItem(element);
+function createProductItemView(element, model, view) {
+    var productItemView = new ProductItemView(element);
 
-    productItem.on('click', function(id) {
+    productItemView.on('click', function(id) {
         view.emit('click:product', model, id);
     });
-    productItem.show(model);
+    productItemView.show(model);
 
     if (!element) {
-        view.element.appendChild(productItem.element);
+        view.element.appendChild(productItemView.element);
     }
 }

@@ -1,39 +1,39 @@
-var Layout  = require('./layout'); 
-var Content = require('./content');
-var Sidebar = require('./sidebar');
+var LayoutView  = require('./layout'); 
+var ContentView = require('./content');
+var SidebarView = require('./sidebar');
 
 module.exports = function(app) {
       
     app('/store', function(context, next) {
-        context.content = createContent(context);
-        context.sidebar = createSidebar(context);
-        context.layout = createLayout(context);
+        context.contentView = createContentView(context);
+        context.sidebarView = createSidebarView(context);
+        context.layoutView = createLayoutView(context);
         
         context.events.on('products:found', function(products) {
-            context.content.listProducts(products);
+            context.contentView.listProducts(products);
         }).emit('products:find');
         
-        context.sidebar.on('click:order', function() {
+        context.sidebarView.on('click:order', function() {
             context.events.once('orders:foundOne', function(order) {
-                if (order) return context.sidebar.showOrder(order);
+                if (order) return context.sidebarView.showOrder(order);
 
                 context.events.once('orders:created', function(order) {
-                    context.sidebar.showOrder(order);
+                    context.sidebarView.showOrder(order);
                 }).emit('orders:create');
             }).emit('orders:findOne');
         });
-        context.sidebar.on('click:order:product:remove', function(product) {
+        context.sidebarView.on('click:order:product:remove', function(product) {
             context.events.once('orders:foundOne', function(order) {
                 var index = order.products.indexOf(product);
 
                 order.products.splice(index, 1);
 
-                context.sidebar.showOrder(order);
+                context.sidebarView.showOrder(order);
                 context.events.emit('orders:update', order);
             }).emit('orders:findOne');
         });
         
-        context.sidebar.on('click:product:add', function(product) {
+        context.sidebarView.on('click:product:add', function(product) {
             context.events.once('orders:foundOne', function(order) {
                 if (order.products.indexOf(product) !== -1) return;
                 
@@ -43,43 +43,43 @@ module.exports = function(app) {
             }).emit('orders:findOne');
         });
         
-        context.content.on('click:products:product', function(product) {
+        context.contentView.on('click:products:product', function(product) {
             context.events.once('products:foundOne', function(product) {
-                context.content.selectProduct(product);
-                context.sidebar.showProduct(product);
+                context.contentView.selectProduct(product);
+                context.sidebarView.showProduct(product);
             }).emit('products:foundOne', product);
         });
     });
 
 };
 
-function createContent(context) {
+function createContentView(context) {
     var element = context.element.querySelector('#content');
 
-    return new Content(element);
+    return new ContentView(element);
 }
 
-function createSidebar(context) {
+function createSidebarView(context) {
     var element = context.element.querySelector('#sidebar');
 
-    return new Sidebar(element);
+    return new SidebarView(element);
 }
 
-function createLayout(context) {
+function createLayoutView(context) {
     var element = context.element.querySelector('#store');
         
-    var layout = new Layout(element);
+    var layoutView = new LayoutView(element);
 
     if (!element) {
         while (context.element.lastElementChild) {
             context.element.lastElementChild.remove();
         }
-        context.element.appendChild(layout.element);
+        context.element.appendChild(layoutView.element);
     
-        layout.empty();
-        layout.append(context.content);
-        layout.append(context.sidebar);
+        layoutView.empty();
+        layoutView.append(context.contentView);
+        layoutView.append(context.sidebarView);
     }
 
-    return layout;
+    return layoutView;
 }

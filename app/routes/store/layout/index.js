@@ -2,11 +2,11 @@ var domify = require('domify');
 
 var template = require('views/store/layout.html');
 
-function Layout(element) {
+function LayoutView(element) {
     this.element = element || domify(template);
 }
 
-Layout.prototype.empty = function() {
+LayoutView.prototype.empty = function() {
     var element = this.element.querySelector('.row');
 
     while (element.lastElementChild) {
@@ -14,10 +14,10 @@ Layout.prototype.empty = function() {
     }
 };
 
-Layout.prototype.append = function(view) {
+LayoutView.prototype.append = function(view) {
     var element = this.element.querySelector('.row');
 
     element.appendChild(view.element);
 };
 
-module.exports = Layout;
+module.exports = LayoutView;

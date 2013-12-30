@@ -4,7 +4,7 @@ var domify = require('domify');
 
 var template = require('views/store/sidebar/product/info.html');
 
-function ProductInfo(element) {
+function ProductInfoView(element) {
     this.element = element || domify(template);
 
     bindToButtonClickEvent(this.element, this);
@@ -12,9 +12,9 @@ function ProductInfo(element) {
     events.EventEmitter.call(this);
 }
 
-util.inherits(ProductInfo, events.EventEmitter);
+util.inherits(ProductInfoView, events.EventEmitter);
 
-ProductInfo.prototype.show = function(product) {
+ProductInfoView.prototype.show = function(product) {
     this.model = product;
 
     if (this.element.dataset.id !== product._id) {
@@ -25,7 +25,7 @@ ProductInfo.prototype.show = function(product) {
     return this;
 };
 
-module.exports = ProductInfo;
+module.exports = ProductInfoView;
 
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="add"]')
