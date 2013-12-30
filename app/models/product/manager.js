@@ -5,7 +5,7 @@ function ProductManager() {
 }
 
 ProductManager.prototype.find = function(query, callback) {
-    superagent.get('/products').query(query).end(function(err, res) {
+    superagent.get('/products').end(function(err, res) {
         if (err) return callback(err);
 
         callback(null, res.body);
@@ -15,7 +15,7 @@ ProductManager.prototype.find = function(query, callback) {
 };
 
 ProductManager.prototype.findOne = function(query, callback) {
-    superagent.get('/products/' + query._id).query(query).end(function(err, res) {
+    superagent.get('/products/' + query._id).end(function(err, res) {
         if (err) return callback(err);
 
         callback(null, res.body);
