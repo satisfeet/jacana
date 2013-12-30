@@ -45,11 +45,12 @@ ProductList.prototype.select = function(product) {
 module.exports = ProductList;
 
 function createProductItem(element, model, view) {
-    var productItem = new ProductItem(element).show(model);
+    var productItem = new ProductItem(element);
 
-    productItem.on('click', function() {
-        view.emit('click:show', model);
+    productItem.on('click', function(id) {
+        view.emit('click:product', model, id);
     });
+    productItem.show(model);
 
     if (!element) {
         view.element.appendChild(productItem.element);
