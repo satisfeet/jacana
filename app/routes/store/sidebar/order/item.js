@@ -18,6 +18,9 @@ ProductItemView.prototype.show = function(order) {
     if (this.element.dataset.id !== order._id) {
         this.element.dataset.id = order._id;
         this.element.querySelector('h5').innerText = order.name;
+        this.element.querySelector('p').innerText = util
+            .format('Size: %s\nColor: %s', order.variations.size, 
+                    order.variations.color);
     }
 
     return this;

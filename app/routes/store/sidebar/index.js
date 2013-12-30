@@ -80,8 +80,8 @@ function createProductInfoView(sidebar, view) {
     var element = sidebar.querySelector('#product-info');
 
     view.productInfoView = new ProductInfoView(element);
-    view.productInfoView.on('click:add', function(product) {
-        view.emit('click:product:add', product);
+    view.productInfoView.on('click:add', function(product, variations) {
+        view.emit('click:product:add', product, variations);
     });
 }
 

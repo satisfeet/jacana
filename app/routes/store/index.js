@@ -34,11 +34,11 @@ module.exports = function(app) {
             });
         });
         
-        context.sidebarView.on('click:product:add', function(product) {
+        context.sidebarView.on('click:product:add', function(product, variations) {
             context.orderManager.findOne(null, function(err, order) {
                 if (order.products.indexOf(product) !== -1) return;
                 
-                order.products.push(product);
+                order.pushProduct(product, variations);
          
                 context.orderManager.update(order, function(err, order) {
                     context.sidebarView.showOrder(order);
