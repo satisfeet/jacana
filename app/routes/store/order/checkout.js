@@ -2,7 +2,7 @@ var util   = require('util');
 var events = require('events');
 var domify = require('domify');
 
-var template = require('views/store/sidebar/order/checkout.html');
+var template = require('views/store/order/checkout.html');
 
 function OrderCheckoutView(element) {
     this.element = element || domify(template);
