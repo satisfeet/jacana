@@ -49,6 +49,8 @@ function createProductItemView(element, model, view) {
 function bindToSubmitEvent(element, view) {
     element.querySelector('form')
         .addEventListener('submit', function(e) {
-            view.emit('submit');
+            e.preventDefault();
+
+            view.emit('proceed');
         });
 }

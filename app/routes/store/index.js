@@ -46,6 +46,13 @@ module.exports = function(app) {
                 });
             });
         });
+
+        context.sidebarView.on('order:proceed', function() {
+            context.orderManager.findOne(null, function(err, order) {
+                context.contentView.collapse();
+                context.sidebarView.expand();
+            });
+        });
         
         context.contentView.on('product:show', function(product) {
             context.productManager.findOne(product, function(err, product) {
