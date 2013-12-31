@@ -1,38 +1,40 @@
-var util   = require('util');
-var events = require('events');
-var domify = require('domify');
+var domify   = require('domify');
+var reactive = require('reactive');
 
 var template = require('views/store/product/list.html');
 
-var ProductItemView = require('./item');
+var ProductItem = require('./item');
 
-function ProductListView(element) {
-    this.element = element || domify(template);
+function ProductList(collection) {
+    this.element = domify(template);
 
-    events.EventEmitter.call(this);
+    bindToCollectionEvents(this.element, collection, this);
 }
 
-util.inherits(ProductListView, events.EventEmitter);
+ProductList.prototype.list = function(models) {
+    this.empty();
 
-ProductListView.prototype.list = function(products) {
-    var elements = [].slice.call(this.element.children);
- 
-    products.forEach(function(product) {
-        var element = elements.filter(function(element) {
-            if (element.dataset.id === product._id) return element;
-        }).shift();
-
-        createProductItemView(element, product, this);
+    models.forEach(function(model) {
+        this.push(model);
     }, this);
 
     return this;
 };
 
-ProductListView.prototype.select = function(product) {
+ProductList.prototype.push = function(model) {
+    var element = this.element;
+
+
+    element.appendChild(new ProductItem(model).element);
+
+    return this;
+};
+
+ProductList.prototype.select = function(model) {
     var elements = [].slice.call(this.element.children);
 
     elements.forEach(function(element) {
-        if (element.dataset.id === product._id) {
+        if (element.id === model._id) {
             element.classList.add('selected')
         } else {
             element.classList.remove('selected');
@@ -42,17 +44,22 @@ ProductListView.prototype.select = function(product) {
     return this;
 };
 
-module.exports = ProductListView;
+ProductList.prototype.empty = function() {
+    var element = this.element;
 
-function createProductItemView(element, model, view) {
-    var productItemView = new ProductItemView(element);
-
-    productItemView.on('show', function(id) {
-        view.emit('show', model, id);
-    });
-    productItemView.show(model);
-
-    if (!element) {
-        view.element.appendChild(productItemView.element);
+    while (element.lastElementChild) {
+        element.lastElementChild.remove();
     }
+
+    return this;
+};
+
+module.exports = ProductList;
+
+function bindToCollectionEvents(element, collection, view) {
+    collection.on('push', function(model) {
+        view.push(model);
+    });
+
+    view.list(collection.models);
 }
