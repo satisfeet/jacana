@@ -67,11 +67,11 @@ function createOrderInfoView(sidebar, view) {
     var element = sidebar.querySelector('#order-info');
 
     view.orderInfoView = new OrderInfoView(element);
-    view.orderInfoView.on('click:submit', function() {
-        view.emit('click:order:submit');
+    view.orderInfoView.on('remove', function(product) {
+        view.emit('order:remove', product);
     });
-    view.orderInfoView.on('click:product:remove', function(product) {
-        view.emit('click:order:product:remove', product);
+    view.orderInfoView.on('proceed', function() {
+        view.emit('order:proceed');
     });
 }
 
@@ -80,15 +80,15 @@ function createProductInfoView(sidebar, view) {
     var element = sidebar.querySelector('#product-info');
 
     view.productInfoView = new ProductInfoView(element);
-    view.productInfoView.on('click:add', function(product, variations) {
-        view.emit('click:product:add', product, variations);
+    view.productInfoView.on('push', function(product, variations) {
+        view.emit('order:push', product, variations);
     });
 }
 
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="order"]')
         .addEventListener('click', function(e) {
-            view.emit('click:order');
+            view.emit('order:show');
         });
 }
 

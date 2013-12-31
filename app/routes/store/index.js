@@ -13,7 +13,7 @@ module.exports = function(app) {
             context.contentView.listProducts(products);
         });
         
-        context.sidebarView.on('click:order', function() {
+        context.sidebarView.on('order:show', function() {
             context.orderManager.findOne(null, function(err, order) {
                 if (order) return context.sidebarView.showOrder(order);
 
@@ -22,19 +22,8 @@ module.exports = function(app) {
                 });
             });
         });
-        context.sidebarView.on('click:order:product:remove', function(product) {
-            context.orderManager.findOne(null, function(err, order) {
-                var index = order.products.indexOf(product);
-
-                order.products.splice(index, 1);
-
-                context.orderManager.update(order, function(err, order) {
-                    context.sidebarView.showOrder(order);
-                });
-            });
-        });
         
-        context.sidebarView.on('click:product:add', function(product, variations) {
+        context.sidebarView.on('order:push', function(product, variations) {
             context.orderManager.findOne(null, function(err, order) {
                 if (order.products.indexOf(product) !== -1) return;
                 
@@ -46,7 +35,19 @@ module.exports = function(app) {
             });
         });
         
-        context.contentView.on('click:products:product', function(product) {
+        context.sidebarView.on('order:remove', function(product) {
+            context.orderManager.findOne(null, function(err, order) {
+                var index = order.products.indexOf(product);
+
+                order.products.splice(index, 1);
+
+                context.orderManager.update(order, function(err, order) {
+                    context.sidebarView.showOrder(order);
+                });
+            });
+        });
+        
+        context.contentView.on('product:show', function(product) {
             context.productManager.findOne(product, function(err, product) {
                 context.contentView.selectProduct(product);
                 context.sidebarView.showProduct(product);

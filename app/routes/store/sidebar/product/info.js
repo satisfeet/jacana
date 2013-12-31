@@ -31,12 +31,12 @@ ProductInfoView.prototype.show = function(product) {
 module.exports = ProductInfoView;
 
 function bindToButtonClickEvent(element, view) {
-    element.querySelector('button[name="add"]')
+    element.querySelector('button[name="push"]')
         .addEventListener('click', function(e) {
             var size = element.querySelector('input[name="size"]:checked').value;
             var color = element.querySelector('input[name="color"]:checked').value;
 
-            view.emit('click:add', view.model, {
+            view.emit('push', view.model, {
                 size: size,
                 color: color
             });
