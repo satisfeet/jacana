@@ -19,8 +19,8 @@ ProductItemView.prototype.show = function(order) {
         this.element.dataset.id = order._id;
         this.element.querySelector('h5').innerText = order.name;
         this.element.querySelector('p').innerText = util
-            .format('Size: %s\nColor: %s', order.variations.size, 
-                    order.variations.color);
+            .format('Size: %s\nColor: %s\nQuantity: %s', order.variations.size, 
+                    order.variations.color, order.variations.quantity);
     }
 
     return this;
