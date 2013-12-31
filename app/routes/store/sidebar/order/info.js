@@ -9,7 +9,7 @@ var ProductItemView = require('./item');
 function OrderInfoView(element) {
     this.element = element || domify(template);
 
-    bindToButtonClickEvent(this.element, this);
+    bindToSubmitEvent(this.element, this);
 
     events.EventEmitter.call(this);
 }
@@ -46,9 +46,9 @@ function createProductItemView(element, model, view) {
     return productItemView;
 }
 
-function bindToButtonClickEvent(element, view) {
-    element.querySelector('button[name="submit"]')
-        .addEventListener('click', function(e) {
+function bindToSubmitEvent(element, view) {
+    element.querySelector('form')
+        .addEventListener('submit', function(e) {
             view.emit('submit');
         });
 }
