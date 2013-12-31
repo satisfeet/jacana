@@ -11,35 +11,31 @@
     },
 
     "static": {
-        "path": "srv"
+        "path": "/srv"
     },
 
     "engine": {
         "views": {
-            "path": "usr/views"
+            "path": "/usr/views"
         },
         "styles": {
-            "input": "usr/styles/bootstrap-theme/index.less",
-            "output": "srv/stylesheets/bootstrap-theme.css",
+            "input": "/usr/styles",
+            "output": "/srv/stylesheets",
             "prefix": "/stylesheets"
         },
         "builder": {
             "entries": [
-                "app/index.js"
+                "/app/index.js"
             ],
-            "output": "srv/javascripts/build.js",
+            "output": "/srv/javascripts/build.js",
             "aliases": {
-                "views": "./usr/views/"
+                "views": "/usr/views/"
             }
         }
     },
 
     "mailer": {
-        "service": "gmail",
-        "account": {
-            "username": "info@example.org",
-            "password": "1234"
-        }
+        "service": "gmail"
     }
 
 }
