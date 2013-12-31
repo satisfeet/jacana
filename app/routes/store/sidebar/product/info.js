@@ -37,10 +37,12 @@ function bindToSubmitEvent(element, view) {
 
             var size = element.querySelector('input[name="size"]:checked').value;
             var color = element.querySelector('input[name="color"]:checked').value;
+            var quantity = element.querySelector('input[name="quantity"]').value;
 
             view.emit('push', view.model, {
                 size: size,
-                color: color
+                color: color,
+                quantity: quantity
             });
         });
 }
