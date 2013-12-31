@@ -6,10 +6,38 @@
       <h3 class="text-center">Nimm deine Chance wahr!</h3>
     </div>
     <div class="row">
-      {% if not client %}
-      {% include './content/index.html' %}
-      {% include './sidebar/index.html' %}
-      {% endif %}
+      <section id="content">
+        <div class="col-md-8">
+          <section id="content-inner">
+          {% if not client %}
+          {% include './product/list.html' %}
+          {% endif %}
+          </section>
+        </div>
+      </section>
+      <aside id="sidebar">
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="page-header text-center">
+                <div class="btn-group btn-group-md">
+                  <button class="btn btn-primary" name="info">Details</button> 
+                  <button class="btn btn-primary" name="order">Warenkorb</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <section id="sidebar-inner">
+                {% if not client %}
+                {% include './help/info.html' %}
+                {% endif %}
+              </section>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
