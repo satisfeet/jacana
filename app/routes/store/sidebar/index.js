@@ -4,9 +4,10 @@ var domify = require('domify');
 
 var template = require('views/store/sidebar/index.html');
 
-var HelpInfoView    = require('./help/info');
-var OrderInfoView   = require('./order/info');
-var ProductInfoView = require('./product/info');
+var HelpInfoView      = require('./help/info');
+var OrderInfoView     = require('./order/info');
+var ProductInfoView   = require('./product/info');
+var OrderCheckoutView = require('./order/checkout');
 
 function SidebarView(element) {
     this.element = element || domify(template);
@@ -14,6 +15,7 @@ function SidebarView(element) {
     createHelpInfoView(this.element, this);
     createOrderInfoView(this.element, this);
     createProductInfoView(this.element, this);
+    createOrderCheckoutView(this.element, this);
 
     bindToButtonClickEvent(this.element, this);
 
@@ -56,23 +58,17 @@ SidebarView.prototype.showProduct = function(product) {
     return this;
 };
 
-SidebarView.prototype.expand = function() {
-    var element = this.element;
+SidebarView.prototype.showOrderCheckout = function(order) {
+    var element = this.element.querySelector('order-checkout');
 
-    element.classList.remove('col-md-4');
-    element.classList.add('col-md-12');
+    this.orderCheckoutView.show(order);
 
-    return this;
-};
-
-SidebarView.prototype.collapse = function() {
-    var element = this.element;
-
-    element.classList.add('col-md-4');
-    element.classList.remove('col-md-12');
+    if (!element) {
+        replace(this.element, this.orderCheckoutView);
+    }
 
     return this;
-};
+}
 
 module.exports = SidebarView;
 
@@ -100,6 +96,15 @@ function createProductInfoView(sidebar, view) {
     view.productInfoView = new ProductInfoView(element);
     view.productInfoView.on('push', function(product, variations) {
         view.emit('order:push', product, variations);
+    });
+}
+
+function createOrderCheckoutView(sidebar, view) {
+    var element = sidebar.querySelector('#order-checkout');
+
+    view.orderCheckoutView = new OrderCheckoutView(element);
+    view.orderCheckoutView.on('submit', function(customer) {
+        view.emit('order:submit', customer);
     });
 }
 

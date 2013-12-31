@@ -3,8 +3,8 @@ var clone  = require('clone');
 var events = require('events');
 
 function OrderModel(object) {
-    this.customer = {};
-    this.products = [];
+    this.customer = (object && object.customer) || {};
+    this.products = (object && object.products) || [];
 
     events.EventEmitter.call(this);
 }

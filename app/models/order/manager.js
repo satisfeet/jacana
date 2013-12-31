@@ -34,7 +34,7 @@ OrderManager.prototype.update = function(order, callback) {
 };
 
 OrderManager.prototype.remove = function(order, callback) {
-    store.set('orders', null);
+    store.set('order', null);
 
     callback(null, order);
 
