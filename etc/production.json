@@ -6,8 +6,11 @@
         "url": "mongodb://localhost/satisfeet"
     },
 
-    "static": {
-        "maxAge": 864000000
+    "mailer": {
+        "account": {
+            "username": "i@bodokaiser.io",
+            "password": "1234"
+        }
     }
 
 }

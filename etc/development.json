@@ -10,6 +10,13 @@
         "builder": {
             "debug": true
         }
+    },
+
+    "mailer": {
+        "account": {
+            "username": "i@bodokaiser.io",
+            "password": "1234"
+        }
     }
 
 }
