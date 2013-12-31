@@ -1,11 +1,15 @@
 {% spaceless %}
-<li class="list-group-item">
+<li class="list-group-item" data-id="_id">
   <div class="list-group-item-header">
     <button class="close" name="remove">&times;</button>
-    <h5></h5>
+    <h5 data-text="name"></h5>
   </div>
   <div class="list-group-item-text">
-    <p class="text-sm"></p>
+    <p class="text-sm">
+      Size: <span data-text="variations.size"></span>
+      Color: <span data-text="variations.color"></span>
+      Quantity: <span data-text="variations.quantity"></span>
+    </p>
   </div>
 </li>
 {% endspaceless %}
