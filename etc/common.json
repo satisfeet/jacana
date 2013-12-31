@@ -19,12 +19,9 @@
             "path": "usr/views"
         },
         "styles": {
-            "files": [
-                {
-                    "input": "usr/styles/bootstrap-theme/index.less",
-                    "output": "srv/stylesheets/bootstrap-theme.css"
-                }
-            ]
+            "input": "usr/styles/bootstrap-theme/index.less",
+            "output": "srv/stylesheets/bootstrap-theme.css",
+            "prefix": "/stylesheets"
         },
         "builder": {
             "entries": [
