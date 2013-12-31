@@ -1,13 +1,17 @@
-var LayoutView  = require('./layout'); 
 var ContentView = require('./content');
 var SidebarView = require('./sidebar');
+
+var template = require('views/store/layout.html');
 
 module.exports = function(app) {
       
     app('/store', function(context, next) {
+        if (!context.query('#store')) {
+            context.element.innerHTML = template;
+        }
+
         context.contentView = createContentView(context);
         context.sidebarView = createSidebarView(context);
-        context.layoutView = createLayoutView(context);
  
         context.productManager.find(null, function(err, products) {
             context.contentView.listProducts(products);
@@ -74,30 +78,25 @@ module.exports = function(app) {
 function createContentView(context) {
     var element = context.element.querySelector('#content');
 
-    return new ContentView(element);
+    var contentView = new ContentView(element);
+
+    if (!element) {
+        context.element.querySelector('.row')
+            .appendChild(contentView.element);
+    }
+
+    return contentView;
 }
 
 function createSidebarView(context) {
     var element = context.element.querySelector('#sidebar');
 
-    return new SidebarView(element);
-}
-
-function createLayoutView(context) {
-    var element = context.element.querySelector('#store');
-        
-    var layoutView = new LayoutView(element);
+    var sidebarView = new SidebarView(element);
 
     if (!element) {
-        while (context.element.lastElementChild) {
-            context.element.lastElementChild.remove();
-        }
-        context.element.appendChild(layoutView.element);
-    
-        layoutView.empty();
-        layoutView.append(context.contentView);
-        layoutView.append(context.sidebarView);
+        context.element.querySelector('.row')
+            .appendChild(sidebarView.element);
     }
 
-    return layoutView;
+    return sidebarView;
 }
