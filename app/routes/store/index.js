@@ -49,8 +49,15 @@ module.exports = function(app) {
 
         context.sidebarView.on('order:proceed', function() {
             context.orderManager.findOne(null, function(err, order) {
-                context.contentView.collapse();
-                context.sidebarView.expand();
+                context.sidebarView.showOrderCheckout(order);
+            });
+        });
+
+        context.sidebarView.on('order:submit', function(customer) {
+            context.orderManager.findOne(null, function(err, order) {
+                order.customer = customer;
+
+                console.log('submitting', order.toJSON());
             });
         });
         
