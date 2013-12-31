@@ -31,6 +31,6 @@ module.exports = ProductItemView;
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="remove"]')
         .addEventListener('click', function(e) {
-            view.emit('click:remove');
+            view.emit('remove');
         });
 }

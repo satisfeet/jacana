@@ -28,6 +28,6 @@ module.exports = ProductItemView;
 
 function bindToClickEvent(element, view) {
     element.addEventListener('click', function(e) {
-        view.emit('click', element.dataset.id);
+        view.emit('show', element.dataset.id);
     });
 }

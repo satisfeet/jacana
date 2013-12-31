@@ -47,8 +47,8 @@ module.exports = ProductListView;
 function createProductItemView(element, model, view) {
     var productItemView = new ProductItemView(element);
 
-    productItemView.on('click', function(id) {
-        view.emit('click:product', model, id);
+    productItemView.on('show', function(id) {
+        view.emit('show', model, id);
     });
     productItemView.show(model);
 

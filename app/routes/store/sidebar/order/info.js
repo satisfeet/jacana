@@ -39,8 +39,8 @@ function createProductItemView(element, model, view) {
  
     element.appendChild(productItemView.element);
 
-    productItemView.on('click:remove', function() {
-        view.emit('click:product:remove', model);
+    productItemView.on('remove', function() {
+        view.emit('remove', model);
     });
 
     return productItemView;
@@ -49,6 +49,6 @@ function createProductItemView(element, model, view) {
 function bindToButtonClickEvent(element, view) {
     element.querySelector('button[name="submit"]')
         .addEventListener('click', function(e) {
-            view.emit('click:submit');
+            view.emit('submit');
         });
 }
