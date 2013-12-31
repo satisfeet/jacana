@@ -1,10 +1,10 @@
 module.exports = function(app) {
+    
+    require('./order')(app);
+    require('./products')(app);
 
-    app('*', function(context, next) {
-        require('./order')(context);
-        require('./product')(context);
-
-        next();
+    app.products.on('order', function(product, options) {
+        app.order.push(product, options);
     });
 
 };

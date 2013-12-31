@@ -1,8 +1,10 @@
 {% spaceless %}
-<li class="col-md-4" data-id="{{ product._id }}">
-  <h4 class="text-center">{{ product.name }}</h4>
-  <div class="thumbnail">
-    <img class="img-rounded img-responsive" src="{{ product.image.path }}" />
-  </div>
+<li class="col-md-4" data-id="_id">
+  <a class="anchor-unstyled" data-href="href">
+    <h4 data-text="name"></h4>
+    <div class="thumbnail">
+      <img class="img-rounded img-responsive" data-src="imageSrc" />
+    </div>
+  </a>
 </li>
 {% endspaceless %}

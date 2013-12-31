@@ -1,33 +1,21 @@
-var util   = require('util');
-var events = require('events');
-var domify = require('domify');
+var domify   = require('domify');
+var reactive = require('reactive');
 
 var template = require('views/store/product/item.html');
 
-function ProductItemView(element) {
-    this.element = element || domify(template);
-    
-    bindToClickEvent(this.element, this);
+function ProductItem(model) {
+    this.element = domify(template);
+    this.model = model;
 
-    events.EventEmitter.call(this);
+    reactive(this.element, this.model, this);
 }
 
-util.inherits(ProductItemView, events.EventEmitter);
-
-ProductItemView.prototype.show = function(product) {
-    if (this.element.dataset.id !== product._id) {
-        this.element.dataset.id = product._id;
-        this.element.querySelector('h4').innerText = product.name;
-        this.element.querySelector('img').src = product.image.path;
-    }
-
-    return this;
+ProductItem.prototype.href = function() {
+    return '/store/' + this.model._id;
 };
 
-module.exports = ProductItemView;
+ProductItem.prototype.imageSrc = function() {
+    return this.model.image.path;
+};
 
-function bindToClickEvent(element, view) {
-    element.addEventListener('click', function(e) {
-        view.emit('show', element.dataset.id);
-    });
-}
+module.exports = ProductItem;

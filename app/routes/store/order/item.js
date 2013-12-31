@@ -1,36 +1,21 @@
-var util   = require('util');
-var events = require('events');
-var domify = require('domify');
+var domify   = require('domify');
+var reactive = require('reactive');
 
 var template = require('views/store/order/item.html');
 
-function ProductItemView(element) {
-    this.element = element || domify(template);
+function OrderItem(model) {
+    this.element = domify(template);
 
-    bindToButtonClickEvent(this.element, this);
+    bindToClickEvents(this.element, model, this);
 
-    events.EventEmitter.call(this);
+    reactive(this.element, model, this);
 }
 
-util.inherits(ProductItemView, events.EventEmitter);
+module.exports = OrderItem;
 
-ProductItemView.prototype.show = function(order) {
-    if (this.element.dataset.id !== order._id) {
-        this.element.dataset.id = order._id;
-        this.element.querySelector('h5').innerText = order.name;
-        this.element.querySelector('p').innerText = util
-            .format('Size: %s\nColor: %s\nQuantity: %s', order.variations.size, 
-                    order.variations.color, order.variations.quantity);
-    }
-
-    return this;
-};
-
-module.exports = ProductItemView;
-
-function bindToButtonClickEvent(element, view) {
-    element.querySelector('button[name="remove"]')
-        .addEventListener('click', function(e) {
-            view.emit('remove');
-        });
+function bindToClickEvents(element, model, view) {
+    element = element.querySelector('button.close');
+    element.addEventListener('click', function(e) {
+        model.remove();
+    });
 }
