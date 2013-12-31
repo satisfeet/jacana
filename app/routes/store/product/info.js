@@ -2,7 +2,7 @@ var util   = require('util');
 var events = require('events');
 var domify = require('domify');
 
-var template = require('views/store/sidebar/product/info.html');
+var template = require('views/store/product/info.html');
 
 function ProductInfoView(element) {
     this.element = element || domify(template);

@@ -1,6 +1,8 @@
+var HelpInfoView    = require('./help/info');
+var OrderInfoView   = require('./order/info');
+var OrderCheckoutView = require('./order/checkout');
+var ProductInfoView = require('./product/info');
 var ProductListView = require('./product/list');
-
-var SidebarView = require('./sidebar');
 
 var template = require('views/store/layout.html');
 
@@ -11,54 +13,70 @@ module.exports = function(app) {
             context.element.innerHTML = template;
         }
 
-        var sidebarView = createSidebarView(context);
+        var helpInfoView = createHelpInfoView(context);
+        var productInfoView = createProductInfoView(context);
         var productListView = createProductListView(context);
+        var orderCheckoutView = createOrderCheckoutView(context);
+        var orderInfoView = createOrderInfoView(context);
  
         context.productManager.find(null, function(err, products) {
             productListView.list(products);
         });
         
-       sidebarView.on('order:show', function() {
-            context.orderManager.findOne(null, function(err, order) {
-                if (order) return sidebarView.showOrder(order);
+        context.element.querySelector('button[name="order"]')
+            .addEventListener('click', function(e) {
+                context.orderManager.findOne(null, function(err, order) {
+                    if (order) {
+                        replaceSidebarInner(context, orderInfoView);
+                        
+                        return orderInfoView.show(order);
+                    }
 
-                context.orderManager.create(null, function(order) {
-                    sidebarView.showOrder(order);
+                    context.orderManager.create(null, function(order) {
+                        orderInfoView.show(order);
+
+                        replaceSidebarInner(context, orderInfoView);
+                    });
                 });
             });
-        });
         
-        sidebarView.on('order:push', function(product, variations) {
+        productInfoView.on('push', function(product, variations) {
             context.orderManager.findOne(null, function(err, order) {
                 if (order.products.indexOf(product) !== -1) return;
                 
                 order.pushProduct(product, variations);
          
                 context.orderManager.update(order, function(err, order) {
-                    sidebarView.showOrder(order);
+                    orderInfoView.show(order);
+                    
+                    replaceSidebarInner(context, orderInfoView);
                 });
             });
         });
         
-        sidebarView.on('order:remove', function(product) {
+        orderInfoView.on('remove', function(product) {
             context.orderManager.findOne(null, function(err, order) {
                 var index = order.products.indexOf(product);
 
                 order.products.splice(index, 1);
 
                 context.orderManager.update(order, function(err, order) {
-                    sidebarView.showOrder(order);
+                    orderInfoView.show(order);
+                    
+                    replaceSidebarInner(context, orderInfoView);
                 });
             });
         });
 
-        sidebarView.on('order:proceed', function() {
+        orderInfoView.on('proceed', function() {
             context.orderManager.findOne(null, function(err, order) {
-                sidebarView.showOrderCheckout(order);
+                replaceSidebarInner(context, orderCheckoutView);
+
+                orderCheckoutView.show(order);
             });
         });
 
-        sidebarView.on('order:submit', function(customer) {
+        orderInfoView.on('submit', function(customer) {
             context.orderManager.findOne(null, function(err, order) {
                 order.customer = customer;
 
@@ -69,24 +87,44 @@ module.exports = function(app) {
         productListView.on('show', function(product) {
             context.productManager.findOne(product, function(err, product) {
                 productListView.select(product);
-                sidebarView.showProduct(product);
+                productInfoView.show(product);
+
+                replaceSidebarInner(context, productInfoView);
             });
         });
     });
 
 };
 
-function createSidebarView(context) {
-    var element = context.element.querySelector('#sidebar');
+function createHelpInfoView(context) {
+    var element = context.element.querySelector('#help-info');
 
-    var sidebarView = new SidebarView(element);
+    var helpInfoView = new HelpInfoView(element);
 
     if (!element) {
-        context.element.querySelector('.row')
-            .appendChild(sidebarView.element);
+        context.element.querySelector('#sidebar-inner')
+            .appendChild(helpInfoView.element);
     }
 
-    return sidebarView;
+    return helpInfoView;
+}
+
+function createOrderInfoView(context) {
+    var element = context.element.querySelector('#order-info');
+
+    return new OrderInfoView(element);
+}
+
+function createOrderCheckoutView(context) {
+    var element = context.element.querySelector('#order-checkout');
+
+    return new OrderCheckoutView(element);
+}
+
+function createProductInfoView(context) {
+    var element = context.element.querySelector('#product-info');
+
+    return new ProductInfoView(element);
 }
 
 function createProductListView(context) {
@@ -100,4 +138,14 @@ function createProductListView(context) {
     }
 
     return productListView;
+}
+
+function replaceSidebarInner(context, view) {
+    var element = context.element.querySelector('#sidebar-inner');
+
+    while (element.lastElementChild) {
+        element.lastElementChild.remove();
+    }
+
+    element.appendChild(view.element);
 }

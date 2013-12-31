@@ -1,6 +1,6 @@
 var domify = require('domify');
 
-var template = require('views/store/sidebar/help/info.html');
+var template = require('views/store/help/info.html');
 
 function HelpInfoView(model, element) {
     this.element = element || domify(template);
