@@ -7,7 +7,7 @@ var template = require('views/store/sidebar/product/info.html');
 function ProductInfoView(element) {
     this.element = element || domify(template);
 
-    bindToButtonClickEvent(this.element, this);
+    bindToSubmitEvent(this.element, this);
 
     events.EventEmitter.call(this);
 }
@@ -30,9 +30,11 @@ ProductInfoView.prototype.show = function(product) {
 
 module.exports = ProductInfoView;
 
-function bindToButtonClickEvent(element, view) {
-    element.querySelector('button[name="push"]')
-        .addEventListener('click', function(e) {
+function bindToSubmitEvent(element, view) {
+    element.querySelector('form')
+        .addEventListener('submit', function(e) {
+            e.preventDefault();
+
             var size = element.querySelector('input[name="size"]:checked').value;
             var color = element.querySelector('input[name="color"]:checked').value;
 
@@ -60,6 +62,7 @@ function buildSizeFormGroup(element, model, view) {
         input.name = 'size';
         input.type = 'radio';
         input.value = size;
+        input.required = true;
 
         label.classList.add('radio-inline');
         
@@ -87,6 +90,7 @@ function buildColorFormGroup(element, model, view) {
         input.name = 'color';
         input.type = 'radio';
         input.value = color;
+        input.required = true;
 
         label.classList.add('radio-inline');
         
