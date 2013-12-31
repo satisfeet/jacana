@@ -28,6 +28,22 @@ ContentView.prototype.selectProduct = function(product) {
     return this;
 };
 
+ContentView.prototype.expand = function() {
+    var element = this.element;
+
+    element.classList.remove('hide');
+
+    return this;
+};
+
+ContentView.prototype.collapse = function() {
+    var element = this.element;
+
+    element.classList.add('hide');
+
+    return this;
+};
+
 module.exports = ContentView;
 
 function createProductListView(content, view) {

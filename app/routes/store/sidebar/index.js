@@ -8,7 +8,7 @@ var HelpInfoView    = require('./help/info');
 var OrderInfoView   = require('./order/info');
 var ProductInfoView = require('./product/info');
 
-function Sidebar(element) {
+function SidebarView(element) {
     this.element = element || domify(template);
  
     createHelpInfoView(this.element, this);
@@ -20,9 +20,9 @@ function Sidebar(element) {
     events.EventEmitter.call(this);
 }
 
-util.inherits(Sidebar, events.EventEmitter);
+util.inherits(SidebarView, events.EventEmitter);
 
-Sidebar.prototype.showHelp = function() {
+SidebarView.prototype.showHelp = function() {
     var element = this.element.querySelector('#help-info');
 
     if (!element) {
@@ -32,7 +32,7 @@ Sidebar.prototype.showHelp = function() {
     return this;
 };
 
-Sidebar.prototype.showOrder = function(order) {
+SidebarView.prototype.showOrder = function(order) {
     var element = this.element.querySelector('#order-info');
  
     this.orderInfoView.show(order);
@@ -44,7 +44,7 @@ Sidebar.prototype.showOrder = function(order) {
     return this;
 };
 
-Sidebar.prototype.showProduct = function(product) {
+SidebarView.prototype.showProduct = function(product) {
     var element = this.element.querySelector('#product-info');
 
     this.productInfoView.show(product);
@@ -56,7 +56,25 @@ Sidebar.prototype.showProduct = function(product) {
     return this;
 };
 
-module.exports = Sidebar;
+SidebarView.prototype.expand = function() {
+    var element = this.element;
+
+    element.classList.remove('col-md-4');
+    element.classList.add('col-md-12');
+
+    return this;
+};
+
+SidebarView.prototype.collapse = function() {
+    var element = this.element;
+
+    element.classList.add('col-md-4');
+    element.classList.remove('col-md-12');
+
+    return this;
+};
+
+module.exports = SidebarView;
 
 function createHelpInfoView(sidebar, view) {
     var element = sidebar.querySelector('#help-info');
