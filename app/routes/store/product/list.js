@@ -1,4 +1,5 @@
 var domify   = require('domify');
+var lodash   = require('lodash');
 var reactive = require('reactive');
 
 var template = require('views/store/product/list.html');
@@ -22,18 +23,13 @@ ProductList.prototype.list = function(models) {
 };
 
 ProductList.prototype.push = function(model) {
-    var element = this.element;
-
-
-    element.appendChild(new ProductItem(model).element);
+    this.element.appendChild(new ProductItem(model).element);
 
     return this;
 };
 
 ProductList.prototype.select = function(model) {
-    var elements = [].slice.call(this.element.children);
-
-    elements.forEach(function(element) {
+    lodash.forEach(this.element.children, function(element) {
         if (element.id === model._id) {
             element.classList.add('selected')
         } else {
@@ -45,10 +41,8 @@ ProductList.prototype.select = function(model) {
 };
 
 ProductList.prototype.empty = function() {
-    var element = this.element;
-
-    while (element.lastElementChild) {
-        element.lastElementChild.remove();
+    while (this.element.lastElementChild) {
+        this.element.lastElementChild.remove();
     }
 
     return this;
