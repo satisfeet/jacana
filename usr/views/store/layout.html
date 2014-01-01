@@ -30,9 +30,15 @@
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
               <section id="sidebar-inner">
-                {% if not client %}
+              {% if not client %}
+                {% if order %}
+                {% include './order/index.html' %}
+                {% elseif product %}
+                {% include './product/index.html' %}
+                {% else %}
                 {% include './help/index.html' %}
                 {% endif %}
+              {% endif %}
               </section>
             </div>
           </div>
