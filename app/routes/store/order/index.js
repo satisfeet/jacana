@@ -1,4 +1,5 @@
-var domify   = require('domify');
+var domify = require('domify');
+var lodash = require('lodash');
 
 var template = require('views/store/order/index.html');
 
@@ -31,7 +32,7 @@ OrderInfo.prototype.push = function(product) {
 OrderInfo.prototype.remove = function(product) {
     var element = this.element.querySelector('ul');
     
-    [].slice.call(element.children).forEach(function(element) {
+    lodash.forEach(element.children, function(element) {
         if (element.id === product._id) {
             element.remove();
         }

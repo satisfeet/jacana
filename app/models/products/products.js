@@ -1,5 +1,6 @@
 var util   = require('util');
 var events = require('events');
+var lodash = require('lodash');
 
 var Product = require('./product');
 
@@ -12,11 +13,7 @@ function Products(models) {
 util.inherits(Products, events.EventEmitter);
 
 Products.prototype.find = function(id) {
-    var result = this.models.filter(function(model) {
-        if (model._id === id) return model;
-    });
-
-    return result.shift();
+    return lodash.find(this.models, { _id: id });
 };
 
 Products.prototype.push = function(model) {
@@ -28,16 +25,14 @@ Products.prototype.push = function(model) {
     });
 
     this.models.push(product);
-    this.emit('push', product);
 
-    return this;
+    return this.emit('push', product);
 };
 
 Products.prototype.remove = function(product) {
-    this.models.splice(this.models.indexOf(product), 1);
-    this.emit('remove', product);
+    var model = lodash.remove(this.models, product);
 
-    return this;
+    return this.emit('remove', model);
 };
 
 module.exports = Products;
