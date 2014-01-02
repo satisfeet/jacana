@@ -14,7 +14,7 @@ module.exports = function(app, mockup) {
 
         describe('#notify', function() {
 
-            it.only('should notify customer', function(done) {
+            xit('should notify customer', function(done) {
                 order.notify(function(err) {
                     if (err) throw err;
 

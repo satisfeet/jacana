@@ -29,7 +29,7 @@
             ],
             "output": "/srv/javascripts/build.js",
             "aliases": {
-                "views": "/usr/views/",
+                "views": "/usr/views/app",
                 "reactive": "/node_modules/reactive-component"
             }
         }
