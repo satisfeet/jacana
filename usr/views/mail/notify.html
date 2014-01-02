@@ -1,0 +1,30 @@
+<h1>satisfeet</h1>
+<h2>this socks make you happy</h2>
+<hr />
+<p>
+  Sehr geehrter {{ customer.name }}, 
+  <br />
+  Sie haben soeben eine Bestellung auf 
+  <a href="http://www.satisfeet.me">satisfeet.me</a> und erhalten hiermit die
+  Rechnung für die von Ihnen bestellten Produkte. Bitte überweisen Sie den
+  Betrag bis zum Ende nächster Woche an das unten genannte Konto. Bei 
+  Zahlungseingang verschicken wir Ihre Ware umgehend und informieren Sie über
+  den Versand.
+  <br />
+  Mit freundlichen Grüßen,
+  Bodo Kaiser
+</p>
+<div>
+  <ul>
+    {% for product in products %}
+    <li>
+      <h5>{{ product.name }}</h5>
+      <ul>
+        <li>Größe: {{ product.variations.size }}</li>
+        <li>Farbe: {{ product.variations.color }}</li>
+        <li>Anzahl: {{ product.quantity }}</li>
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
