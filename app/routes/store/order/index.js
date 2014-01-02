@@ -1,3 +1,4 @@
+var page   = require('page');
 var domify = require('domify');
 var lodash = require('lodash');
 
@@ -5,14 +6,14 @@ var template = require('views/store/order/index.html');
 
 var ProductItem = require('./item');
 
-function OrderInfo(model) {
+function Order(model) {
     this.element = domify(template);
 
     bindToModelEvents(this.element, model, this);
     bindToSubmitEvents(this.element, model, this);
 }
 
-OrderInfo.prototype.list = function(products) {
+Order.prototype.list = function(products) {
     this.empty();
 
     products.forEach(function(product) {
@@ -22,26 +23,14 @@ OrderInfo.prototype.list = function(products) {
     return this;
 };
 
-OrderInfo.prototype.push = function(product) {
+Order.prototype.push = function(product) {
     this.element.querySelector('ul')
         .appendChild(new ProductItem(product).element);
 
     return this;
 };
 
-OrderInfo.prototype.remove = function(product) {
-    var element = this.element.querySelector('ul');
-    
-    lodash.forEach(element.children, function(element) {
-        if (element.id === product._id) {
-            element.remove();
-        }
-    });
-
-    return this;
-};
-
-OrderInfo.prototype.empty = function() {
+Order.prototype.empty = function() {
     var element = this.element.querySelector('ul');
 
     while (element.lastElementChild) {
@@ -51,16 +40,13 @@ OrderInfo.prototype.empty = function() {
     return this;
 };
 
-module.exports = OrderInfo;
+module.exports = Order;
 
 function bindToModelEvents(element, model, view) {
     element = element.querySelector('ul');
  
     model.on('push', function(product) {
         view.push(product);
-    });
-    model.on('remove', function(product) {
-        view.remove(product);
     });
 
     view.list(model.products);
@@ -70,5 +56,7 @@ function bindToSubmitEvents(element, model, view) {
     element.querySelector('form')
         .addEventListener('submit', function(e) {
             e.preventDefault();
+
+            page('/store/checkout');
         });
 }

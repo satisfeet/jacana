@@ -9,6 +9,12 @@ var DEFAULTS = [
     'products'
 ];
 
+var DEFAULTS_CUSTOMER = [
+    'name',
+    'email',
+    'address'
+];
+
 function Order(model) {
     model = model || {};
 
@@ -49,6 +55,7 @@ Order.prototype.remove = function(product) {
 Order.prototype.toJSON = function() {
     var object = lodash.pick(this, DEFAULTS);
 
+    object.customer = lodash.pick(object.customer, DEFAULTS_CUSTOMER);
     object.products = lodash.map(object.products, function(product) {
         return product.toJSON();
     });
