@@ -7,6 +7,8 @@ app.server = http.createServer(app);
 
 require('../lib/config')(app);
 
+require('../lib/mailer')(app);
+
 require('../lib/parser')(app);
 
 require('../lib/models')(app);
