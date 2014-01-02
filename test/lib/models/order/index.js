@@ -16,8 +16,10 @@ module.exports = function(app) {
             products: [
                 {
                     name: 'Standard',
-                    size: '42-44',
-                    color: 'blue',
+                    variations: {
+                        size: '42-44',
+                        color: 'blue',
+                    },
                     quantity: 2
                 }
             ]
