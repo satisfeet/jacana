@@ -1,26 +1,34 @@
-var HelpInfo    = require('./help/index');
-var OrderInfo   = require('./order/index');
-var ProductInfo = require('./product/index');
+var Help        = require('./help');
+var Order       = require('./order');
+var Checkout    = require('./checkout');
+var Product     = require('./product');
 var ProductList = require('./product/list');
 
 var template = require('views/store/layout.html');
 
 module.exports = function(app) {
 
-    var helpInfo = new HelpInfo();
-    var orderInfo = new OrderInfo(app.order);
+    var help = new Help();
+    var order = new Order(app.order);
+    var checkout = new Checkout(app.order);
     var productList = new ProductList(app.products);
 
     app('/store', function(context, next) {
         insertLayout(context);
         insertContent(context, productList);
-        insertSidebar(context, helpInfo);
+        insertSidebar(context, help);
     });
 
     app('/store/order', function(context, next) {
         insertLayout(context);
         insertContent(context, productList);
-        insertSidebar(context, orderInfo);
+        insertSidebar(context, order);
+    });
+
+    app('/store/checkout', function(context, next) {
+        insertLayout(context);
+        insertContent(context, productList);
+        insertSidebar(context, checkout);
     });
 
     app('/store/:product', function(context, next) {
@@ -28,7 +36,7 @@ module.exports = function(app) {
 
         insertLayout(context);
         insertContent(context, productList);
-        insertSidebar(context, new ProductInfo(product));
+        insertSidebar(context, new Product(product));
 
         productList.select(product);
     });

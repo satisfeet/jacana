@@ -11,6 +11,12 @@ module.exports = function(app) {
         store.set('order', app.order.toJSON());
     });
 
+    app.order.on('checkout', function() {
+        superagent.post('/orders')
+            .send(app.order)
+            .end();
+    });
+
     app('*', function(context, next) {
         context.order = app.order;
 

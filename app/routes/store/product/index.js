@@ -4,7 +4,7 @@ var reactive = require('reactive');
 
 var template = require('views/store/product/index.html');
 
-function ProductInfo(model) {
+function Product(model) {
     this.element = domify(template);
 
     bindToSubmitEvents(this.element, model, this);
@@ -15,11 +15,11 @@ function ProductInfo(model) {
     reactive(this.element, model, this);
 }
 
-module.exports = ProductInfo;
+module.exports = Product;
 
 function bindToSubmitEvents(element, model, view) {
     element = element.querySelector('form');
-
+    
     element.addEventListener('submit', function(e) {
         e.preventDefault();
 
