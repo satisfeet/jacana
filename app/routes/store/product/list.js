@@ -1,6 +1,5 @@
 var domify   = require('domify');
 var lodash   = require('lodash');
-var reactive = require('reactive');
 
 var template = require('views/store/product/list.html');
 
@@ -29,7 +28,9 @@ ProductList.prototype.push = function(model) {
 };
 
 ProductList.prototype.select = function(model) {
-    lodash.forEach(this.element.children, function(element) {
+    var elements = [].slice.call(this.element.children);
+
+    elements.forEach(function(element) {
         if (element.id === model._id) {
             element.classList.add('selected')
         } else {

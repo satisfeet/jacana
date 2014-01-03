@@ -2,12 +2,22 @@ var util = require('util');
 var events = require('events');
 var lodash = require('lodash');
 
-var DEFAULTS = ['_id', 'name', 'size', 'color', 'quantity'];
+var DEFAULTS = [
+    '_id', 
+    'name', 
+    'size', 
+    'color', 
+    'pricing',
+    'quantity', 
+    'variation',
+    '_version'
+];
 
-function OrderItem(model) {
+function OrderItem(model, options) {
     model = lodash.pick(model, DEFAULTS) || {};
-    
+
     lodash.merge(this, model);
+    lodash.merge(this, options);
 
     events.EventEmitter.call(this);
 }

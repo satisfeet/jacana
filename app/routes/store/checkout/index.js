@@ -1,10 +1,12 @@
-var domify   = require('domify');
-var reactive = require('reactive');
+var swig   = require('swig');
+var domify = require('domify');
 
 var template = require('views/store/checkout/index.html');
 
 function Checkout(model) {
-    this.element = domify(template);
+    this.element = domify(swig.render(template, {
+        locals: { order: model }
+    }));
 
     bindToSubmitEvents(this.element, model, this);
 }
@@ -14,10 +16,10 @@ module.exports = Checkout;
 function bindToSubmitEvents(element, model, view) {
     element = element.querySelector('form');
 
-    var name = element.querySelector('input[name="name"]');
-    var email = element.querySelector('input[name="email"]');
-    var street = element.querySelector('input[name="street"]');
-    var zipcode = element.querySelector('input[name="zipcode"]');
+    var name = element.querySelector('#name');
+    var email = element.querySelector('#email');
+    var street = element.querySelector('#street');
+    var zipcode = element.querySelector('#zipcode');
 
     element.addEventListener('submit', function(e) {
         e.preventDefault();

@@ -1,10 +1,23 @@
 {% spaceless %}
-<li class="col-md-4" data-id="_id">
-  <a class="anchor-unstyled" data-href="href">
-    <h4 class="text-center" data-text="name"></h4>
+{% if server %}
+<li class="col-md-4">
+  <a class="anchor-unstyled" href="/store/{{ product._id }}">
+    <h4 class="text-center">{{ product.name }}</h4>
     <div class="thumbnail">
-      <img class="img-rounded img-responsive" data-src="imageSrc" />
+      <img class="img-rounded img-responsive" src="{{ product.image.path }}" />
     </div>
   </a>
 </li>
+{% else %}
+{% raw %}
+<li class="col-md-4">
+  <a class="anchor-unstyled" href="/store/{{ product._id }}">
+    <h4 class="text-center">{{ product.name }}</h4>
+    <div class="thumbnail">
+      <img class="img-rounded img-responsive" src="{{ product.image.path }}" />
+    </div>
+  </a>
+</li>
+{% endraw %}
+{% endif %}
 {% endspaceless %}
