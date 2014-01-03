@@ -10,6 +10,9 @@ module.exports = function(app) {
             variations: {
                 colors: ['blue', 'red'],
                 sizes: ['38-40', '40-42']
+            },
+            pricing: {
+                value: 3.99
             }
         }
     };
