@@ -1,15 +1,22 @@
 {% spaceless %}
-<li class="list-group-item" data-id="_id">
+{% raw %}
+<li class="list-group-item">
   <div class="list-group-item-header">
     <button class="close" name="remove">&times;</button>
-    <h5 data-text="name"></h5>
+    <h5>{{ product.name }}</h5>
   </div>
   <div class="list-group-item-text">
     <p class="text-sm">
-      Size: <span data-text="variations.size"></span>
-      Color: <span data-text="variations.color"></span>
-      Quantity: <span data-text="variations.quantity"></span>
+      Size: <strong>{{ product.variation.size }}</strong>
+      <br />
+      Color: <strong>{{ product.variation.color }}</strong>
+    </p>
+    <p class="text-md text-right">
+      <span>{{ product.quantity }}</span>
+      <span> x </span> 
+      <strong>{{ product.pricing.value }}</strong>
     </p>
   </div>
 </li>
+{% endraw %}
 {% endspaceless %}

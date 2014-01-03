@@ -1,18 +1,35 @@
 {% spaceless %}
+{% if server %}
 <div id="product-info">
   <div>
-    <p class="text-sm text-justify" data-text="description"></p>
+    <p class="text-sm text-justify">
+      {{ product.description }}
+    </p>
     <p class="text-md text-right">
-      Preis: {pricing.value}€
+      Preis: <strong>{{ product.pricing.value }}€</strong>
     </p>
   </div>
   <hr />
   <form class="form" role="form">
-    <div id="sizes" class="form-group col-md-12"></div>
-    <div id="colors" class="form-group col-md-12"></div>
-    <div class="col-md-8 col-md-offset-2">
+    <div id="sizes" class="form-group col-md-12">
+      {% for size in product.variations.sizes %}
+      <label class="radio-inline">
+        <input name="size" type="radio" value="{{ size }}" />
+        {{ size }}
+      </label>
+      {% endfor %}
+    </div>
+    <div id="colors" class="form-group col-md-12">
+      {% for color in product.variations.colors %}
+      <label class="radio-inline">
+        <input name="color" type="radio" value="{{ color }}" />
+        {{ color }}
+      </label>
+      {% endfor %}
+    </div>
+    <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
-        <input class="form-control input-sm" type="number" name="quantity" value="1" />
+        <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
         <span class="input-group-btn">
           <button class="btn btn-sm">Hinzufügen</button>
         </span>
@@ -20,4 +37,45 @@
     </div>
   </form>
 </div>
+{% else %}
+{% raw %}
+<div id="product-info">
+  <div>
+    <p class="text-sm text-justify">
+      {{ product.description }}
+    </p>
+    <p class="text-md text-right">
+      Preis: <strong>{{ product.pricing.value }}€</strong>
+    </p>
+  </div>
+  <hr />
+  <form class="form" role="form">
+    <div id="sizes" class="form-group col-md-12">
+      {% for size in product.variations.sizes %}
+      <label class="radio-inline">
+        <input name="size" type="radio" value="{{ size }}" />
+        {{ size }}
+      </label>
+      {% endfor %}
+    </div>
+    <div id="colors" class="form-group col-md-12">
+      {% for color in product.variations.colors %}
+      <label class="radio-inline">
+        <input name="color" type="radio" value="{{ color }}" />
+        {{ color }}
+      </label>
+      {% endfor %}
+    </div>
+    <div class="form-group col-md-8 col-md-offset-2">
+      <div class="input-group">
+        <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
+        <span class="input-group-btn">
+          <button class="btn btn-sm">Hinzufügen</button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+{% endraw %}
+{% endif %}
 {% endspaceless %}

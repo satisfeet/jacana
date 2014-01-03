@@ -33,8 +33,7 @@
         "uglifyify": "1.0.1",
         "aliasify": "1.2.0",
         "nodemailer": "0.5.15",
-        "less-middleware": "0.1.14",
-        "reactive-component": "0.13.2"
+        "less-middleware": "0.1.14"
     },
     
     "devDependencies": {
