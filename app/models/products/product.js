@@ -6,6 +6,7 @@ var DEFAULTS = [
     '_id', 
     'name', 
     'image', 
+    'pricing',
     'variations', 
     'description',
     '_version'

@@ -17,9 +17,13 @@ module.exports = function(app) {
                         size: '42-44',
                         color: 'olive-gray'
                     },
-                    quantity: 5
+                    pricing: {
+                        value: 5.99
+                    },
+                    quantity: 1
                 }
-            ]
+            ],
+            pricing: 5.99
         }
     };
 
