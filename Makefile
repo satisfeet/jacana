@@ -13,13 +13,18 @@ boot:
 	@node lib
 
 test: \
-	test-lib
+	test-lib 	\
+	test-bin
 
 test-lib:
 	$(MOCHA) $(MOCHA_FLAGS) \
 		test/lib/models 	\
 		test/lib/static		\
 		test/lib/routes
+
+test-bin:
+	$(MOCHA) $(MOCHA_FLAGS) \
+		test/bin/models
 
 build: \
 	build-app
