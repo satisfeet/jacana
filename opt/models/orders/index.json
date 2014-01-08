@@ -1,0 +1,30 @@
+[
+    {
+        "customer": {
+            "name": "Bodo Kaiser",
+            "email": "i@bodokaiser.io",
+            "address": {
+                "street": "Geiserichstraße",
+                "streetNr": "3",
+                "zipcode": 12105,
+                "place": "Berlin"
+            }
+        },
+        "products": [
+            {
+                "name": "Common Follower",
+                "attributes": {
+                    "size": "42-44",
+                    "color: "black"
+                },
+                "pricing": 2.99,
+                "quantity": 3
+            }
+        ],
+        "pricing": {
+            "shipment": 2.11,
+            "retail": 8.97,
+            "total": 11.08
+        }
+    }
+]

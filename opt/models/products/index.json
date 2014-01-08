@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Common Follower",
+        "images": {
+            "main": {
+                "path": "/images/products/common_follower.jpeg"
+            }
+        },
+        "attributes": {
+            sizes: ['42-44'],
+            colors: ['gray', 'blue', 'black']
+        },
+        "description": {
+            "preview": "Qualitätssocken für einen angenehmen Tag",
+            "extended": "Die Common Follower sind perfekt geeignet als tägliche Begleiter deiner Füße. Sie sind preiswert, hochwertig und bieten dir in drei verschiedenen Farben auch genügend Abwechslung in der Woche."
+        },
+        "elements": {
+            "Baumwolle": "80%",
+            "Polyamid": "15%",
+            "Elasthan": "5%"
+        },
+        "pricing": {
+            "retail": 2.99
+        }
+    },
+    {
+        "name": "Olive Beauty",
+        "images": {
+            "main": {
+                path: "/images/products/olive_beauty.jpeg"
+            }
+        },
+        "attributes": {
+            sizes: ['42-44'],
+            colors: ['olive-gray']
+        },
+        "description": {
+            "preview": "",
+            "extended": ""
+        },
+        "elements": {
+            "Schurwolle": "50%",
+            "Baumwolle": "30%",
+            "Polyamid": "15%",
+            "Elasthan": "5%"
+        },
+        "pricing": {
+            "retail": 5.99
+        }
+    },
+]
