@@ -2,10 +2,15 @@ var app = require('../../');
 
 describe('lib/routes', function() {
 
-    require('./app')(app);
+    var mockup = {
+        orders: require('../../../opt/models/orders'),
+        products: require('../../../opt/models/products')
+    };
 
-    require('./orders')(app);
+    require('./app')(app, mockup);
 
-    require('./products')(app);
+    require('./orders')(app, mockup);
+
+    require('./products')(app, mockup);
 
 });

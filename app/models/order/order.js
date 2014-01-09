@@ -4,25 +4,16 @@ var lodash = require('lodash');
 
 var OrderItem = require('./item');
 
-var DEFAULTS = [
-    'customer',
-    'products'
-];
+function Order(object) {
+    this.attributes = {};
+    this.attributes.pricing = {};
+    this.attributes.customer = {};
+    this.attributes.products = [];
 
-var DEFAULTS_CUSTOMER = [
-    'name',
-    'email',
-    'address'
-];
+    lodash.merge(this.attributes.pricing, object && object.pricing);
+    lodash.merge(this.attributes.customer, object && object.customer);
 
-function Order(model) {
-    model = model || {};
-
-    this.customer = {};
-    this.products = [];
-    
-    lodash.merge(this.customer, model.customer);
-    lodash.forEach(model.products, function(product) {
+    (object && object.products || []).forEach(function(product) {
         this.push(product);
     }, this);
 
@@ -33,30 +24,32 @@ function Order(model) {
 
 util.inherits(Order, events.EventEmitter);
 
-Order.prototype.push = function(model, options) {
+Order.prototype.push = function(product) {
     var self = this;
 
-    model = new OrderItem(model, options);
+    model = new OrderItem(product);
     model.on('remove', function() {
         self.remove(model);
     });
 
-    this.products.push(model);
+    this.attributes.products.push(model);
     
     return this.emit('push', model);
 };
 
 Order.prototype.remove = function(product) {
-    var model = lodash.remove(this.products, product);
+    var model = lodash.remove(this.attributes.products, product);
 
     return this.emit('remove', product);
 };
 
 Order.prototype.toJSON = function() {
-    var object = lodash.pick(this, DEFAULTS);
+    var object = {};
 
-    object.customer = lodash.pick(object.customer, DEFAULTS_CUSTOMER);
-    object.products = lodash.map(object.products, function(product) {
+    object.pricing = lodash.clone(this.attributes.pricing);
+    object.customer = lodash.clone(this.attributes.customer);
+
+    object.products = this.attributes.products.map(function(product) {
         return product.toJSON();
     });
 

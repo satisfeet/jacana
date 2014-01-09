@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+
+var util      = require('util');
+var path      = require('path');
+var prompt    = require('prompt');
+var express   = require('express');
+var mongoose  = require('mongoose');
+var commander = require('commander');
+
+var app = express();
+
+require('../lib/config')(app);
+
+require('../lib/models')(app);
+
+commander
+    .version('0.0.0')
+    .option('--prompt', 'search interactive with prompt', parsePrompt)
+    .option('--json <json>', 'search with json query string', parseJson)
+    .option('--file <file>', 'search with json query in file', parseFile)
+    .description('command line interface for model interaction');
+
+commander
+    .command('search <model>')
+    .action(function(model, options) {
+        var object = options.parent.json || options.parent.file || {};
+
+        mongoose.model(normalize(model)).find(object, function(err, docs) {
+            if (err) return failure(err.message);
+    
+            success(JSON.stringify(docs));
+        });
+    });
+
+commander
+    .command('create <model>')
+    .action(function(model, options) {
+        var object = options.parent.json || options.parent.file || {};
+
+        mongoose.model(normalize(model)).create(object, function(err) {
+            if (err) return failure(err.message);
+    
+            success(JSON.stringify([].slice.call(arguments, 1)));
+        });
+    });
+
+commander
+    .command('remove <model>')
+    .action(function(model, options) {
+        var object = options.parent.json || options.parent.file || {};
+        
+        mongoose.model(normalize(model)).remove(object, function(err) {
+            if (err) return failure(err.message);
+    
+            success();
+        });
+    });
+
+commander
+    .command('*')
+    .action(function(options) {
+        commander.help();
+
+        success();
+    });
+
+commander.parse(process.argv);
+
+if (!commander.args.length) {
+    commander.help();
+
+    success();
+}
+
+function success(message) {
+    message = util.format('%s\n', message || '');
+    
+    process.stdout.write(message);
+    process.exit(0);
+}
+
+function failure(message) {
+    message = util.format('%s\n', message || '');
+
+    process.sterr.write(message);
+    process.exit(1);
+}
+
+function normalize(string) {
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+}
+
+function parsePrompt() {
+    // use prompt for interactive
+}
+
+function parseJson(json) {
+    return JSON.parse(json);
+}
+
+function parseFile(file) {
+    return require(path.join(__dirname, '/../', file));
+}

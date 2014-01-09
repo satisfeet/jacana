@@ -5,7 +5,7 @@ var template = require('views/store/order/item.html');
 
 function OrderItem(model) {
     this.element = domify(swig.render(template, {
-        locals: { product: model }
+        locals: { product: model.toJSON() }
     }));
 
     bindToClickEvents(this.element, model, this);

@@ -3,30 +3,25 @@
 <div id="product-info">
   <div>
     <p class="text-sm text-justify">
-      {{ product.description }}
+      {{ product.description.extended }}
     </p>
     <p class="text-md text-right">
-      Preis: <strong>{{ product.pricing.value }}€</strong>
+      Preis: <strong>{{ product.pricing.retail }}€</strong>
     </p>
   </div>
   <hr />
   <form class="form" role="form">
+    {% for attribute in product.attributes %}
     <div id="sizes" class="form-group col-md-12">
-      {% for size in product.variations.sizes %}
+      {% set name = loop.key %}
+      {% for value in attribute %}
       <label class="radio-inline">
-        <input name="size" type="radio" value="{{ size }}" />
-        {{ size }}
+        <input name="{{ name }}" type="radio" value="{{ value }}" />
+        {{ value }}
       </label>
       {% endfor %}
     </div>
-    <div id="colors" class="form-group col-md-12">
-      {% for color in product.variations.colors %}
-      <label class="radio-inline">
-        <input name="color" type="radio" value="{{ color }}" />
-        {{ color }}
-      </label>
-      {% endfor %}
-    </div>
+    {% endfor %}
     <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
         <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
@@ -42,30 +37,25 @@
 <div id="product-info">
   <div>
     <p class="text-sm text-justify">
-      {{ product.description }}
+      {{ product.description.extended }}
     </p>
     <p class="text-md text-right">
-      Preis: <strong>{{ product.pricing.value }}€</strong>
+      Preis: <strong>{{ product.pricing.retail }}€</strong>
     </p>
   </div>
   <hr />
   <form class="form" role="form">
+    {% for attribute in product.attributes %}
     <div id="sizes" class="form-group col-md-12">
-      {% for size in product.variations.sizes %}
+      {% set name = loop.key %}
+      {% for value in attribute %}
       <label class="radio-inline">
-        <input name="size" type="radio" value="{{ size }}" />
-        {{ size }}
+        <input name="{{ name }}" type="radio" value="{{ value }}" />
+        {{ value }}
       </label>
       {% endfor %}
     </div>
-    <div id="colors" class="form-group col-md-12">
-      {% for color in product.variations.colors %}
-      <label class="radio-inline">
-        <input name="color" type="radio" value="{{ color }}" />
-        {{ color }}
-      </label>
-      {% endfor %}
-    </div>
+    {% endfor %}
     <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
         <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />

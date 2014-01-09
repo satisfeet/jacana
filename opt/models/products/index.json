@@ -3,12 +3,12 @@
         "name": "Common Follower",
         "images": {
             "main": {
-                "path": "/images/products/common_follower.jpeg"
+                "path": "/images/products/common-follower.jpeg"
             }
         },
         "attributes": {
-            sizes: ['42-44'],
-            colors: ['gray', 'blue', 'black']
+            "sizes": ["42-44"],
+            "colors": ["gray", "blue", "black"]
         },
         "description": {
             "preview": "Qualitätssocken für einen angenehmen Tag",
@@ -27,16 +27,16 @@
         "name": "Olive Beauty",
         "images": {
             "main": {
-                path: "/images/products/olive_beauty.jpeg"
+                "path": "/images/products/olive-beauty.jpeg"
             }
         },
         "attributes": {
-            sizes: ['42-44'],
-            colors: ['olive-gray']
+            "sizes": ["42-44"],
+            "colors": ["olive-gray"]
         },
         "description": {
-            "preview": "",
-            "extended": ""
+            "preview": "Hochwertige Jagdsocken für außerordentliche Belastungen",
+            "extended": "Die Olive Beauty Socken sind für die Jagd entwickelt worden und eignen sich perfekt für außerordentliche Belastungen."
         },
         "elements": {
             "Schurwolle": "50%",
@@ -47,5 +47,5 @@
         "pricing": {
             "retail": 5.99
         }
-    },
+    }
 ]
