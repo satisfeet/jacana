@@ -1,23 +1,9 @@
-var util = require('util');
+var util   = require('util');
 var events = require('events');
 var lodash = require('lodash');
 
-var DEFAULTS = [
-    '_id', 
-    'name', 
-    'size', 
-    'color', 
-    'pricing',
-    'quantity', 
-    'variation',
-    '_version'
-];
-
-function OrderItem(model, options) {
-    model = lodash.pick(model, DEFAULTS) || {};
-
-    lodash.merge(this, model);
-    lodash.merge(this, options);
+function OrderItem(object) {
+    this.attributes = object || {};
 
     events.EventEmitter.call(this);
 }
@@ -31,7 +17,7 @@ OrderItem.prototype.remove = function() {
 };
 
 OrderItem.prototype.toJSON = function() {
-    return lodash.pick(this, DEFAULTS);
+    return lodash.clone(this.attributes);
 };
 
 module.exports = OrderItem;

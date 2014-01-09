@@ -2,7 +2,7 @@
     {
         "customer": {
             "name": "Bodo Kaiser",
-            "email": "info@example.org",
+            "email": "kyogron@googlemail.com",
             "address": {
                 "street": "Geiserichstraße",
                 "streetNr": "3",
@@ -15,7 +15,7 @@
                 "name": "Common Follower",
                 "attributes": {
                     "size": "42-44",
-                    "color: "black"
+                    "color": "black"
                 },
                 "pricing": 2.99,
                 "quantity": 3

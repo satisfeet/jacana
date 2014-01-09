@@ -2,18 +2,8 @@ var util   = require('util');
 var events = require('events');
 var lodash = require('lodash');
 
-var DEFAULTS = [
-    '_id', 
-    'name', 
-    'image', 
-    'pricing',
-    'variations', 
-    'description',
-    '_version'
-];
-
 function Product(object) {
-    lodash.merge(this, lodash.pick(object, DEFAULTS));
+    this.attributes = object || {};
 
     events.EventEmitter.call(this);
 }
@@ -21,7 +11,7 @@ function Product(object) {
 util.inherits(Product, events.EventEmitter);
 
 Product.prototype.toJSON = function() {
-    return lodash.pick(this, DEFAULTS);
+    return lodash.cloneDeep(this.attributes);
 };
 
 module.exports = Product;
