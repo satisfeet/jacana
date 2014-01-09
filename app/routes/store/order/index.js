@@ -49,7 +49,7 @@ function bindToModelEvents(element, model, view) {
         view.push(product);
     });
 
-    view.list(model.products);
+    view.list(model.attributes.products);
 }
 
 function bindToSubmitEvents(element, model, view) {

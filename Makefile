@@ -32,4 +32,24 @@ build: \
 build-app:
 	$(BROWSERIFY) $(BROWSERIFY_FLAGS)
 
+create: \
+	create-orders 	\
+	create-products
+
+create-orders:
+	bin/models create order --file opt/models/orders
+
+create-products:
+	bin/models create product --file opt/models/products
+
+remove: \
+	remove-orders 	\
+	remove-products
+
+remove-orders:
+	bin/models remove order
+
+remove-products:
+	bin/models remove product
+
 .PHONY: test

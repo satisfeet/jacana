@@ -5,19 +5,16 @@ module.exports = function(app, mockup) {
 
     describe('POST /products', function() {
 
+        var product = mockup.products[0];
+
         it('should respond product', function(done) {
-            supertest(app).post('/products')
-                .send(mockup.product)
+            supertest(app).post('/products').send(product)
                 .expect(200, function(err, res) {
                     if (err) throw err;
-
-                    res.body.should.have.properties([
-                        '_id',
-                        'name',
-                        'description'
-                    ]);
-
+                    
                     mockup.product = res.body;
+
+                    res.body.should.have.properties(Object.keys(product));
 
                     done();
                 });

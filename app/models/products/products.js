@@ -13,7 +13,9 @@ function Products(models) {
 util.inherits(Products, events.EventEmitter);
 
 Products.prototype.find = function(id) {
-    return lodash.find(this.models, { _id: id });
+    return lodash.find(this.models, { 
+        attributes: { _id: id } 
+    });
 };
 
 Products.prototype.push = function(model) {

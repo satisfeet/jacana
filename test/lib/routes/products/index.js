@@ -1,21 +1,4 @@
-module.exports = function(app) {
-
-    var mockup = {
-        product: {
-            name: "socks",
-            image: {
-                path: '/images/products/new.jpg'
-            },
-            description: "bla bla bla",
-            variations: {
-                colors: ['blue', 'red'],
-                sizes: ['38-40', '40-42']
-            },
-            pricing: {
-                value: 3.99
-            }
-        }
-    };
+module.exports = function(app, mockup) {
 
     require('./search')(app, mockup);
  
@@ -23,8 +6,8 @@ module.exports = function(app) {
  
     require('./display')(app, mockup);
  
-    require('./update')(app, mockup);
+    require('./upgrade')(app, mockup);
  
-    require('./remove')(app, mockup);
+    require('./destroy')(app, mockup);
 
 };

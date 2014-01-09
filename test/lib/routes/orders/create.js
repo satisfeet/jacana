@@ -5,18 +5,18 @@ module.exports = function(app, mockup) {
 
     describe('POST /orders', function() {
 
+        var order = mockup.orders[0];
+
         it('should respond order', function(done) {
-            supertest(app).post('/orders')
-                .send(mockup.order)
+            this.timeout(5000);
+
+            supertest(app).post('/orders').send(order)
                 .expect(200, function(err, res) {
                     if (err) throw err;
 
-                    res.body.should.have.properties([
-                        'customer',
-                        'products'
-                    ]);
-
                     mockup.order = res.body;
+
+                    res.body.should.have.properties(Object.keys(order));
 
                     done();
                 });
