@@ -2,7 +2,7 @@ var lodash = require('lodash');
 
 module.exports = function(app) {
     
-    require('./order')(app);
+    require('./orders')(app);
  
     require('./products')(app);
 
