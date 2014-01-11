@@ -1,7 +1,7 @@
 var superagent = require('superagent');
 
-var Product  = require('./product');
-var Products = require('./products');
+var Product  = require('./model');
+var Products = require('./collection');
 
 module.exports = function(app) {
 

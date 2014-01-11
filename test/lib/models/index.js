@@ -1,4 +1,4 @@
-var app = require('../../');
+var app = require('../');
 
 describe('lib/models', function() {
 
