@@ -26,30 +26,19 @@ test-bin:
 	$(MOCHA) $(MOCHA_FLAGS) \
 		test/bin/models
 
-build: \
-	build-app
+test-app:
+	$(MOCHA) $(MOCHA_FLAGS) \
+		test/app/models
 
-build-app:
+build: \
 	$(BROWSERIFY) $(BROWSERIFY_FLAGS)
 
-create: \
-	create-orders 	\
-	create-products
-
-create-orders:
-	bin/models create order --file opt/models/orders
-
-create-products:
+db-create:
+	bin/models create order --file opt/models/orders		\
 	bin/models create product --file opt/models/products
 
-remove: \
-	remove-orders 	\
-	remove-products
-
-remove-orders:
-	bin/models remove order
-
-remove-products:
+db-remove: 
+	bin/models remove order		\
 	bin/models remove product
 
 .PHONY: test
