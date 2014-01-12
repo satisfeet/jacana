@@ -1,4 +1,4 @@
-var element = document.querySelector('main');
+var element = document.querySelector('#content');
 
 module.exports = function(app) {
 
