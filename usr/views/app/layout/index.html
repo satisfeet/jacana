@@ -1,15 +1,26 @@
 {% extends './base.html' %}
 
-{% block body %}
-{% include './header.html' %}
-{% spaceless %}
-<main>
-  {% block content %}{% endblock %}
-</main>
-{% endspaceless %}
-{% include './footer.html' %}
+{% set title = 'satisfeet: these socks make you happy' %}
+
+{% block meta %}
+<meta name="author" content="Bodo Kaiser" />
+<meta name="keywords" content="socks, feet, shop, happy" />
+<meta name="description" content="buy the socks which make you happy" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% endblock %}
+
+{% block link %}
+<link rel="icon" href="/images/brand/small.svg" />
+<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+<link rel="stylesheet" href="/stylesheets/bootstrap-theme.css" />
+{% endblock %}
+
+{% block main %}
+{% include 'header.html' %}
+{% include 'content.html' %}
+{% include 'footer.html' %}
 {% endblock %}
 
 {% block script %}
-{% include './scripts.html' %}
+<script src="/javascripts/build.js"></script>
 {% endblock %}

@@ -1,7 +1,5 @@
 {
 
-    "port": 3000,
-
     "store": {
         "url": "mongodb://localhost/test"
     },
@@ -9,6 +7,12 @@
     "engine": {
         "builder": {
             "debug": true
+        },
+        "styles": {
+            "force": true  
+        },
+        "views": {
+            "cache": false
         }
     },
 
@@ -17,6 +21,10 @@
             "username": "kyogron@googlemail.com",
             "password": "nambu007"
         }
+    },
+
+    "server": {
+        "port": 3000
     }
 
 }

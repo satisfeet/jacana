@@ -1,11 +1,11 @@
-var template = require('views/index/layout.html');
+var template = require('views/main/content.html');
 
 module.exports = function(app) {
 
     app('/', function(context, next) {
         var element = context.element;
 
-        if (!context.query('#main')) {
+        if (!element.querySelector('#main')) {
             element.innerHTML = template;
         }
     });

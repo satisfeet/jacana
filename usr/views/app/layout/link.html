@@ -1,9 +1,0 @@
-{% spaceless %}
-{% if images.icon %}
-<link rel="icon" href="{{ images.icon.path }}" />
-{% endif %}
-
-{% for stylesheet in stylesheets %}
-<link rel="stylesheet" href="{{ stylesheet.path }}" />
-{% endfor %}
-{% endspaceless %}
