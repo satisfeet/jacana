@@ -17,10 +17,11 @@
     },
 
     "mailer": {
-        "account": {
-            "username": "kyogron@googlemail.com",
-            "password": "nambu007"
-        }
+        "auth": {
+            "user": "kyogron@googlemail.com",
+            "pass": "nambu007"
+        },
+        "service": "gmail"
     },
 
     "server": {

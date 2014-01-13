@@ -12,18 +12,6 @@ module.exports = function(app, mockup) {
             order = new Order(mockup);
         });
 
-        describe('#notify', function() {
-
-            xit('should notify customer', function(done) {
-                order.notify(function(err) {
-                    if (err) throw err;
-
-                    done();
-                });
-            });
-
-        });
-
     });
 
 };
