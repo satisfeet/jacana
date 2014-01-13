@@ -3,60 +3,33 @@ var should = require('should');
 
 module.exports = function(app, mockup) {
 
-    var Product = app.Product;
-    var Products = app.Products;
+    var products = mockup.products;
 
-    describe('Product', function() {
-        
-        var products;
+    describe('products', function() {
 
-        describe('new Products([source])', function() {
+        describe('#push', function() {
 
-            it('should set properties', function() {
-                products = new Products();
-                products.models.should.eql([]);
-            });
+            it('should return products', function() {
+                var result = app.products.push(products[0]);
 
-            it('should map source to array', function() {
-                products = new Products(mockup.products);
-                products.models.forEach(function(model, index) {
-                    model.should.be.an.instanceOf(Product);
-                    model.attributes.should.eql(mockup.products[index]);
-                });
-            });
-
-            it('should inherit from EventEmitter', function() {
-                products = new Products(mockup.products);
-                products.should.be.instanceOf(events.EventEmitter);
+                result.should.be.equal(app.products);
             });
 
         });
+     
+        describe('#find', function() {
 
-        describe('#find(product)', function() {
-
-            before(function() {
-                products = new Products(mockup.products);
+            it('should return null', function() {
+                var result = app.products.find();
+                
+                should(result).should.be.null;
             });
 
-            it('should return matching product', function() {
-                var product = mockup.products[0];
-                var model = products.find(product);
+            it('should return product', function() {
+                var result = app.products.find(products[0]);
 
-                should(model).not.be.undefined;
-                model.toJSON().should.eql(product);
+                result.should.equal(app.products.models[0]);
             });
-
-            it('should return undefined', function() {
-                should(products.find({ _id: 33 })).be.undefined;
-            });
-
-        });
-
-        describe('#push(product)', function() {
-
-        });
-
-        describe('#remove(product)', function() {
 
         });
 

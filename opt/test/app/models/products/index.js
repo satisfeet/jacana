@@ -6,8 +6,8 @@ module.exports = function(app, mockup) {
         product._id = crypto.randomBytes(16).toString('hex');
     });
 
-    require('./model')(app, mockup);
-
     require('./collection')(app, mockup);
+
+    require('./model')(app, mockup);
 
 };
