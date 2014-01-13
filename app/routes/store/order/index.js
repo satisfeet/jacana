@@ -4,7 +4,7 @@ var lodash = require('lodash');
 
 var template = require('views/store/order/index.html');
 
-var ProductItem = require('./item');
+var OrderItem = require('./item');
 
 function Order(model) {
     this.element = domify(template);
@@ -13,19 +13,9 @@ function Order(model) {
     bindToSubmitEvents(this.element, model, this);
 }
 
-Order.prototype.list = function(products) {
-    this.empty();
-
-    products.forEach(function(product) {
-        this.push(product);
-    }, this);
-
-    return this;
-};
-
-Order.prototype.push = function(product) {
+Order.prototype.push = function(item) {
     this.element.querySelector('ul')
-        .appendChild(new ProductItem(product).element);
+        .appendChild(new OrderItem(item).element);
 
     return this;
 };
@@ -45,11 +35,15 @@ module.exports = Order;
 function bindToModelEvents(element, model, view) {
     element = element.querySelector('ul');
  
-    model.on('push', function(product) {
+    model.on('items:add', function(product) {
         view.push(product);
     });
 
-    view.list(model.attributes.products);
+    view.empty();
+    
+    model.attributes.items.forEach(function(item) {
+        view.push(item);
+    });
 }
 
 function bindToSubmitEvents(element, model, view) {
