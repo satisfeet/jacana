@@ -7,9 +7,9 @@ module.exports = function(app) {
     require('./products')(app);
 
     app.products.on('order', function(product, options) {
-        var object = lodash.merge(product.toJSON(), options);
+        var item = app.order.createItem(product, options);
 
-        app.order.push(object);
+        app.order.addItem(item);
     });
 
 };

@@ -1,9 +1,15 @@
-var app = {};
+var page = require('page');
 
-app.Product = require('../../app/models/products/model');
-app.Products = require('../../app/models/products/collection');
+var app = page;
 
-app.Order = require('../../app/models/orders/order');
-app.OrderItem = require('../../app/models/orders/item');
+app.offline = true;
+
+require('../../../app/query')(app);
+
+require('../../../app/events')(app);
+
+require('../../../app/models')(app);
+
+app.start();
 
 module.exports = app;

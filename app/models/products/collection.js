@@ -17,19 +17,25 @@ function Products(models) {
 util.inherits(Products, events.EventEmitter);
 
 Products.prototype.find = function(product) {
+    if (!product) return null;
+
     return findProduct(product, this);
 };
 
 Products.prototype.push = function(product) {
     var model = createProduct(product, this);
 
-    return this.emit('push', model);
+    this.emit('push', model);
+
+    return this;
 };
 
 Products.prototype.shift = function(product) {
     var model = removeProduct(product, this);
 
-    return this.emit('remove', model);
+    this.emit('remove', model);
+    
+    return this;
 };
 
 module.exports = Products;
