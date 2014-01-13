@@ -32,7 +32,9 @@ module.exports = function(app) {
     });
 
     app('/store/:product', function(context, next) {
-        var product = context.products.find(context.params.product);
+        var product = context.products.find({
+            _id: context.params.product 
+        });
 
         insertLayout(context);
         insertContent(context, productList);
@@ -44,19 +46,19 @@ module.exports = function(app) {
 };
 
 function insertLayout(context) {
-    if (!context.query('#store')) {
+    if (!context.element.querySelector('#store')) {
         context.element.innerHTML = template;
     }
 }
 
 function insertContent(context, view) {
-    var element = context.query('#content-inner');
+    var element = context.element.querySelector('#content-inner');
 
     replace(element, view);
 }
 
 function insertSidebar(context, view) {
-    var element = context.query('#sidebar-inner');
+    var element = context.element.querySelector('#sidebar-inner');
     
     replace(element, view);
 }

@@ -22,7 +22,7 @@
             ],
             "output": "/srv/javascripts/build.js",
             "aliases": {
-                "views": "var/views/app"
+                "views": "./var/views/app"
             }
         }
     }

@@ -4,6 +4,9 @@ module.exports = function(app) {
 
     app('*', function(context, next) {
         context.events = createEmitter();
+        context.events.on('error', function(err) {
+            console.log(err);
+        });
 
         next();
     });

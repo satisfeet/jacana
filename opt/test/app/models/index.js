@@ -1,10 +1,10 @@
-var app = require('../');
-
 describe('app/models', function() {
+ 
+    var app = require('../');
 
     var mockup = {
-        orders: require('../../../opt/models/orders'),
-        products: require('../../../opt/models/products')
+        orders: require('../../../../opt/models/orders'),
+        products: require('../../../../opt/models/products')
     };
 
     require('./orders')(app, mockup);

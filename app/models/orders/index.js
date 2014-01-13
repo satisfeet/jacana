@@ -1,7 +1,7 @@
 var store      = require('store');
 var superagent = require('superagent');
 
-var Order = require('./order');
+var Order = require('./model');
 
 module.exports = function(app) {
 

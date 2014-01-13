@@ -10,12 +10,12 @@ module.exports = function(app) {
     app('*', function(context, next) {
         context.products = app.products;
 
-        if (context.products.models.length) {
+        if (context.products.models.length || app.offline) {
             return next();
         }
 
         superagent.get('/products', function(err, res) {
-            if (err) throw err;
+            if (err) return context.events.emit('error', err);
 
             res.body.forEach(function(model) {
                 context.products.push(model);
