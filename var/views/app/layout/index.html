@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends 'base.html' %}
 
 {% set title = 'satisfeet: these socks make you happy' %}
 
@@ -17,7 +17,9 @@
 
 {% block main %}
 {% include 'header.html' %}
-{% include 'content.html' %}
+<section id="content">
+{% block content %}{% endblock %}
+</section>
 {% include 'footer.html' %}
 {% endblock %}
 

@@ -2,14 +2,6 @@
 
     "name": "satisfeet",
 
-    "store": {
-        "mapper": {
-            "db": {
-                "safe": true
-            }
-        }
-    },
-
     "static": {
         "path": "/srv",
         "passthrough": true
@@ -17,10 +9,10 @@
 
     "engine": {
         "views": {
-            "path": "/usr/views"
+            "path": "/var/views"
         },
         "styles": {
-            "src": "/usr/styles",
+            "src": "/var/styles",
             "dest": "/srv/stylesheets",
             "prefix": "/stylesheets"
         },
@@ -30,13 +22,9 @@
             ],
             "output": "/srv/javascripts/build.js",
             "aliases": {
-                "views": "usr/views/app"
+                "views": "var/views/app"
             }
         }
-    },
-
-    "mailer": {
-        "service": "gmail"
     }
 
 }
