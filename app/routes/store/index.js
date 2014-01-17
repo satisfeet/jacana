@@ -4,7 +4,7 @@ var Checkout    = require('./checkout');
 var Product     = require('./product');
 var ProductList = require('./product/list');
 
-var template = require('views/store/layout.html');
+var template = require('views/store/content.html');
 
 module.exports = function(app) {
 
