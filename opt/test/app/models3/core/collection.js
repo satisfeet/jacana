@@ -3,8 +3,8 @@ var events = require('events');
 
 module.exports = function(app) {
 
-    var Model = app.Model;
-    var Collection = app.Collection;
+    var Model = require('../../../../../app/models3/core/model');
+    var Collection = require('../../../../../app/models3/core/collection');
 
     describe('Collection', function() {
 
