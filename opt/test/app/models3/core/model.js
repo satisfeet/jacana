@@ -3,7 +3,7 @@ var events = require('events');
 
 module.exports = function(app) {
 
-    var Model = app.Model;
+    var Model = require('../../../../../app/models3/core/model');
 
     describe('Model', function() {
 
