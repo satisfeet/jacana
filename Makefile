@@ -29,7 +29,7 @@ test-app: test-app-pre
 	$(MOCHA_PHANTOMJS) $(MOCHA_FLAGS) \
 		opt/test/app/index.html
 
-test-app-pre: 
+test-app-pre:
 	@bin/engine build opt/test/app/*/index.js > opt/test/app/build.js
 
 data-create:

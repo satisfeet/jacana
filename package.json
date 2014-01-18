@@ -38,6 +38,7 @@
     },
     
     "devDependencies": {
+        "chai": "1.8.1",
         "mocha": "1.16.*",
         "should": "2.1.*",
         "supertest": "0.8.*",
