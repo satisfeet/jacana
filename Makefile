@@ -30,13 +30,13 @@ test-app: test-app-pre
 		opt/test/app/index.html
 
 test-app-pre:
-	@bin/engine build opt/test/app/*/index.js > opt/test/app/build.js
+	@bin/engine build opt/test/app/index.js > opt/test/app/build.js
 
 data-create:
 	bin/models create order --file opt/models/orders
 	bin/models create product --file opt/models/products
 
-data-remove: 
+data-remove:
 	bin/models remove order
 	bin/models remove product
 
