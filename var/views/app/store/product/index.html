@@ -9,6 +9,7 @@
   </div>
   <hr />
   <form class="form" role="form">
+    {% raw %}
     {% for attribute in product.attributes %}
     <div id="sizes" class="form-group col-md-12">
       {% set name = loop.key %}
@@ -20,6 +21,7 @@
       {% endfor %}
     </div>
     {% endfor %}
+    {% endraw %}
     <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
         <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
