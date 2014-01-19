@@ -13,4 +13,4 @@ require('../../../app/models')(app);
 app.start();
 
 // require test files
-require('./models3')(app);
+require('./models')(app);
