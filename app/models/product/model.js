@@ -10,7 +10,14 @@ function Product(source) {
 util.inherits(Product, Model);
 
 Product.prototype.order = function(options) {
-  this.emit('order', lodash.merge(this.toJSON(), options));
+  var source = lodash.merge(this.toJSON(), options);
+
+  // TODO: Product does not equal Item in
+  // pricing scheme. Would require
+  // redefinition of schemes.
+  source.pricing = source.pricing && source.pricing.retail;
+
+  this.emit('order', source);
 
   return this;
 };
