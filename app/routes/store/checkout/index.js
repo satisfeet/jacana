@@ -11,26 +11,32 @@ function Checkout(model) {
     bindToSubmitEvents(this.element, model, this);
 }
 
+Checkout.prototype.lock = function() {
+    this.element.querySelector('fieldset')
+        .setAttribute('disabled', true);
+
+    return this;
+};
+
 module.exports = Checkout;
 
 function bindToSubmitEvents(element, model, view) {
-    element = element.querySelector('form');
+    var form = element.querySelector('form');
 
-    var name = element.querySelector('#name');
-    var email = element.querySelector('#email');
-    var street = element.querySelector('#street');
-    var zipcode = element.querySelector('#zipcode');
-
-    element.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        model.customer.name = name.value;
-        model.customer.email = email.value;
-        model.customer.address = {
-            street: street.value,
-            zipcode: parseInt(zipcode.value)
-        };
+        model.get('customer')
+            .set('name', form.elements['name'].value)
+            .set('email', form.elements['email'].value)
+            .setAddress('place', form.elements['place'].value)
+            .setAddress('street', form.elements['street'].value)
+            .setAddress('streetNr', form.elements['street-nr'].value)
+            .setAddress('zipCode', form.elements['zip-code'].value)
+            ;
 
-        model.emit('checkout');
+        model.submit();
+
+        view.lock();
     });
 }

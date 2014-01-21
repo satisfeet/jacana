@@ -8,11 +8,10 @@ module.exports = function(app) {
     app.order = createOrder();
 
     app.order.on('change', function() {
-        console.log(app.order.toJSON());
         store.set('order', app.order.toJSON());
     });
 
-    app.order.on('checkout', function() {
+    app.order.on('submit', function() {
         superagent.post('/orders')
             .send(app.order)
             .end();

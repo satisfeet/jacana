@@ -1,9 +1,5 @@
-{% spaceless %}
 <ul id="product-list" class="list-unstyled">
-{% if server %}
 {% for product in products %}
-{% include './item.html' %}
+  {% include './item.html' %}
 {% endfor %}
-{% endif %}
 </ul>
-{% endspaceless %}
