@@ -36,10 +36,40 @@ module.exports = function(app, mockup) {
         chai.expect(order.get('customer').toJSON()).to.eql(mockup.order[0].customer);
       });
 
-      it('should emit "change" event on item change', function(done) {
+      it('should increase pricing on item push', function() {
+        var item = new Item(mockup.order[0].items[0]);
+        var order = new Order();
+
+        var price = item.get('pricing') * item.get('quantity');
+
+        order.get('items').push(item);
+
+        chai.expect(order.get('pricing').get('retail')).to.equal(price);
+        chai.expect(order.get('pricing').get('total')).to.equal(price);
+      });
+
+      it('should decrease pricing on item remove', function() {
+        var item = new Item(mockup.order[0].items[0]);
+        var order = new Order();
+
+        order.get('items').push(item).remove(item);
+
+        chai.expect(order.get('pricing').get('retail')).to.equal(0);
+        chai.expect(order.get('pricing').get('total')).to.equal(0);
+      });
+
+      it('should emit "change" event on item push', function(done) {
         var order = new Order();
 
         order.once('change', done).get('items').push(new Item(mockup.order[0].items[0]));
+      });
+
+      it('should emit "change" event on item remove', function(done) {
+        var item = new Item(mockup.order[0].items[0]);
+        var order = new Order();
+
+        order.get('items').push(item);
+        order.once('change', done).get('items').remove(item);
       });
 
       it('should emit "change" event on pricing change', function(done) {

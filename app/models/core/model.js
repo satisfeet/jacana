@@ -41,7 +41,7 @@ Model.prototype.remove = function() {
 };
 
 Model.prototype.toJSON = function() {
-  return lodash.clone(this.attributes);
+  return lodash.cloneDeep(this.attributes);
 };
 
 module.exports = Model;
