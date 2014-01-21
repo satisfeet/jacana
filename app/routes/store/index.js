@@ -4,7 +4,7 @@ var Checkout    = require('./checkout');
 var Product     = require('./product');
 var ProductList = require('./product/list');
 
-var template = require('views/store/layout.html');
+var template = require('views/store/content.html');
 
 module.exports = function(app) {
 
@@ -33,7 +33,7 @@ module.exports = function(app) {
 
     app('/store/:product', function(context, next) {
         var product = context.products.find({
-            _id: context.params.product 
+            _id: context.params.product
         });
 
         insertLayout(context);
@@ -59,7 +59,7 @@ function insertContent(context, view) {
 
 function insertSidebar(context, view) {
     var element = context.element.querySelector('#sidebar-inner');
-    
+
     replace(element, view);
 }
 

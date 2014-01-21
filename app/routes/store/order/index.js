@@ -34,14 +34,13 @@ module.exports = Order;
 
 function bindToModelEvents(element, model, view) {
     element = element.querySelector('ul');
- 
-    model.on('items:add', function(product) {
-        view.push(product);
-    });
 
     view.empty();
-    
-    model.attributes.items.forEach(function(item) {
+
+    model.get('items').on('push', function(item) {
+        view.push(item);
+    });
+    model.get('items').forEach(function(item) {
         view.push(item);
     });
 }

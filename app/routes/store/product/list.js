@@ -31,7 +31,7 @@ ProductList.prototype.select = function(model) {
     var elements = [].slice.call(this.element.children);
 
     elements.forEach(function(element) {
-        if (element.id === model._id) {
+        if (element.id === model.get('_id')) {
             element.classList.add('selected')
         } else {
             element.classList.remove('selected');

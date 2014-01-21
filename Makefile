@@ -29,14 +29,14 @@ test-app: test-app-pre
 	$(MOCHA_PHANTOMJS) $(MOCHA_FLAGS) \
 		opt/test/app/index.html
 
-test-app-pre: 
-	@bin/engine build opt/test/app/*/index.js > opt/test/app/build.js
+test-app-pre:
+	@bin/engine build opt/test/app/index.js > opt/test/app/build.js
 
 data-create:
-	bin/models create order --file opt/models/orders
-	bin/models create product --file opt/models/products
+	bin/models create order --file opt/models/order
+	bin/models create product --file opt/models/product
 
-data-remove: 
+data-remove:
 	bin/models remove order
 	bin/models remove product
 

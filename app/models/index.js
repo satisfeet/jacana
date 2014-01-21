@@ -1,15 +1,15 @@
-var lodash = require('lodash');
+var OrderItem = require('./order/item/model');
 
 module.exports = function(app) {
-    
-    require('./orders')(app);
- 
-    require('./products')(app);
 
-    app.products.on('order', function(product, options) {
-        var item = app.order.createItem(product, options);
+    require('./order')(app);
 
-        app.order.addItem(item);
+    require('./product')(app);
+
+    app.products.on('order', function(source) {
+        var items = app.order.get('items');
+
+        items.push(new OrderItem(source));
     });
 
 };

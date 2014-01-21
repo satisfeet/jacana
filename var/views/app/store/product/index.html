@@ -1,5 +1,3 @@
-{% spaceless %}
-{% if server %}
 <div id="product-info">
   <div>
     <p class="text-sm text-justify">
@@ -11,6 +9,7 @@
   </div>
   <hr />
   <form class="form" role="form">
+    {% raw %}
     {% for attribute in product.attributes %}
     <div id="sizes" class="form-group col-md-12">
       {% set name = loop.key %}
@@ -22,6 +21,7 @@
       {% endfor %}
     </div>
     {% endfor %}
+    {% endraw %}
     <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
         <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
@@ -32,40 +32,3 @@
     </div>
   </form>
 </div>
-{% else %}
-{% raw %}
-<div id="product-info">
-  <div>
-    <p class="text-sm text-justify">
-      {{ product.description.extended }}
-    </p>
-    <p class="text-md text-right">
-      Preis: <strong>{{ product.pricing.retail }}€</strong>
-    </p>
-  </div>
-  <hr />
-  <form class="form" role="form">
-    {% for attribute in product.attributes %}
-    <div id="sizes" class="form-group col-md-12">
-      {% set name = loop.key %}
-      {% for value in attribute %}
-      <label class="radio-inline">
-        <input name="{{ name }}" type="radio" value="{{ value }}" />
-        {{ value }}
-      </label>
-      {% endfor %}
-    </div>
-    {% endfor %}
-    <div class="form-group col-md-8 col-md-offset-2">
-      <div class="input-group">
-        <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />
-        <span class="input-group-btn">
-          <button class="btn btn-sm">Hinzufügen</button>
-        </span>
-      </div>
-    </div>
-  </form>
-</div>
-{% endraw %}
-{% endif %}
-{% endspaceless %}

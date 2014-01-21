@@ -3,8 +3,8 @@ var app = require('../');
 describe('lib/routes', function() {
 
     var mockup = {
-        orders: require('../../../models/orders'),
-        products: require('../../../models/products')
+        orders: require('../../../models/order'),
+        products: require('../../../models/product')
     };
 
     require('./app')(app, mockup);
