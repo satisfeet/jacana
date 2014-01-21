@@ -1,27 +1,27 @@
 {
 
-    "store": {
-        "url": "mongodb://localhost/satisfeet"
-    },
+  "store": {
+    "url": "mongodb://localhost/satisfeet"
+  },
 
-    "engine:" {
-        "styles": {
-            "once": true,
-            "compress": true,
-            "yuicompress": true
-        }
-    },
-
-    "mailer": {
-        "auth": {
-            "user": "i@bodokaiser.io",
-            "pass": "1234"
-        },
-        "service": "gmail"
-    },
-    
-    "server": {
-        "port": 80
+  "engine:" {
+    "styles": {
+      "once": true,
+      "compress": true,
+      "yuicompress": true
     }
+  },
+
+  "mailer": {
+    "auth": {
+      "user": "i@bodokaiser.io",
+      "pass": "1234"
+    },
+    "service": "gmail"
+  },
+
+  "server": {
+    "port": 80
+  }
 
 }

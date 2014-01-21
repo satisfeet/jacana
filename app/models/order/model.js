@@ -7,39 +7,39 @@ var Pricing = require('./pricing/model');
 var Customer = require('./customer/model');
 
 function Order(source) {
-    Model.call(this, source);
+  Model.call(this, source);
 
-    this.set('items', new Items(this.get('items')));
-    this.set('pricing', new Pricing(this.get('pricing')));
-    this.set('customer', new Customer(this.get('customer')));
+  this.set('items', new Items(this.get('items')));
+  this.set('pricing', new Pricing(this.get('pricing')));
+  this.set('customer', new Customer(this.get('customer')));
 
-    bindToChangeEvents(this);
+  bindToChangeEvents(this);
 }
 
 util.inherits(Order, Model);
 
 Order.prototype.submit = function() {
-    this.emit('submit', this.toJSON());
+  this.emit('submit', this.toJSON());
 
-    return this;
+  return this;
 };
 
 Order.prototype.toJSON = function() {
-    return {
-        items: this.get('items').toJSON(),
-        pricing: this.get('pricing').toJSON(),
-        customer: this.get('customer').toJSON()
-    };
+  return {
+    items: this.get('items').toJSON(),
+    pricing: this.get('pricing').toJSON(),
+    customer: this.get('customer').toJSON()
+  };
 };
 
 module.exports = Order;
 
 function bindToChangeEvents(model) {
-    model.get('items').on('change', emit);
-    model.get('pricing').on('change', emit);
-    model.get('customer').on('change', emit);
+  model.get('items').on('change', emit);
+  model.get('pricing').on('change', emit);
+  model.get('customer').on('change', emit);
 
-    function emit() {
-        model.emit('change');
-    }
+  function emit() {
+    model.emit('change');
+  }
 }

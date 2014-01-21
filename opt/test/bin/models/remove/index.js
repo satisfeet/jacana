@@ -1,11 +1,11 @@
 module.exports = function(app, exec, mockup) {
 
-    describe('remove', function() {
+  describe('remove', function() {
 
-        require('./order')(app, exec, mockup);
+    require('./order')(app, exec, mockup);
 
-        require('./product')(app, exec, mockup);
+    require('./product')(app, exec, mockup);
 
-    });
+  });
 
 };

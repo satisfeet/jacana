@@ -3,13 +3,13 @@ var supertest = require('supertest');
 
 module.exports = function(app) {
 
-    describe('GET /', function() {
+  describe('GET /', function() {
 
-        it('should response OK', function(done) {
-            supertest(app).get('/')
-                .expect(200, done);
-        });
-
+    it('should response OK', function(done) {
+      supertest(app).get('/')
+      .expect(200, done);
     });
+
+  });
 
 };

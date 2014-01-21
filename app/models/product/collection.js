@@ -4,34 +4,34 @@ var lodash = require('lodash');
 var Collection = require('../core/collection');
 
 function Products(source) {
-    this.Model = require('./model');
+  this.Model = require('./model');
 
-    Collection.call(this, source);
+  Collection.call(this, source);
 
-    bindToPushEvent(this);
-    bindToRemoveEvent(this);
+  bindToPushEvent(this);
+  bindToRemoveEvent(this);
 }
 
 util.inherits(Products, Collection);
 
 Products.prototype.find = function(query) {
-    return lodash.find(this.models, {
-        attributes: query
-    });
+  return lodash.find(this.models, {
+    attributes: query
+  });
 };
 
 module.exports = Products;
 
 function bindToPushEvent(collection) {
-    collection.on('push', function(model) {
-        model.on('order', function(source) {
-            collection.emit('order', source, model);
-        });
+  collection.on('push', function(model) {
+    model.on('order', function(source) {
+      collection.emit('order', source, model);
     });
+  });
 }
 
 function bindToRemoveEvent(collection) {
-    collection.on('remove', function(model) {
-        model.removeAllListeners('order');
-    });
+  collection.on('remove', function(model) {
+    model.removeAllListeners('order');
+  });
 }
