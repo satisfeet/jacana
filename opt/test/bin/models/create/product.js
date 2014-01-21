@@ -1,4 +1,4 @@
-var should   = require('should');
+var chai     = require('chai');
 var mongoose = require('mongoose');
 
 module.exports = function(app, exec, mockup) {
@@ -11,15 +11,17 @@ module.exports = function(app, exec, mockup) {
     exec(command, function(err, stdout, stderr) {
       if (err) throw err;
 
-      stderr.should.be.empty;
-      stdout.should.not.be.empty;
+      chai.expect(stderr).to.be.empty;
+      chai.expect(stdout).to.not.be.empty;
 
       Product.find(function(err, docs) {
         if (err) throw err;
 
-        JSON.parse(stdout).map(function(doc) {
+        var object = JSON.parse(stdout).map(function(doc) {
           return new Product(doc).toJSON();
-        }).should.eql(docs.map(function(doc) {
+        });
+
+        chai.expect(object).to.eql(docs.map(function(doc) {
           return doc.toJSON();
         }));
 

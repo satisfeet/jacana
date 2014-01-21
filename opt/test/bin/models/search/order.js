@@ -1,5 +1,5 @@
 var util     = require('util');
-var should   = require('should');
+var chai     = require('chai');
 var mongoose = require('mongoose');
 
 module.exports = function(app, exec, mockup) {
@@ -7,28 +7,31 @@ module.exports = function(app, exec, mockup) {
   var Order = mongoose.model('Order');
 
   it('should search and stdout order', function(done) {
-      var query = { name: mockup.orders[0].name };
-      var command = util.format('bin/models search order --json \'%s\'',
-          JSON.stringify(query));
+    var query = { name: mockup.orders[0].name };
+    var command = util.format('bin/models search order --json \'%s\'',
+        JSON.stringify(query));
 
-      exec(command, function(err, stdout, stderr) {
-          if (err) throw err;
+    exec(command, function(err, stdout, stderr) {
+      if (err) throw err;
 
-          stderr.should.be.empty;
-          stdout.should.not.be.empty;
+      chai.expect(stderr).to.be.empty;
+      chai.expect(stdout).to.not.be.empty;
 
-          Order.find(query, function(err, docs) {
-              if (err) throw err;
+      Order.find(query, function(err, docs) {
+        if (err) throw err;
 
-              JSON.parse(stdout).map(function(doc) {
-                  return new Order(doc).toJSON();
-              }).should.eql(docs.map(function(doc) {
-                  return doc.toJSON();
-              }));
+        var object1 = JSON.parse(stdout).map(function(doc) {
+          return new Order(doc).toJSON();
+        });
+        var object2 = docs.map(function(doc) {
+          return doc.toJSON();
+        });
 
-              done();
-          });
+        chai.expect(object1).to.eql(object2);
+
+        done();
       });
+    });
   });
 
   it('should search and stdout orders', function(done) {
@@ -37,17 +40,20 @@ module.exports = function(app, exec, mockup) {
     exec(command, function(err, stdout, stderr) {
       if (err) throw err;
 
-      stderr.should.be.empty;
-      stdout.should.not.be.empty;
+      chai.expect(stderr).to.be.empty;
+      chai.expect(stdout).to.not.be.empty;
 
       Order.find(function(err, docs) {
         if (err) throw err;
 
-        JSON.parse(stdout).map(function(doc) {
-          return new Order(doc).toJSON();
-        }).should.eql(docs.map(function(doc) {
-          return doc.toJSON();
-        }));
+        var object1 = JSON.parse(stdout).map(function(doc) {
+            return new Order(doc).toJSON();
+        });
+        var object2 = docs.map(function(doc) {
+            return doc.toJSON();
+        });
+
+        chai.expect(object1).to.eql(object2);
 
         done();
       });
