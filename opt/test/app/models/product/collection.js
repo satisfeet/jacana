@@ -3,38 +3,36 @@ var lodash = require('lodash');
 
 module.exports = function(app, mockup) {
 
-    var Collection = require('../../../../../app/models/core/collection');
+  var Collection = require('../../../../../app/models/core/collection');
 
-    var Product = require('../../../../../app/models/product/model');
-    var Products = require('../../../../../app/models/product/collection');
+  var Product = require('../../../../../app/models/product/model');
+  var Products = require('../../../../../app/models/product/collection');
 
-    describe('Products', function() {
+  describe('Products', function() {
 
-        describe('new Products([source])', function() {
+    describe('new Products([source])', function() {
 
-            it('should be an instance of Collection', function() {
-                chai.expect(new Products()).to.be.an.instanceOf(Collection);
-            });
+      it('should be an instance of Collection', function() {
+        chai.expect(new Products()).to.be.an.instanceOf(Collection);
+      });
 
-            it('should bind to "order" event on push', function(done) {
-                var product = new Product();
-                var products = new Products();
+      it('should bind to "order" event on push', function(done) {
+        var product = new Product();
+        var products = new Products();
 
-                products.once('order', function(source) {
-                    var order = lodash.merge(product.toJSON(), {
-                        foo: 'bar'
-                    });
+        products.once('order', function(source) {
+          var order = lodash.merge(product.toJSON(), { foo: 'bar' });
 
-                    chai.expect(source).to.eql(order);
+          chai.expect(source).to.eql(order);
 
-                    done();
-                }).push(product);
+          done();
+        }).push(product);
 
-                product.order({ foo: 'bar' });
-            });
-
-        });
+        product.order({ foo: 'bar' });
+      });
 
     });
+
+  });
 
 };

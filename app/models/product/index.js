@@ -5,26 +5,26 @@ var Products = require('./collection');
 
 module.exports = function(app) {
 
-    app.products = new Products();
+  app.products = new Products();
 
-    app('*', function(context, next) {
-        context.products = app.products;
+  app('*', function(context, next) {
+    context.products = app.products;
 
-        if (context.products.models.length || app.offline) {
-            return next();
-        }
+    if (context.products.models.length || app.offline) {
+      return next();
+    }
 
-        superagent.get('/products', function(err, res) {
-            if (err) return context.events.emit('error', err);
+    superagent.get('/products', function(err, res) {
+      if (err) return context.events.emit('error', err);
 
-            res.body.forEach(function(source) {
-                var model = new Product(source);
+      res.body.forEach(function(source) {
+        var model = new Product(source);
 
-                context.products.push(model);
-            });
+        context.products.push(model);
+      });
 
-            next();
-        });
+      next();
     });
+  });
 
 };

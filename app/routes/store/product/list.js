@@ -6,55 +6,55 @@ var template = require('views/store/product/list.html');
 var ProductItem = require('./item');
 
 function ProductList(collection) {
-    this.element = domify(template);
+  this.element = domify(template);
 
-    bindToCollectionEvents(this.element, collection, this);
+  bindToCollectionEvents(this.element, collection, this);
 }
 
 ProductList.prototype.list = function(models) {
-    this.empty();
+  this.empty();
 
-    models.forEach(function(model) {
-        this.push(model);
-    }, this);
+  models.forEach(function(model) {
+    this.push(model);
+  }, this);
 
-    return this;
+  return this;
 };
 
 ProductList.prototype.push = function(model) {
-    this.element.appendChild(new ProductItem(model).element);
+  this.element.appendChild(new ProductItem(model).element);
 
-    return this;
+  return this;
 };
 
 ProductList.prototype.select = function(model) {
-    var elements = [].slice.call(this.element.children);
+  var elements = [].slice.call(this.element.children);
 
-    elements.forEach(function(element) {
-        if (element.id === model.get('_id')) {
-            element.classList.add('selected')
-        } else {
-            element.classList.remove('selected');
-        }
-    });
+  elements.forEach(function(element) {
+    if (element.id === model.get('_id')) {
+      element.classList.add('selected')
+    } else {
+      element.classList.remove('selected');
+    }
+  });
 
-    return this;
+  return this;
 };
 
 ProductList.prototype.empty = function() {
-    while (this.element.lastElementChild) {
-        this.element.lastElementChild.remove();
-    }
+  while (this.element.lastElementChild) {
+    this.element.lastElementChild.remove();
+  }
 
-    return this;
+  return this;
 };
 
 module.exports = ProductList;
 
 function bindToCollectionEvents(element, collection, view) {
-    collection.on('push', function(model) {
-        view.push(model);
-    });
+  collection.on('push', function(model) {
+    view.push(model);
+  });
 
-    view.list(collection.models);
+  view.list(collection.models);
 }
