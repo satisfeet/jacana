@@ -2,8 +2,8 @@ var app = require('../');
 
 describe('lib/models', function() {
 
-    require('./order')(app);
+  require('./order')(app);
 
-    require('./product')(app);
+  require('./product')(app);
 
 });

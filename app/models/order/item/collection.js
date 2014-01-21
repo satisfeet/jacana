@@ -3,9 +3,9 @@ var util = require('util');
 var Collection = require('../../core/collection');
 
 function Items(source) {
-    this.Model = require('./model');
+  this.Model = require('./model');
 
-    Collection.call(this, source);
+  Collection.call(this, source);
 }
 
 util.inherits(Items, Collection);

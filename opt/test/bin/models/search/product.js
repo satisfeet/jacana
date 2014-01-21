@@ -4,54 +4,54 @@ var mongoose = require('mongoose');
 
 module.exports = function(app, exec, mockup) {
 
-    var Product = mongoose.model('Product');
-    
-    it('should search and stdout products', function(done) {
-        var query = { name: mockup.products[0].name };
-        var command = util.format('bin/models search product --json \'%s\'', 
-            JSON.stringify(query));
+  var Product = mongoose.model('Product');
 
-        exec(command, function(err, stdout, stderr) {
-            if (err) throw err;
+  it('should search and stdout products', function(done) {
+      var query = { name: mockup.products[0].name };
+      var command = util.format('bin/models search product --json \'%s\'',
+          JSON.stringify(query));
 
-            stderr.should.be.empty;
-            stdout.should.not.be.empty;
+      exec(command, function(err, stdout, stderr) {
+          if (err) throw err;
 
-            Product.find(query, function(err, docs) {
-                if (err) throw err;
+          stderr.should.be.empty;
+          stdout.should.not.be.empty;
 
-                JSON.parse(stdout).map(function(doc) {
-                    return new Product(doc).toJSON();
-                }).should.eql(docs.map(function(doc) {
-                    return doc.toJSON();
-                }));
+          Product.find(query, function(err, docs) {
+              if (err) throw err;
 
-                done();
-            });
-        });
-    });
+              JSON.parse(stdout).map(function(doc) {
+                  return new Product(doc).toJSON();
+              }).should.eql(docs.map(function(doc) {
+                  return doc.toJSON();
+              }));
 
-    it('should search and stdout products', function(done) {
-        var command = 'bin/models search product';
+              done();
+          });
+      });
+  });
 
-        exec(command, function(err, stdout, stderr) {
-            if (err) throw err;
+  it('should search and stdout products', function(done) {
+      var command = 'bin/models search product';
 
-            stderr.should.be.empty;
-            stdout.should.not.be.empty;
+      exec(command, function(err, stdout, stderr) {
+          if (err) throw err;
 
-            Product.find(function(err, docs) {
-                if (err) throw err;
-                
-                JSON.parse(stdout).map(function(doc) {
-                    return new Product(doc).toJSON();
-                }).should.eql(docs.map(function(doc) {
-                    return doc.toJSON();
-                }));
+          stderr.should.be.empty;
+          stdout.should.not.be.empty;
 
-                done();
-            });
-        });
-    });
+          Product.find(function(err, docs) {
+              if (err) throw err;
+
+              JSON.parse(stdout).map(function(doc) {
+                  return new Product(doc).toJSON();
+              }).should.eql(docs.map(function(doc) {
+                  return doc.toJSON();
+              }));
+
+              done();
+          });
+      });
+  });
 
 };

@@ -5,26 +5,26 @@ var Order = require('./model');
 
 module.exports = function(app) {
 
-    app.order = createOrder();
+  app.order = createOrder();
 
-    app.order.on('change', function() {
-        store.set('order', app.order.toJSON());
-    });
+  app.order.on('change', function() {
+    store.set('order', app.order.toJSON());
+  });
 
-    app.order.on('submit', function() {
-        superagent.post('/orders')
-            .send(app.order)
-            .end();
-    });
+  app.order.on('submit', function() {
+    superagent.post('/orders')
+    .send(app.order)
+    .end();
+  });
 
-    app('*', function(context, next) {
-        context.order = app.order;
+  app('*', function(context, next) {
+    context.order = app.order;
 
-        next();
-    });
+    next();
+  });
 
 };
 
 function createOrder() {
-    return new Order(store.get('order'));
+  return new Order(store.get('order'));
 }
