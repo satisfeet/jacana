@@ -12,4 +12,5 @@ require('../../../app/models')(app);
 
 app.start();
 
-module.exports = app;
+// require test files
+require('./models')(app);

@@ -6,6 +6,7 @@
 !srv/stylesheets
 srv/javascripts/build.js
 srv/stylesheets/bootstrap-theme.css
+opt/test/app/build.js
 
 # temporary
 *.swp

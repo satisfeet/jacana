@@ -1,12 +1,13 @@
+var util     = require('util');
 var should   = require('should');
 var mongoose = require('mongoose');
 
 module.exports = function(app, exec, mockup) {
 
-    var Product = mongoose.model('Product');
+    var Order = mongoose.model('Order');
 
-    it('should created and stdout products', function(done) {
-        var command = 'bin/models create product --file ./opt/models/products';
+    it('should create and stdout orders', function(done) {
+        var command = 'bin/models create order --file ./opt/models/order';
 
         exec(command, function(err, stdout, stderr) {
             if (err) throw err;
@@ -14,11 +15,11 @@ module.exports = function(app, exec, mockup) {
             stderr.should.be.empty;
             stdout.should.not.be.empty;
 
-            Product.find(function(err, docs) {
+            Order.find(function(err, docs) {
                 if (err) throw err;
-                
+
                 JSON.parse(stdout).map(function(doc) {
-                    return new Product(doc).toJSON();
+                    return new Order(doc).toJSON();
                 }).should.eql(docs.map(function(doc) {
                     return doc.toJSON();
                 }));

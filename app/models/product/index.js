@@ -1,6 +1,6 @@
 var superagent = require('superagent');
 
-var Product  = require('./model');
+var Product = require('./model');
 var Products = require('./collection');
 
 module.exports = function(app) {
@@ -17,12 +17,14 @@ module.exports = function(app) {
         superagent.get('/products', function(err, res) {
             if (err) return context.events.emit('error', err);
 
-            res.body.forEach(function(model) {
+            res.body.forEach(function(source) {
+                var model = new Product(source);
+
                 context.products.push(model);
             });
 
             next();
-        }); 
+        });
     });
 
 };
