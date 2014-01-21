@@ -53,7 +53,7 @@
       .navbar-content-right {
         float: right;
       }
-      
+
       .navbar-menue > li {
         float: right;
         list-style: none;
@@ -134,10 +134,10 @@
       </div>
       <div class="section">
         <p class="text-sm">
-          Sehr geehrter {{ customer.name }}, 
+          Sehr geehrter {{ customer.name }},
         </p>
         <p class="text-sm">
-          Sie haben soeben eine Bestellung auf 
+          Sie haben soeben eine Bestellung auf
           <a href="http://www.satisfeet.me">satisfeet.me</a> aufgegeben und 
           erhalten hiermit die Rechnung für die von Ihnen bestellten Produkte.
           Falls Sie Fragen oder Änderungen zu Ihrer Bestellung haben, antworten
@@ -158,14 +158,14 @@
             </tr>
           </thead>
           <tbody>
-          {% for product in products %}
+          {% for item in items %}
             <tr>
-              <td><strong>{{ product.name }}</strong></h5>
-              <td>{{ product.variations.size }}</td>
-              <td>{{ product.variations.color }}</td>
-              <td>{{ product.quantity }}</td>
-              <td>{{ product.pricing.value }}</td>
-              <td>{{ product.quantity * product.pricing.value }}</td>
+              <td><strong>{{ item.name }}</strong></h5>
+              <td>{{ item.attribute.size }}</td>
+              <td>{{ item.attribute.color }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.pricing }} €</td>
+              <td>{{ item.quantity * item.pricing }} €</td>
             </tr>
           {% endfor %}
           </tbody>
@@ -175,7 +175,7 @@
           <tbody>
             <tr>
               <td>Zwischensumme:</td>
-              <td><strong>15.66 €</strong></td>
+              <td><strong>{{ pricing.retail }} €</strong></td>
             </tr>
             <tr>
               <td>Verpackung und Versand:</td>
@@ -183,7 +183,7 @@
             </tr>
             <tr>
               <td>Endbetrag:</td>
-              <td><strong>17.66 €</strong></td>
+              <td><strong>{{ pricing.total }} €</strong></td>
             </tr>
           </tbody>
         </table>

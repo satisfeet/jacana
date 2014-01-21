@@ -5,7 +5,7 @@ var Order = require('./model');
 
 module.exports = function(app) {
 
-  app.order = createOrder();
+  window.order = app.order = createOrder();
 
   app.order.on('change', function() {
     store.set('order', app.order.toJSON());

@@ -5,9 +5,9 @@ var lodash = require('lodash');
 var Model = require('./model');
 
 function Collection(source) {
-  setup(source, this);
-
   bindToPushEvent(this);
+
+  setup(source, this);
 
   events.EventEmitter.call(this);
 }
