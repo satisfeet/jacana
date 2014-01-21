@@ -17,7 +17,6 @@ test: \
 
 test-lib:
 	$(MOCHA) $(MOCHA_FLAGS) \
-		opt/test/lib/models	\
 		opt/test/lib/static	\
 		opt/test/lib/routes
 
