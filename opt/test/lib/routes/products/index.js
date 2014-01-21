@@ -1,35 +1,35 @@
-var should    = require('should');
+var chai      = require('chai');
 var supertest = require('supertest');
 
 module.exports = function(app, mockup) {
+
+  var product = mockup.products[0];
 
   describe('GET /products', function() {
 
     it('should respond empty array', function(done) {
       supertest(app).get('/products')
-      .expect(200, function(err, res) {
-        if (err) throw err;
+        .expect(200, function(err, res) {
+          if (err) throw err;
 
-        res.body.should.be.an.Array;
+          chai.expect(res.body).be.an('array');
 
-        done();
-      });
+          done();
+        });
     });
 
   });
 
   describe('POST /products', function() {
 
-    var product = mockup.products[0];
-
     it('should respond product', function(done) {
       supertest(app).post('/products').send(product)
         .expect(200, function(err, res) {
           if (err) throw err;
 
-          mockup.product = res.body;
+          chai.expect(res.body).to.contain.keys(Object.keys(product));
 
-          res.body.should.have.properties(Object.keys(product));
+          product = res.body;
 
           done();
         });
@@ -40,14 +40,14 @@ module.exports = function(app, mockup) {
   describe('GET /products/:id', function() {
 
     it('should respond product', function(done) {
-      supertest(app).get('/products/' + mockup.product._id)
-      .expect(200, function(err, res) {
-        if (err) throw err;
+      supertest(app).get('/products/' + product._id)
+        .expect(200, function(err, res) {
+          if (err) throw err;
 
-        res.body.should.eql(mockup.product);
+          chai.expect(res.body).to.eql(product);
 
-        done();
-      });
+          done();
+        });
     });
 
   });
@@ -55,11 +55,10 @@ module.exports = function(app, mockup) {
   describe('PUT /products/:id', function() {
 
     it('should respond OK', function(done) {
-      mockup.product.description += 'blub';
+      product.description += 'blub';
 
-      supertest(app).put('/products/' + mockup.product._id)
-      .send(mockup.product)
-      .expect(200, done);
+      supertest(app).put('/products/' + product._id)
+        .send(product).expect(200, done);
     });
 
   });
@@ -67,8 +66,8 @@ module.exports = function(app, mockup) {
   describe('DELETE /products/:id', function() {
 
     it('should respond OK', function(done) {
-      supertest(app).del('/products/' + mockup.product._id)
-      .expect(200, done);
+      supertest(app).del('/products/' + product._id)
+        .expect(200, done);
     });
 
   });

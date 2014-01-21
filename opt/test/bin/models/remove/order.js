@@ -1,5 +1,5 @@
 var util     = require('util');
-var should   = require('should');
+var chai     = require('chai');
 var mongoose = require('mongoose');
 
 module.exports = function(app, exec, mockup) {
@@ -12,13 +12,13 @@ module.exports = function(app, exec, mockup) {
     exec(command, function(err, stdout, stderr) {
       if (err) throw err;
 
-      stderr.should.be.empty;
-      stdout.should.not.be.empty;
+      chai.expect(stderr).to.be.empty;
+      chai.expect(stdout).to.not.be.empty;
 
       Order.find(function(err, docs) {
         if (err) throw err;
 
-        docs.should.be.empty;
+        chai.expect(docs).to.be.empty;
 
         done();
       });

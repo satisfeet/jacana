@@ -1,7 +1,9 @@
-var should    = require('should');
+var chai      = require('chai');
 var supertest = require('supertest');
 
 module.exports = function(app, mockup) {
+
+  var order = mockup.orders[0];
 
   describe('GET /orders', function() {
 
@@ -10,7 +12,7 @@ module.exports = function(app, mockup) {
         .expect(200, function(err, res) {
           if (err) throw err;
 
-          res.body.should.be.an.Array;
+          chai.expect(res.body).to.be.an('array');
 
           done();
         });
@@ -20,8 +22,6 @@ module.exports = function(app, mockup) {
 
   describe('POST /orders', function() {
 
-    var order = mockup.orders[0];
-
     it('should respond order', function(done) {
       // needs this timeout as it sends an email
       this.timeout(5000);
@@ -30,9 +30,9 @@ module.exports = function(app, mockup) {
         .expect(200, function(err, res) {
           if (err) throw err;
 
-          mockup.order = res.body;
+          chai.expect(res.body).to.contain.keys(Object.keys(order));
 
-          res.body.should.have.properties(Object.keys(order));
+          order = res.body;
 
           done();
         });
@@ -43,11 +43,11 @@ module.exports = function(app, mockup) {
   describe('GET /orders/:id', function() {
 
     it('should respond order', function(done) {
-      supertest(app).get('/orders/' + mockup.order._id)
+      supertest(app).get('/orders/' + order._id)
         .expect(200, function(err, res) {
           if (err) throw err;
 
-          res.body.should.eql(mockup.order);
+          chai.expect(res.body).to.eql(order);
 
           done();
         });
@@ -58,7 +58,7 @@ module.exports = function(app, mockup) {
   describe('DELETE /orders/:id', function() {
 
     it('should respond OK', function(done) {
-      supertest(app).del('/orders/' + mockup.order._id)
+      supertest(app).del('/orders/' + order._id)
         .expect(200, done);
     });
 
