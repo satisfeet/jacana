@@ -13,6 +13,7 @@ function Order(source) {
   bindToPushEvent(this);
   bindToRemoveEvent(this);
   bindToChangeEvent(this);
+  bindToSubmitEvent(this);
 }
 
 util.inherits(Order, Model);
@@ -63,4 +64,10 @@ function bindToChangeEvent(model) {
   function emit() {
     model.emit('change');
   }
+}
+
+function bindToSubmitEvent(model) {
+  model.get('customer').on('submit', function() {
+    model.submit();
+  });
 }

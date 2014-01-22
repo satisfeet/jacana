@@ -30,4 +30,10 @@ Customer.prototype.setAddress = function(key, value) {
   return this.set('address', address);
 };
 
+Customer.prototype.submit = function() {
+  this.emit('submit');
+
+  return this;
+};
+
 module.exports = Customer;
