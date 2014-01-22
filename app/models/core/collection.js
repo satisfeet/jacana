@@ -67,8 +67,8 @@ function setup(source, collection) {
 
   if (lodash.isArray(source)) {
     source.forEach(function(model) {
-      if (this.Model) {
-        model = new this.Model(model);
+      if (collection.Model) {
+        model = new collection.Model(model);
       } else {
         model = new Model(model);
       }

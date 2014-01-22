@@ -1,73 +1,82 @@
 var Help        = require('./help');
 var Order       = require('./order');
 var Checkout    = require('./checkout');
-var Product     = require('./product');
+var ProductInfo = require('./product');
 var ProductList = require('./product/list');
 
 var template = require('views/store/content.html');
 
 module.exports = function(app) {
 
-  var help = new Help();
-  var order = new Order(app.order);
-  var checkout = new Checkout(app.order);
-  var productList = new ProductList(app.products);
-
   app('/store', function(context, next) {
-    insertLayout(context);
-    insertContent(context, productList);
-    insertSidebar(context, help);
+    createHelp(context);
+    createProductList(context);
   });
 
   app('/store/order', function(context, next) {
-    insertLayout(context);
-    insertContent(context, productList);
-    insertSidebar(context, order);
+    createOrder(context);
+    createProductList(context);
   });
 
   app('/store/checkout', function(context, next) {
-    insertLayout(context);
-    insertContent(context, productList);
-    insertSidebar(context, checkout);
+    createCheckout(context);
+    createProductList(context);
   });
 
   app('/store/:product', function(context, next) {
-    var product = context.products.find({
+    context.product = context.products.find({
       _id: context.params.product
     });
 
-    insertLayout(context);
-    insertContent(context, productList);
-    insertSidebar(context, new Product(product));
-
-    productList.select(product);
+    createProductInfo(context);
+    createProductList(context).select(context.product);
   });
 
 };
 
-function insertLayout(context) {
-  if (!context.element.querySelector('#store')) {
-    context.element.innerHTML = template;
+function createHelp(context) {
+  var view = new Help(context.element);
+
+  return replace(context.element, '#sidebar-inner', view);
+}
+
+function createOrder(context) {
+  var view = new Order(context.element, context.order);
+
+  return replace(context.element, '#sidebar-inner', view);
+}
+
+function createCheckout(context) {
+  var view = new Checkout(context.element, context.order);
+
+  return replace(context.element, '#sidebar-inner', view);
+}
+
+function createProductInfo(context) {
+  var view = new ProductInfo(context.element, context.product);
+
+  return replace(context.element, '#sidebar-inner', view);
+}
+
+function createProductList(context) {
+  var view = new ProductList(context.element, context.products);
+
+  return replace(context.element, '#content-inner', view);
+}
+
+function replace(element, selector, view) {
+  // will insert layout template if not present
+  if (!element.querySelector('#store')) {
+    element.innerHTML = template;
   }
-}
-
-function insertContent(context, view) {
-  var element = context.element.querySelector('#content-inner');
-
-  replace(element, view);
-}
-
-function insertSidebar(context, view) {
-  var element = context.element.querySelector('#sidebar-inner');
-
-  replace(element, view);
-}
-
-function replace(element, view) {
-  if (element.contains(view.element)) return;
-
-  while (element.lastElementChild) {
-    element.lastElementChild.remove();
+  // will insert view element into selector if not present
+  if (!element.contains(view.element)) {
+    element = element.querySelector(selector);
+    while (element.lastElementChild) {
+      element.lastElementChild.remove();
+    }
+    element.appendChild(view.element);
   }
-  element.appendChild(view.element);
+  // make function chainable
+  return view;
 }

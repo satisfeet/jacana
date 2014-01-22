@@ -5,8 +5,8 @@ var template = require('views/store/product/list.html');
 
 var ProductItem = require('./item');
 
-function ProductList(collection) {
-  this.element = domify(template);
+function ProductList(element, collection) {
+  this.element = element.querySelector('#product-list') || domify(template);
 
   bindToCollectionEvents(this.element, collection, this);
 }
@@ -28,9 +28,7 @@ ProductList.prototype.push = function(model) {
 };
 
 ProductList.prototype.select = function(model) {
-  var elements = [].slice.call(this.element.children);
-
-  elements.forEach(function(element) {
+  lodash.forEach(this.element.children, function(element) {
     if (element.id === model.get('_id')) {
       element.classList.add('selected')
     } else {
