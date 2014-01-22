@@ -57,14 +57,17 @@ module.exports = function(app, mockup) {
         chai.expect(order.get('pricing').get('retail')).to.equal(0);
         chai.expect(order.get('pricing').get('total')).to.equal(0);
       });
+    });
 
-      it('should emit "change" event on item push', function(done) {
+    describe('Event: "change"', function() {
+
+      it('should be emitted on items #push', function(done) {
         var order = new Order();
 
         order.once('change', done).get('items').push(new Item(mockup.order[0].items[0]));
       });
 
-      it('should emit "change" event on item remove', function(done) {
+      it('should be emitted on items #remove', function(done) {
         var item = new Item(mockup.order[0].items[0]);
         var order = new Order();
 
@@ -72,13 +75,13 @@ module.exports = function(app, mockup) {
         order.once('change', done).get('items').remove(item);
       });
 
-      it('should emit "change" event on pricing change', function(done) {
+      it('should be emitted on pricing "change"', function(done) {
         var order = new Order();
 
         order.once('change', done).get('pricing').addRetail(2.99);
       });
 
-      it('should emit "change" event on customer change', function(done) {
+      it('should be emitted on customer "change"', function(done) {
         var order = new Order();
 
         order.once('change', done).get('customer').setAddress('street', 'Alexanderplatz');
