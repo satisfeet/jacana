@@ -6,20 +6,11 @@ var template = require('views/store/product/list.html');
 var ProductItem = require('./item');
 
 function ProductList(element, collection) {
-  this.element = element.querySelector('#product-list') || domify(template);
+  this.element = element.querySelector('#product-list');
 
-  bindToCollectionEvents(this.element, collection, this);
+  setupElement(this.element, collection, this);
+  listenToCollectionEvents(this.element, collection, this);
 }
-
-ProductList.prototype.list = function(models) {
-  this.empty();
-
-  models.forEach(function(model) {
-    this.push(model);
-  }, this);
-
-  return this;
-};
 
 ProductList.prototype.push = function(model) {
   this.element.appendChild(new ProductItem(model).element);
@@ -49,10 +40,18 @@ ProductList.prototype.empty = function() {
 
 module.exports = ProductList;
 
-function bindToCollectionEvents(element, collection, view) {
+function setupElement(element, collection, view) {
+  if (element) return;
+
+  view.element = domify(template);
+}
+
+function listenToCollectionEvents(element, collection, view) {
+  view.empty();
+
   collection.on('push', function(model) {
     view.push(model);
+  }).forEach(function(model) {
+    view.push(model);
   });
-
-  view.list(collection.models);
 }

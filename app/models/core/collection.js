@@ -5,9 +5,8 @@ var lodash = require('lodash');
 var Model = require('./model');
 
 function Collection(source) {
-  bindToPushEvent(this);
-
-  setup(source, this);
+  listenToPushEvent(this);
+  setupModels(source, this);
 
   events.EventEmitter.call(this);
 }
@@ -62,7 +61,7 @@ Collection.prototype.toJSON = function() {
 
 module.exports = Collection;
 
-function setup(source, collection) {
+function setupModels(source, collection) {
   collection.models = [];
 
   if (lodash.isArray(source)) {
@@ -78,7 +77,7 @@ function setup(source, collection) {
   }
 }
 
-function bindToPushEvent(collection) {
+function listenToPushEvent(collection) {
   collection.on('push', function(model) {
     model.once('remove', function() {
       collection.remove(model);

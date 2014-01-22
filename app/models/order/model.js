@@ -1,19 +1,18 @@
 var util = require('util');
 
-var Model = require('../core/model');
-
-var Items = require('./item/collection');
-var Pricing = require('./pricing/model');
+var Model    = require('../core/model');
+var Items    = require('./item/collection');
+var Pricing  = require('./pricing/model');
 var Customer = require('./customer/model');
 
 function Order(source) {
   Model.call(this, source);
 
-  setup(this);
-  bindToPushEvent(this);
-  bindToRemoveEvent(this);
-  bindToChangeEvent(this);
-  bindToSubmitEvent(this);
+  setupAttributes(this);
+  listenToPushEvent(this);
+  listenToRemoveEvent(this);
+  listenToChangeEvent(this);
+  listenToSubmitEvent(this);
 }
 
 util.inherits(Order, Model);
@@ -34,13 +33,13 @@ Order.prototype.toJSON = function() {
 
 module.exports = Order;
 
-function setup(model) {
+function setupAttributes(model) {
   model.set('items', new Items(model.get('items')));
   model.set('pricing', new Pricing(model.get('pricing')));
   model.set('customer', new Customer(model.get('customer')));
 }
 
-function bindToPushEvent(model) {
+function listenToPushEvent(model) {
   model.get('items').on('push', function(item) {
     var retail = item.get('pricing') * item.get('quantity');
 
@@ -48,7 +47,7 @@ function bindToPushEvent(model) {
   });
 }
 
-function bindToRemoveEvent(model) {
+function listenToRemoveEvent(model) {
   model.get('items').on('remove', function(item) {
     var retail = item.get('pricing') * item.get('quantity');
 
@@ -56,7 +55,7 @@ function bindToRemoveEvent(model) {
   });
 }
 
-function bindToChangeEvent(model) {
+function listenToChangeEvent(model) {
   model.get('items').on('change', emit);
   model.get('pricing').on('change', emit);
   model.get('customer').on('change', emit);
@@ -66,7 +65,7 @@ function bindToChangeEvent(model) {
   }
 }
 
-function bindToSubmitEvent(model) {
+function listenToSubmitEvent(model) {
   model.get('customer').on('submit', function() {
     model.submit();
   });
