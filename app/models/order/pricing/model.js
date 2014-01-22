@@ -5,7 +5,7 @@ var Model = require('../../core/model');
 function Pricing(source) {
   Model.call(this, source);
 
-  setup(this);
+  setupAttributes(source, this);
 }
 
 util.inherits(Pricing, Model);
@@ -28,11 +28,8 @@ Pricing.prototype.subRetail = function(value) {
 
 module.exports = Pricing;
 
-function setup(model) {
-  var retail = model.get('retail');
-  var total = model.get('total');
-
-  if (!retail || !total) {
+function setupAttributes(source, model) {
+  if (!source || !source.retail || !source.total) {
     model.set({ retail: 0, total: 0 });
   }
 }

@@ -9,21 +9,20 @@ function Product(element, model) {
   this.element = element.querySelector('#product-info');
 
   setupElement(this.element, model, this);
-  bindToSubmit(this.element, model, this);
+  listenToSubmitEvent(this.element, model, this);
 }
 
 module.exports = Product;
 
 function setupElement(element, model, view) {
+  if (view.element && view.element.dataset.id === model.get('_id')) return;
   // render template if this is the wrong product id
-  if (!view.element || view.element.dataset.id !== model.get('_id')) {
-    view.element = domify(swig.render(template, {
-      locals: { product: model.toJSON() }
-    }));
-  }
+  view.element = domify(swig.render(template, {
+    locals: { product: model.toJSON() }
+  }));
 }
 
-function bindToSubmit(element, model, view) {
+function listenToSubmitEvent(element, model, view) {
   var form = element.querySelector('form')
 
   form.addEventListener('submit', function(e) {
