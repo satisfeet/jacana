@@ -1,10 +1,10 @@
 {
 
   "store": {
-    "url": "mongodb://localhost/satisfeet"
+    "url": "mongodb://localhost/test"
   },
 
-  "engine:" {
+  "engine": {
     "styles": {
       "once": true,
       "compress": true,
