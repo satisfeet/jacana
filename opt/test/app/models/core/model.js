@@ -41,6 +41,47 @@ module.exports = function(app) {
 
     });
 
+    describe('Event: "change:<name>"', function() {
+
+      it('should be emitted on #set', function(done) {
+        var model = new Model();
+
+        model.once('change:foo', function(value) {
+          chai.expect(value).to.equal('bar');
+
+          done();
+        });
+        model.set({ foo: 'bar' });
+      });
+
+    });
+
+    describe('Event: "change"', function() {
+
+      it('should be emitted on #set', function(done) {
+        var model = new Model();
+
+        model.once('change', function(key, value) {
+          chai.expect(key).to.equal('foo');
+          chai.expect(value).to.equal('bar');
+
+          done();
+        });
+        model.set({ foo: 'bar' });
+      });
+
+    });
+
+    describe('Event: "remove"', function() {
+
+      it('should be emitted on #remove', function(done) {
+        var model = new Model();
+
+        model.once('remove', done).remove();
+      });
+
+    });
+
     describe('#has(key)', function() {
 
       it('should return false', function() {
@@ -95,29 +136,6 @@ module.exports = function(app) {
         chai.expect(model.attributes).to.have.property('foo', 'bar');
       });
 
-      it('should emit "change:<attribute>" event', function(done) {
-        var model = new Model();
-
-        model.once('change:foo', function(value) {
-          chai.expect(value).to.equal('bar');
-
-          done();
-        });
-        model.set({ foo: 'bar' });
-      });
-
-      it('should emit "change" event', function(done) {
-        var model = new Model();
-
-        model.once('change', function(key, value) {
-          chai.expect(key).to.equal('foo');
-          chai.expect(value).to.equal('bar');
-
-          done();
-        });
-        model.set({ foo: 'bar' });
-      });
-
     });
 
     describe('#remove()', function() {
@@ -126,12 +144,6 @@ module.exports = function(app) {
         var model = new Model();
 
         chai.expect(model.remove()).to.equal(model);
-      });
-
-      it('should emit "remove" event', function(done) {
-        var model = new Model();
-
-        model.once('remove', done).remove();
       });
 
     });
