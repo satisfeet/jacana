@@ -30,7 +30,9 @@ ItemList.prototype.empty = function() {
 module.exports = ItemList;
 
 function setupElement(element, model, view) {
-  if (!element) view.element = domify(template);
+  if (element) return;
+
+  view.element = domify(template);
 }
 
 function listenToModelEvent(element, model, view) {

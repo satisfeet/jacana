@@ -5,30 +5,29 @@ var Products = require('./collection');
 
 module.exports = function(app) {
 
+  // TODO: move cache to context.state
+  // unfortunately context.state is different
+  // for each route currently at least
+  var cache;
+
   // requests products if not already done
-  app('*', function(context, next) {
-    if (context.state.products) return next();
+  app('/store*', function(context, next) {
+    if (cache) return next();
 
     superagent.get('/products', function(err, res) {
       if (err) throw err;
 
-      context.state.products = res.body;
+      cache = res.body;
 
       next();
     });
   });
 
   // sets up product collection
-  app('*', function(context, next) {
-    createProducts(context);
+  app('/store*', function(context, next) {
+    context.products = new Products(cache);
 
     next();
   });
 
 };
-
-function createProducts(context) {
-  var source = context.state.products;
-
-  context.products = new Products(source);
-}

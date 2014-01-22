@@ -6,8 +6,8 @@ var Collection = require('../core/collection');
 function Products(source) {
   this.Model = require('./model');
 
-  bindToPushEvent(this);
-  bindToRemoveEvent(this);
+  listenToPushEvent(this);
+  listenToRemoveEvent(this);
 
   Collection.call(this, source);
 }
@@ -22,7 +22,7 @@ Products.prototype.find = function(query) {
 
 module.exports = Products;
 
-function bindToPushEvent(collection) {
+function listenToPushEvent(collection) {
   collection.on('push', function(model) {
     model.on('order', function(source) {
       collection.emit('order', source, model);
@@ -30,7 +30,7 @@ function bindToPushEvent(collection) {
   });
 }
 
-function bindToRemoveEvent(collection) {
+function listenToRemoveEvent(collection) {
   collection.on('remove', function(model) {
     model.removeAllListeners('order');
   });

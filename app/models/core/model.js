@@ -3,7 +3,7 @@ var events = require('events');
 var lodash = require('lodash');
 
 function Model(source) {
-  setup(source, this);
+  setupAttributes(source, this);
 
   events.EventEmitter.call(this);
 }
@@ -46,7 +46,7 @@ Model.prototype.toJSON = function() {
 
 module.exports = Model;
 
-function setup(source, model) {
+function setupAttributes(source, model) {
   model.id = lodash.uniqueId();
   model.attributes = {};
 
