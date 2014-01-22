@@ -5,17 +5,25 @@ var lodash = require('lodash');
 
 var template = require('views/store/product/index.html');
 
-function Product(model) {
-  this.element = domify(swig.render(template, {
-    locals: { product: model.toJSON() }
-  }));
+function Product(element, model) {
+  this.element = element.querySelector('#product-info');
 
-  bindToSubmitEvents(this.element, model, this);
+  setup(this.element, model, this);
+  submit(this.element, model, this);
 }
 
 module.exports = Product;
 
-function bindToSubmitEvents(element, model, view) {
+function setup(element, model, view) {
+  // render template if this is the wrong product id
+  if (!view.element || view.element.dataset.id !== model.get('_id')) {
+    view.element = domify(swig.render(template, {
+      locals: { product: model.toJSON() }
+    }));
+  }
+}
+
+function submit(element, model, view) {
   var form = element.querySelector('form')
 
   form.addEventListener('submit', function(e) {
@@ -23,6 +31,7 @@ function bindToSubmitEvents(element, model, view) {
 
     var attributes = {};
 
+    // TODO: lodash.forEach(form.elements)
     var elements = element.querySelectorAll('input:checked');
     lodash.forEach(elements, function(element) {
       attributes[element.name] = element.value;

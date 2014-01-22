@@ -1,30 +1,34 @@
 var superagent = require('superagent');
 
-var Product = require('./model');
+var Product  = require('./model');
 var Products = require('./collection');
 
 module.exports = function(app) {
 
-  app.products = new Products();
-
+  // requests products if not already done
   app('*', function(context, next) {
-    context.products = app.products;
-
-    if (context.products.models.length || app.offline) {
-      return next();
-    }
+    if (context.state.products) return next();
 
     superagent.get('/products', function(err, res) {
-      if (err) return context.events.emit('error', err);
+      if (err) throw err;
 
-      res.body.forEach(function(source) {
-        var model = new Product(source);
-
-        context.products.push(model);
-      });
+      context.state.products = res.body;
 
       next();
     });
   });
 
+  // sets up product collection
+  app('*', function(context, next) {
+    createProducts(context);
+
+    next();
+  });
+
 };
+
+function createProducts(context) {
+  var source = context.state.products;
+
+  context.products = new Products(source);
+}
