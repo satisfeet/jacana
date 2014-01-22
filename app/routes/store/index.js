@@ -1,8 +1,8 @@
-var Help        = require('./help');
-var Order       = require('./order');
-var Checkout    = require('./checkout');
-var ProductInfo = require('./product');
-var ProductList = require('./product/list');
+var Help          = require('./help');
+var OrderList     = require('./order/items/list');
+var OrderCustomer = require('./order/customer');
+var ProductInfo   = require('./product');
+var ProductList   = require('./product/list');
 
 var template = require('views/store/content.html');
 
@@ -14,12 +14,12 @@ module.exports = function(app) {
   });
 
   app('/store/order', function(context, next) {
-    createOrder(context);
+    createOrderList(context);
     createProductList(context);
   });
 
-  app('/store/checkout', function(context, next) {
-    createCheckout(context);
+  app('/store/order/customer', function(context, next) {
+    createOrderCustomer(context);
     createProductList(context);
   });
 
@@ -40,14 +40,14 @@ function createHelp(context) {
   return replace(context.element, '#sidebar-inner', view);
 }
 
-function createOrder(context) {
-  var view = new Order(context.element, context.order);
+function createOrderList(context) {
+  var view = new OrderList(context.element, context.order.get('items'));
 
   return replace(context.element, '#sidebar-inner', view);
 }
 
-function createCheckout(context) {
-  var view = new Checkout(context.element, context.order);
+function createOrderCustomer(context) {
+  var view = new OrderCustomer(context.element, context.order.get('customer'));
 
   return replace(context.element, '#sidebar-inner', view);
 }
