@@ -20,6 +20,21 @@ module.exports = function(app) {
 
     });
 
+    describe('Event: "change"', function() {
+
+      it('should be emitted on #setAddress', function(done) {
+        var customer = new Customer();
+
+        customer.once('change', function(key, value) {
+          chai.expect(key).to.equal('address');
+          chai.expect(value).to.equal(customer.get(key));
+
+          done();
+        }).setAddress('streetNr', '3');
+      });
+
+    });
+
     describe('#hasAddress(key)', function() {
 
       it('should return false', function() {
@@ -71,17 +86,6 @@ module.exports = function(app) {
 
         customer.once('change:address', function(address) {
           chai.expect(address).to.equal(customer.get('address'));
-
-          done();
-        }).setAddress('streetNr', '3');
-      });
-
-      it('should emit "change" event', function(done) {
-        var customer = new Customer();
-
-        customer.once('change', function(key, value) {
-          chai.expect(key).to.equal('address');
-          chai.expect(value).to.equal(customer.get(key));
 
           done();
         }).setAddress('streetNr', '3');

@@ -3,7 +3,7 @@ var events = require('events');
 
 module.exports = function(app) {
 
-  var Model = require('../../../../../app/models/core/model');
+  var Model      = require('../../../../../app/models/core/model');
   var Collection = require('../../../../../app/models/core/collection');
 
   describe('Collection', function() {
@@ -32,6 +32,68 @@ module.exports = function(app) {
         var collection = new Collection();
 
         chai.expect(collection).to.be.an.instanceOf(events.EventEmitter);
+      });
+
+    });
+
+    describe('Event: "push"', function() {
+
+      it('should be emitted on #push', function(done) {
+        var model = new Model();
+        var collection = new Collection();
+
+        collection.once('push', function(model) {
+          chai.expect(model).to.equal(model);
+
+          done();
+        });
+        collection.push(model);
+      });
+
+    });
+
+    describe('Event: "remove"', function() {
+
+      it('should be emitted on #remove', function(done) {
+        var collection = new Collection([
+          { baz: { foo: 'bar' } }
+        ]);
+        var model = collection.at(0);
+
+        collection.once('remove', function(amodel) {
+          chai.expect(model).to.equal(amodel);
+
+          done();
+        });
+        collection.remove(model);
+      });
+
+      it('should be emitted on #remove of model', function() {
+        var model = new Model();
+        var collection = new Collection();
+
+        collection.push(model);
+        model.remove();
+
+        chai.expect(collection.models).to.be.empty;
+      });
+
+    });
+
+    describe('Event: "change"', function() {
+
+      it('should be emitted on #push', function(done) {
+        var model = new Model();
+        var collection = new Collection();
+
+        collection.once('change', done).push(model);
+      });
+
+      it('should be emitted on #remove', function(done) {
+        var model = new Model();
+        var collection = new Collection();
+
+        collection.push(model).once('change', done).remove(model);
       });
 
     });
@@ -108,35 +170,6 @@ module.exports = function(app) {
         chai.expect(collection.push(model).at(0)).to.equal(model);
       });
 
-      it('should emit "push" event', function(done) {
-        var model = new Model();
-        var collection = new Collection();
-
-        collection.once('push', function(model) {
-          chai.expect(model).to.equal(model);
-
-          done();
-        });
-        collection.push(model);
-      });
-
-      it('should emit "change" event', function(done) {
-        var model = new Model();
-        var collection = new Collection();
-
-        collection.once('change', done).push(model);
-      });
-
-      it('should bind to "remove" event of model', function() {
-        var model = new Model();
-        var collection = new Collection();
-
-        collection.push(model);
-        model.remove();
-
-        chai.expect(collection.models).to.be.empty;
-      });
-
     });
 
     describe('#remove(model)', function() {
@@ -157,27 +190,6 @@ module.exports = function(app) {
         var model = collection.at(0);
 
         chai.expect(collection.remove(model).models).to.be.empty;
-      });
-
-      it('should emit "remove" event', function(done) {
-        var collection = new Collection([
-          { baz: { foo: 'bar' } }
-        ]);
-        var model = collection.at(0);
-
-        collection.once('remove', function(amodel) {
-          chai.expect(model).to.equal(amodel);
-
-          done();
-        });
-        collection.remove(model);
-      });
-
-      it('should emit "change" event', function(done) {
-        var model = new Model();
-        var collection = new Collection();
-
-        collection.push(model).once('change', done).remove(model);
       });
 
     });

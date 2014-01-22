@@ -4,9 +4,8 @@ var lodash = require('lodash');
 module.exports = function(app, mockup) {
 
   var Collection = require('../../../../../app/models/core/collection');
-
-  var Product = require('../../../../../app/models/product/model');
-  var Products = require('../../../../../app/models/product/collection');
+  var Product    = require('../../../../../app/models/product/model');
+  var Products   = require('../../../../../app/models/product/collection');
 
   describe('Products', function() {
 
@@ -16,7 +15,11 @@ module.exports = function(app, mockup) {
         chai.expect(new Products()).to.be.an.instanceOf(Collection);
       });
 
-      it('should bind to "order" event on push', function(done) {
+    });
+
+    describe('Event: "order"', function() {
+
+      it('should be emitted on product "order"', function(done) {
         var product = new Product();
         var products = new Products();
 

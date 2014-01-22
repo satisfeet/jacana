@@ -17,15 +17,9 @@ module.exports = function(app, mockup) {
 
     });
 
-    describe('#order(options)', function() {
+    describe('Event: "order"', function() {
 
-      it('should return product', function() {
-        var product = new Product();
-
-        chai.expect(product.order()).to.equal(product);
-      });
-
-      it('should emit "order" event', function(done) {
+      it('should be emitted on #order', function(done) {
         var product = new Product();
         var options = { size: '42-44', color: 'red' };
 
@@ -37,6 +31,16 @@ module.exports = function(app, mockup) {
 
           done();
         }).order(options);
+      });
+
+    });
+
+    describe('#order(options)', function() {
+
+      it('should return product', function() {
+        var product = new Product();
+
+        chai.expect(product.order()).to.equal(product);
       });
 
     });
