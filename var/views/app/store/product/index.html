@@ -1,4 +1,4 @@
-<div id="product-info">
+<div id="product-info" data-id="{{ product._id }}">
   <div>
     <p class="text-sm text-justify">
       {{ product.description.extended }}
@@ -9,7 +9,7 @@
   </div>
   <hr />
   <form class="form" role="form">
-    {% raw %}
+  {% if product %}
     {% for attribute in product.attributes %}
     <div id="sizes" class="form-group col-md-12">
       {% set name = loop.key %}
@@ -21,7 +21,21 @@
       {% endfor %}
     </div>
     {% endfor %}
-    {% endraw %}
+  {% else %}
+  {% raw %}
+    {% for attribute in product.attributes %}
+    <div id="sizes" class="form-group col-md-12">
+      {% set name = loop.key %}
+      {% for value in attribute %}
+      <label class="radio-inline">
+        <input name="{{ name }}" type="radio" value="{{ value }}" />
+        {{ value }}
+      </label>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  {% endraw %}
+  {% endif %}
     <div class="form-group col-md-8 col-md-offset-2">
       <div class="input-group">
         <input id="quantity" class="form-control input-sm" type="number" name="quantity" value="1" />

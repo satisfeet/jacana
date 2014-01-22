@@ -6,16 +6,15 @@ var template = require('views/store/order/index.html');
 
 var OrderItem = require('./item');
 
-function Order(model) {
-  this.element = domify(template);
+function Order(element, model) {
+  this.element = element.querySelector('#order-info') || domify(template);
 
   bindToModelEvents(this.element, model, this);
   bindToSubmitEvents(this.element, model, this);
 }
 
 Order.prototype.push = function(item) {
-  this.element.querySelector('ul')
-  .appendChild(new OrderItem(item).element);
+  this.element.querySelector('ul').appendChild(new OrderItem(item).element);
 
   return this;
 };
@@ -33,8 +32,6 @@ Order.prototype.empty = function() {
 module.exports = Order;
 
 function bindToModelEvents(element, model, view) {
-  element = element.querySelector('ul');
-
   view.empty();
 
   model.get('items').on('push', function(item) {
@@ -46,8 +43,7 @@ function bindToModelEvents(element, model, view) {
 }
 
 function bindToSubmitEvents(element, model, view) {
-  element.querySelector('form')
-  .addEventListener('submit', function(e) {
+  element.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     page('/store/checkout');
