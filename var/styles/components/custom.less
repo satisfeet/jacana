@@ -1,12 +1,16 @@
-#product-list > li {
+#product-list li {
   padding-bottom: 8px;
   cursor: pointer;
   transition: all 0.6s;
   border-radius: 4px;
 }
 
-#product-list > li:hover,
-#product-list > li.selected {
-  color: @white;
-  background-color: @olive;
+#product-list li img {
+  border: 3px solid @white;
+  transition: all 0.6s;
+}
+
+#product-list li:hover img,
+#product-list li.selected img {
+  border: 3px solid @olive;
 }

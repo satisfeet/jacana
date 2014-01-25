@@ -1,17 +1,19 @@
-<section id="order" class="section">
+<section id="order">
   <div class="container">
     <div class="page-header">
       <h2 class="text-center">Warenkorb</h2>
       <h3 class="text-center">Verwalte deine aktuelle Bestellung.</h3>
     </div>
     <div class="row">
-      <section id="content">
-      {% if orderList %}
-        {% include 'order/list.html' %}
-      {% elseif orderCustomer %}
-        {% include 'order/customer.html' %}
-      {% endif %}
-      </section>
+      <div class="col-md-10 col-md-offset-1">
+        <div id="inner">
+        {% if orderList %}
+          {% include 'order/list.html' %}
+        {% elseif orderCustomer %}
+          {% include 'order/customer.html' %}
+        {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 </section>
