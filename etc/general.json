@@ -9,7 +9,14 @@
 
     "engine": {
       "views": {
-        "path": "/var/views"
+        "path": "/var/views",
+        "minify": {
+          "collapseWhitespace": true,
+          "collapseBooleanAttributes": true,
+          "removeEmptyAttributes": true,
+          "removeComments": true,
+          "removeCommentsFromCDATA": true
+        }
       },
       "styles": {
         "src": "/var/styles",

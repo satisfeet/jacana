@@ -32,9 +32,10 @@
       "packpath": "0.1.*",
       "uglifyify": "1.0.*",
       "commander": "2.1.*",
+      "nodemailer": "0.5.*",
       "browserify": "3.17.*",
       "superagent": "0.15.*",
-      "nodemailer": "0.5.*",
+      "html-minifier": "0.5.5",
       "less-middleware": "0.1.*"
     },
 
