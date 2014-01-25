@@ -1,7 +1,7 @@
 var swig   = require('swig');
 var domify = require('domify');
 
-var template = require('views/store/order/items/item.html');
+var template = require('views/order/item.html');
 
 function Item(model) {
   setupElement(this.element, model, this);

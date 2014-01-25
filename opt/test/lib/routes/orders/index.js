@@ -8,7 +8,7 @@ module.exports = function(app, mockup) {
   describe('GET /orders', function() {
 
     it('should respond empty array', function(done) {
-      supertest(app).get('/orders')
+      supertest(app).get('/orders').accept('json')
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -26,7 +26,7 @@ module.exports = function(app, mockup) {
       // needs this timeout as it sends an email
       this.timeout(5000);
 
-      supertest(app).post('/orders').send(order)
+      supertest(app).post('/orders').accept('json').send(order)
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -43,7 +43,7 @@ module.exports = function(app, mockup) {
   describe('GET /orders/:id', function() {
 
     it('should respond order', function(done) {
-      supertest(app).get('/orders/' + order._id)
+      supertest(app).get('/orders/' + order._id).accept('json')
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -58,7 +58,7 @@ module.exports = function(app, mockup) {
   describe('DELETE /orders/:id', function() {
 
     it('should respond OK', function(done) {
-      supertest(app).del('/orders/' + order._id)
+      supertest(app).del('/orders/' + order._id).accept('json')
         .expect(200, done);
     });
 

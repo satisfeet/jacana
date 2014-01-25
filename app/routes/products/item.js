@@ -1,7 +1,7 @@
 var swig     = require('swig');
 var domify   = require('domify');
 
-var template = require('views/store/product/item.html');
+var template = require('views/products/item.html');
 
 function ProductItem(model) {
   this.element = domify(swig.render(template, {
