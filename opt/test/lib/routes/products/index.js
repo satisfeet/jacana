@@ -8,7 +8,7 @@ module.exports = function(app, mockup) {
   describe('GET /products', function() {
 
     it('should respond empty array', function(done) {
-      supertest(app).get('/products')
+      supertest(app).get('/products').accept('json')
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -23,7 +23,7 @@ module.exports = function(app, mockup) {
   describe('POST /products', function() {
 
     it('should respond product', function(done) {
-      supertest(app).post('/products').send(product)
+      supertest(app).post('/products').accept('json').send(product)
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -40,7 +40,7 @@ module.exports = function(app, mockup) {
   describe('GET /products/:id', function() {
 
     it('should respond product', function(done) {
-      supertest(app).get('/products/' + product._id)
+      supertest(app).get('/products/' + product._id).accept('json')
         .expect(200, function(err, res) {
           if (err) throw err;
 
@@ -57,7 +57,7 @@ module.exports = function(app, mockup) {
     it('should respond OK', function(done) {
       product.description += 'blub';
 
-      supertest(app).put('/products/' + product._id)
+      supertest(app).put('/products/' + product._id).accept('json')
         .send(product).expect(200, done);
     });
 
@@ -66,7 +66,7 @@ module.exports = function(app, mockup) {
   describe('DELETE /products/:id', function() {
 
     it('should respond OK', function(done) {
-      supertest(app).del('/products/' + product._id)
+      supertest(app).del('/products/' + product._id).accept('json')
         .expect(200, done);
     });
 

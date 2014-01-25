@@ -6,7 +6,7 @@ var OrderItem = require('./item/model');
 
 module.exports = function(app) {
 
-  app('/store*', function(context, next) {
+  app('*', function(context, next) {
     createOrder(context);
 
     listenToOrderEvent(context);
