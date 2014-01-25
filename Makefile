@@ -1,5 +1,6 @@
-MOCHA  = ./node_modules/.bin/mocha
+MOCHA  					= ./node_modules/.bin/mocha
 MOCHA_PHANTOMJS = ./node_modules/.bin/mocha-phantomjs
+SUPERVISOR			= ./node_modules/.bin/supervisor
 
 MOCHA_FLAGS = \
 	--reporter spec
@@ -7,8 +8,16 @@ MOCHA_FLAGS = \
 PHANTOMJS_FLAGS = \
 	--debug=yes
 
+SUPERVISOR_FLAGS = \
+	--watch etc,lib,var \
+	--extensions js,json,html
+
 boot:
+ifeq ($(NODE_ENV), 'production')
 	@node lib
+else
+	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
+endif
 
 test: \
 	test-lib \
