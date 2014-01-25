@@ -4,6 +4,7 @@
 
     "static": {
       "path": "/srv",
+      "index": false,
       "passthrough": true
     },
 
