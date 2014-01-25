@@ -30,7 +30,7 @@ function replace(element, view) {
   }
   // will insert view element into selector if not present
   if (!element.contains(view.element)) {
-    element = element.querySelector('#content');
+    element = element.querySelector('#inner');
     while (element.lastElementChild) {
       element.lastElementChild.remove();
     }
