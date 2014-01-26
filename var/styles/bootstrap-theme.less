@@ -1,47 +1,19 @@
-@font-family: 'raleway', 'Neue Helvetica', 'Helvetica';
-@font-weight: 100;
+@import 'settings/font';
+@import 'settings/color';
+@import 'settings/border';
+@import 'settings/transition';
 
-@font-face {
-  font-family: 'raleway';
-  font-weight: 100;
-  font-style: normal;
-  src: url('/fonts/raleway.eot');
-  src: url('/fonts/raleway.eot?#iefix') format('embedded-opentype'),
-  url('/fonts/raleway.woff') format('woff'),
-  url('/fonts/raleway.ttf') format('truetype');
-}
+@import 'elements/body';
+@import 'elements/list';
+@import 'elements/input';
+@import 'elements/image';
+@import 'elements/anchor';
+@import 'elements/button';
+@import 'elements/various';
+@import 'elements/headline';
+@import 'elements/paragraph';
 
-@blue:  #4A5963;
-@sand:  #C8AA78;
-@gray:  #666666;
-@white: #FFFFFF;
-@creme: #DDDDDD;
-@olive: #929F88;
-
-body {
-  padding-top: 70px;
-  font-family: raleway;
-  font-weight: 100;
-}
-
-.lead {
-  color: #777;
-  font-size: 30px;
-}
-
-.thumbnail {
-  border: none;
-}
-
-@import './elements/text.less';
-@import './elements/list.less';
-@import './elements/input.less';
-@import './elements/anchor.less';
-@import './elements/button.less';
-@import './elements/heading.less';
-
-@import './components/navbar.less';
-@import './components/footer.less';
-@import './components/aside.less';
-@import './components/section.less';
-@import './components/custom.less';
+@import 'components/navbar';
+@import 'components/footer';
+@import 'components/section';
+@import 'components/various';
