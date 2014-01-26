@@ -1,16 +1,16 @@
 <li class="list-group-item">
   <div class="list-group-item-header">
     <button class="close" name="remove">&times;</button>
-    <h5>{{ item.name }}</h5>
+    <h5 class="headline-sm">{{ item.name }}</h5>
   </div>
   <div class="list-group-item-text">
-    <p class="text-sm">
+    <p class="paragraph-sm">
       {% for attribute in item.attributes %}
         {{ loop.key }}: <strong>{{ attribute }}</strong>
         <br />
       {% endfor %}
     </p>
-    <p class="text-md text-right">
+    <p class="paragraph-md text-right">
       <span>{{ item.quantity }}</span>
       <span> x </span>
       <strong>{{ item.pricing }}</strong>
