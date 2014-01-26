@@ -1,0 +1,66 @@
+<div id="order-checkout">
+  <div class="col-md-6">
+    <form class="form" autocomplete="on" role="form">
+      <fieldset>
+        <div class="form-group">
+          <label for="name" class="control-label">Name</label>
+          <input id="name" name="name" class="form-control" type="text" value="{{ customer.name }}" placeholder="Max Mustermann" required="required" />
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <input id="email" name="email" class="form-control" type="email" value="{{ customer.email }}" placeholder="info@example.com" required="required" />
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-8">
+              <label for="address-street" class="control-label">Straße</label>
+              <input id="address-street" name="address-street" class="form-control" type="text" value="{{ customer.address.street }}" placeholder="Hauptstr." required="required" />
+            </div>
+            <div class="col-md-4">
+              <label for="address-streetNrr" class="control-label">Straße</label>
+              <input id="address-streetNrr" name="address-streetNr" class="form-control" type="text" value="{{ customer.address.streetNr }}" placeholder="4" required="required" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="address-zipCode" class="control-label">Postleitzahl</label>
+              <input id="address-zipCode" name="address-zipCode" class="form-control" type="number" value="{{ customer.address.zipCode }}" min="10000" max="99999" placeholder="12033" required="required" />
+            </div>
+            <div class="col-md-6">
+              <label for="address-place" class="control-label">Ort</label>
+              <input id="address-place" name="address-place" class="form-control" type="text" value="{{ customer.address.place }}" placeholder="Berlin" required="required" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <input id="confirm" name="confirm" type="checkbox" required="required" />
+              <span class="paragraph-xs text-center">
+                Hiermit erkläre ich mich einverstanden mit den geltenden
+                Allgemeinen Geschäftsbedinungen.
+              </span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-primary">Fortfahren</button>
+      </fieldset>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h4 class="headline-sm text-center">Allgeimeine Geschäftsbedingungen</h4>
+    <p class="paragraph-sm text-justify">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+      amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+      nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+      rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      dolor sit amet.
+    </p>
+  </div>
+</div>

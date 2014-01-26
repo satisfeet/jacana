@@ -32,9 +32,10 @@
       "packpath": "0.1.*",
       "uglifyify": "1.0.*",
       "commander": "2.1.*",
+      "supervisor": "0.5.*",
       "nodemailer": "0.5.*",
       "browserify": "3.17.*",
-      "superagent": "0.15.*",
+      "superagent": "0.16.*",
       "html-minifier": "0.5.5",
       "less-middleware": "0.1.*"
     },
@@ -42,7 +43,7 @@
     "devDependencies": {
       "chai": "1.8.1",
       "mocha": "1.16.*",
-      "supertest": "0.8.*",
+      "supertest": "0.9.*",
       "mocha-phantomjs": "3.3.*"
     },
 

@@ -1,0 +1,19 @@
+#product-list li {
+  padding-bottom: 8px;
+  transition: @transition-slow;
+}
+
+#product-list li .paragraph-sm {
+  height: 40px;
+}
+
+#product-list li .img-responsive {
+  border-width: @border-width-lg;
+  border-color: @color-white;
+}
+
+#product-list li:hover .img-responsive,
+#product-list li.selected .img-responsive {
+  border-width: @border-width-lg;
+  border-color: @color-blue;
+}

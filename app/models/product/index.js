@@ -11,10 +11,10 @@ module.exports = function(app) {
   var cache;
 
   // requests products if not already done
-  app('/store*', function(context, next) {
+  app('*', function(context, next) {
     if (cache) return next();
 
-    superagent.get('/products', function(err, res) {
+    superagent.get('/products').accept('json').end(function(err, res) {
       if (err) throw err;
 
       cache = res.body;
@@ -24,7 +24,7 @@ module.exports = function(app) {
   });
 
   // sets up product collection
-  app('/store*', function(context, next) {
+  app('*', function(context, next) {
     context.products = new Products(cache);
 
     next();

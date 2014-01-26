@@ -6,6 +6,8 @@ module.exports = function(app) {
 
   require('./legal')(app);
 
-  require('./store')(app);
+  require('./order')(app);
+
+  require('./products')(app);
 
 };
