@@ -12,6 +12,26 @@ module.exports = function(app) {
     replace(element, new OrderList(element, model.get('items')));
   });
 
+  app('/order/1', function(context, next) {
+    // handle customer invoice information
+  });
+
+  app('/order/2', function(context, next) {
+    // handle customer shipment information
+  });
+
+  app('/order/3', function(context, next) {
+    // handle customer payment information
+  });
+
+  app('/order/4', function(context, next) {
+    // final check of customer information
+  });
+
+  app('/order/5', function(context, next) {
+    // thank customer for buying from satisfeet
+  });
+
   app('/order/customer', function(context, next) {
     var model   = context.order;
     var element = context.element;
