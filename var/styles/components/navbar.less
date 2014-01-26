@@ -1,30 +1,31 @@
+.navbar-collapse {
+  // TODO: should be getting fixed in upcoming bootstrap builds
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
 .navbar-default {
-  padding: 10px 0;
-  background-color: @blue;
   border: none;
+  padding: 8px 0;
+  background-color: fadeout(@color-white, 10%);
 }
 
 .navbar-default .navbar-brand {
-  color: @creme;
-  font-size: 26px;
-  font-weight: 100;
+  color: @color-blue;
+  font-size: 38px;
+  font-weight: @font-weight-sm;
+  line-height: 24px;
 }
 
 .navbar-default .navbar-brand:hover {
-  color: @white;
+  color: @color-black;
 }
 
-.navbar-default .navbar-nav li > a {
-  color: @creme;
-  font-size: 18px;
-  font-weight: 100;
+.navbar-default .navbar-nav {
+  font-size: @font-size-xs;
+  font-weight: @font-weight-md;
 }
 
-.navbar-default .navbar-nav li > a:hover {
-  color: @white;
-}
-
-.navbar-collapse {
-  padding-left: 15px !important;
-  padding-right: 15px !important;
+.navbar-default .navbar-nav > li > a {
+  padding-top: 20px;
 }

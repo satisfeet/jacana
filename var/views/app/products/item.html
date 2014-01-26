@@ -1,0 +1,19 @@
+<li id="{{ product._id }}" class="col-md-3">
+  <div class="text-center">
+    <h4 class="headline-sm">{{ product.name }}</h4>
+    <a class="thumbnail" href="/products/{{ product._id }}">
+      <img class="img-rounded img-responsive" src="{{ product.images.main.path }}" />
+    </a>
+  </div>
+  <div class="text-left">
+    <p class="paragraph-sm">{{ product.description.preview }}</p>
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-sm btn-primary">Hinzufügen</button>
+      </div>
+      <div class="col-md-4 col-md-offset-6">
+        <p class="text-right paragraph-md">{{ product.pricing.retail }}€</p>
+      </div>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,95 @@
+[
+  {
+    "name": "Grauer Burgunder",
+      "images": {
+        "main": {
+          "path": "/images/products/gray.jpeg"
+        }
+      },
+      "attributes": {
+        "sizes": ["42-44"]
+      },
+      "description": {
+        "preview": "Günstige Freizeitsocke für ein schönes Wochenende.",
+        "extended": "Die Grauen Burgunder Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
+      },
+      "elements": {
+        "Baumwolle": "80%",
+        "Polyamid": "15%",
+        "Elasthan": "5%"
+      },
+      "pricing": {
+        "retail": 2.99
+      }
+  },
+  {
+    "name": "Mariner Monarch",
+      "images": {
+        "main": {
+          "path": "/images/products/blue.jpeg"
+        }
+      },
+      "attributes": {
+        "sizes": ["42-44"]
+      },
+      "description": {
+        "preview": "Edeles Blau für einen edlen Abend.",
+        "extended": "Stillvoll aber nicht überhoben. Perfekt für einen feinen Abend der nicht zu viel Wert auf Förmlichkeiten legt."
+      },
+      "elements": {
+        "Baumwolle": "80%",
+        "Polyamid": "15%",
+        "Elasthan": "5%"
+      },
+      "pricing": {
+        "retail": 2.99
+      }
+  },
+  {
+    "name": "Schwarzer Tausendsassa",
+      "images": {
+        "main": {
+          "path": "/images/products/black.jpeg"
+        }
+      },
+      "attributes": {
+        "sizes": ["42-44"]
+      },
+      "description": {
+        "preview": "Universell einsetzbar. Wenn man mal nicht genau weiß.",
+        "extended": "Wenn man mal in Eile ist oder nicht weiß was kommt, so weiß man doch, dass die Socken immer richtig sind."
+      },
+      "elements": {
+        "Baumwolle": "80%",
+        "Polyamid": "15%",
+        "Elasthan": "5%"
+      },
+      "pricing": {
+        "retail": 2.99
+      }
+  },
+  {
+    "name": "Ohne Gleichnis",
+    "images": {
+      "main": {
+        "path": "/images/products/olive.jpeg"
+      }
+    },
+    "attributes": {
+      "sizes": ["42-44"]
+    },
+    "description": {
+      "preview": "Wild, dennoch sanft umschmeichelnd.",
+      "extended": "Keine Kompromisse, wenn es drauf ankommen sollte. Verlässlich mit Stil."
+    },
+    "elements": {
+      "Schurwolle": "50%",
+      "Baumwolle": "30%",
+      "Polyamid": "15%",
+      "Elasthan": "5%"
+    },
+    "pricing": {
+      "retail": 5.99
+    }
+  }
+]
