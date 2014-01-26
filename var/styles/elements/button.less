@@ -1,31 +1,44 @@
 .btn {
-  background: @white;
-  transition: 0.6s;
+  transition: @transition-slow;
+  font-style: @font-style;
+  font-family: @font-family;
+  background: @color-white;
+  border-radius: @border-radius-sm;
 }
 
-.btn-lg {
-  font-size: 16px;
-  border-radius: 4px;
+.btn-sm:extend(.btn) {
+  font-size: @font-size-xs;
+  font-weight: @font-weight-sm;
+}
+
+.btn-md:extend(.btn) {
+  font-size: @font-size-sm;
+  font-weight: @font-weight-sm;
+}
+
+.btn-lg:extend(.btn) {
+  font-size: @font-size-md;
+  font-weight: @font-weight-sm;
 }
 
 .btn-primary {
-  background: @olive;
   border: none;
+  background: @color-olive !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  background: @blue;
+  background: @color-blue;
 }
 
 .close {
-  color: @white;
-  opacity: 0.6;
-  transition: 0.2s all;
+  color: @color-gray;
+  transition: @transition-fast;
 }
 
-.close:hover {
-  color: @white;
-  opacity: 1 !important;
+.close:hover,
+.close:focus,
+.close:active {
+  color: @color-black;
 }
