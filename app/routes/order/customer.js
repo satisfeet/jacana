@@ -2,12 +2,17 @@ var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('views/order/customer.html');
+var template = require('../../../var/views/app/order/customer.html');
 
 function Customer(element, model) {
   this.element = element.querySelector('#checkout');
 
-  setupElement(this.element, model, this);
+  if (!this.element) {
+    this.element = domify(swig.render(template, {
+      locals: { customer: model.toJSON() }
+    }));
+  }
+
   listenToSubmitEvent(this.element, model, this);
 }
 
@@ -18,14 +23,6 @@ Customer.prototype.disable = function() {
 };
 
 module.exports = Customer;
-
-function setupElement(element, model, view) {
-  if (element) return;
-
-  view.element = domify(swig.render(template, {
-    locals: { customer: model.toJSON() }
-  }));
-}
 
 function listenToSubmitEvent(element, model, view) {
   var form = element.querySelector('form');

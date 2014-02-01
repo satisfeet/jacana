@@ -1,4 +1,6 @@
-var template = require('views/main/content.html');
+var swig = require('swig');
+
+var template = require('../../../var/views/app/main/content.html');
 
 module.exports = function(app) {
 

@@ -1,4 +1,6 @@
-var template = require('views/products/content.html');
+var swig = require('swig');
+
+var template = require('../../../var/views/app/products/content.html');
 
 var ProductInfo = require('./info');
 var ProductList = require('./list');
@@ -26,7 +28,7 @@ module.exports = function(app) {
 function replace(element, view) {
   // will insert layout template if not present
   if (!element.querySelector('#products')) {
-    element.innerHTML = template;
+    element.innerHTML = swig.render(template);
   }
   // will insert view element into selector if not present
   if (!element.contains(view.element)) {
