@@ -3,7 +3,7 @@ var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../var/views/app/products/info.html');
+var template = require('../../views/products/info.html');
 
 function Product(element, model) {
   this.element = element.querySelector('#product-info');

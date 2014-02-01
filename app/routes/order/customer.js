@@ -2,7 +2,7 @@ var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../var/views/app/order/customer.html');
+var template = require('../../views/order/customer.html');
 
 function Customer(element, model) {
   this.element = element.querySelector('#checkout');
