@@ -2,37 +2,30 @@
 
   "name": "satisfeet-store",
 
-    "static": {
-      "path": "/srv",
-      "index": false,
-      "passthrough": true
-    },
+  "static": {
+    "path": "/srv",
+    "index": false,
+    "passthrough": true
+  },
 
-    "engine": {
-      "views": {
-        "path": "/var/views",
-        "minify": {
-          "collapseWhitespace": true,
-          "collapseBooleanAttributes": true,
-          "removeEmptyAttributes": true,
-          "removeComments": true,
-          "removeCommentsFromCDATA": true
-        }
+  "engine": {
+    "views": {
+      "path": "/var/views"
+    },
+    "styles": {
+      "src": "/var/styles",
+      "dest": "/srv/stylesheets",
+      "prefix": "/stylesheets"
+    },
+    "builder": {
+      "entries": [
+        "/app/index.js"
+      ],
+      "transform": {
+        "compress": true
       },
-      "styles": {
-        "src": "/var/styles",
-        "dest": "/srv/stylesheets",
-        "prefix": "/stylesheets"
-      },
-      "builder": {
-        "entries": [
-          "/app/index.js"
-          ],
-        "output": "/srv/javascripts/build.js",
-        "aliases": {
-          "views": "/var/views/app"
-        }
-      }
+      "output": "/srv/javascripts/build.js"
     }
+  }
 
 }

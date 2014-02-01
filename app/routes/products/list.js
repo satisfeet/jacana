@@ -1,14 +1,18 @@
-var domify   = require('domify');
-var lodash   = require('lodash');
+var swig   = require('swig');
+var domify = require('domify');
+var lodash = require('lodash');
 
-var template = require('views/products/list.html');
+var template = require('../../../var/views/app/products/list.html');
 
 var ProductItem = require('./item');
 
 function ProductList(element, collection) {
   this.element = element.querySelector('#product-list');
 
-  setupElement(this.element, collection, this);
+  if (!this.element) {
+    this.element = domify(swig.render(template));
+  }
+
   listenToCollectionEvents(this.element, collection, this);
 }
 
@@ -39,12 +43,6 @@ ProductList.prototype.empty = function() {
 };
 
 module.exports = ProductList;
-
-function setupElement(element, collection, view) {
-  if (element) return;
-
-  view.element = domify(template);
-}
 
 function listenToCollectionEvents(element, collection, view) {
   view.empty();
