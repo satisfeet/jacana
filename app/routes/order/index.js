@@ -2,8 +2,12 @@ var swig = require('swig');
 
 var template = require('../../views/order/content');
 
-var List    = require('./list');
-var Invoice = require('./invoice');
+var List     = require('./list');
+var Invoice  = require('./invoice');
+var Shipment = require('./shipment');
+var Payment  = require('./payment');
+var Goodbye  = require('./goodbye');
+var Confirm  = require('./confirm');
 
 module.exports = function(app) {
 
@@ -22,19 +26,31 @@ module.exports = function(app) {
   });
 
   app('/order/2', function(context, next) {
-    // handle customer shipment information
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Shipment(element, model.get('customer')));
   });
 
   app('/order/3', function(context, next) {
-    // handle customer payment information
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Payment(element, model.get('customer')));
   });
 
   app('/order/4', function(context, next) {
-    // final check of customer information
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Confirm(element, model.get('customer')));
   });
 
   app('/order/5', function(context, next) {
-    // thank customer for buying from satisfeet
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Goodbye(element, model.get('customer')));
   });
 
 };
