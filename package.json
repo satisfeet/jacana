@@ -30,6 +30,7 @@
       "express": "3.4.*",
       "mongoose": "3.8.*",
       "packpath": "0.1.*",
+      "shortify": "0.0.*",
       "uglifyify": "1.0.*",
       "commander": "2.1.*",
       "supervisor": "0.5.*",

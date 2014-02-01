@@ -2,7 +2,7 @@ var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../var/views/app/products/list.html');
+var template = require('../../views/products/list.html');
 
 var ProductItem = require('./item');
 
