@@ -27,7 +27,12 @@
       "templates": {
         "compress": true
       },
-      "output": "/srv/javascripts/build.js"
+      "output": "/srv/javascripts/build.js",
+      "extensions": [
+        ".js",
+        ".json",
+        ".html"
+      ]
     }
   }
 
