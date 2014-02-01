@@ -1,6 +1,6 @@
 var swig = require('swig');
 
-var template = require('../../views/products/content.html');
+var template = require('../../views/products/content');
 
 var ProductInfo = require('./info');
 var ProductList = require('./list');
