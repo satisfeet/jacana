@@ -1,0 +1,16 @@
+{% macro label(name, value) %}
+<label for="{{ name }}" class="control-label">{{ value }}</label>
+{% endmacro %}
+
+{% macro input(name, type, value, placeholder) %}
+<input id="{{ name }}" name="{{ name }}" class="form-control" type="{{ type }}"
+  value="{{ value }}" placeholder="{{ placeholder }}" required="required" />
+{% endmacro %}
+
+<div id="order-payment">
+  <form class="form" autocomplete="on" role="form">
+    <fieldset>
+      <a class="btn btn-sm btn-primary" href="/order/4">Fortfahren</a>
+    </fieldset>
+  </form>
+</div>
