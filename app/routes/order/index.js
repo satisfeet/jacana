@@ -4,6 +4,7 @@ var template = require('../../views/order/content');
 
 var OrderList     = require('./list');
 var OrderCustomer = require('./customer');
+var Invoice       = require('./invoice');
 
 module.exports = function(app) {
 
@@ -15,7 +16,10 @@ module.exports = function(app) {
   });
 
   app('/order/1', function(context, next) {
-    // handle customer invoice information
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Invoice(element, model.get('customer')));
   });
 
   app('/order/2', function(context, next) {
