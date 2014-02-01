@@ -21,7 +21,10 @@
       "entries": [
         "/app/index.js"
       ],
-      "transform": {
+      "aliases": {
+        "views": "../var/views/app"
+      },
+      "templates": {
         "compress": true
       },
       "output": "/srv/javascripts/build.js"
