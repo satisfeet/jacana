@@ -2,9 +2,8 @@ var swig = require('swig');
 
 var template = require('../../views/order/content');
 
-var OrderList     = require('./list');
-var OrderCustomer = require('./customer');
-var Invoice       = require('./invoice');
+var List    = require('./list');
+var Invoice = require('./invoice');
 
 module.exports = function(app) {
 
@@ -12,7 +11,7 @@ module.exports = function(app) {
     var model   = context.order;
     var element = context.element;
 
-    replace(element, new OrderList(element, model.get('items')));
+    replace(element, new List(element, model.get('items')));
   });
 
   app('/order/1', function(context, next) {
@@ -36,13 +35,6 @@ module.exports = function(app) {
 
   app('/order/5', function(context, next) {
     // thank customer for buying from satisfeet
-  });
-
-  app('/order/customer', function(context, next) {
-    var model   = context.order;
-    var element = context.element;
-
-    replace(element, new OrderCustomer(element, model.get('customer')));
   });
 
 };
