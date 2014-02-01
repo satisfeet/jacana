@@ -7,16 +7,12 @@
   value="{{ value }}" placeholder="{{ placeholder }}" required="required" />
 {% endmacro %}
 
-<div id="order-invoice">
+<div id="order-shipment">
   <form class="form" autocomplete="on" role="form">
     <fieldset>
       <div class="form-group">
         {{ label('name', 'Name') }}
         {{ input('name', 'text', customer.name, 'Max Mustermann') }}
-      </div>
-      <div class="form-group">
-        {{ label('email', 'Email') }}
-        {{ input('email', 'email', customer.email, 'info@example.com') }}
       </div>
       <div class="form-group">
         <div class="row">
@@ -42,7 +38,7 @@
           </div>
         </div>
       </div>
-      <a class="btn btn-sm btn-primary" href="/order/2">Fortfahren</a>
+      <a class="btn btn-sm btn-primary" href="/order/3">Fortfahren</a>
     </fieldset>
   </form>
 </div>
