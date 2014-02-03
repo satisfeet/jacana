@@ -9,8 +9,8 @@ PHANTOMJS_FLAGS = \
 	--debug=yes
 
 SUPERVISOR_FLAGS = \
-	--watch etc,lib,var \
-	--extensions js,json,html
+	--watch etc,lib		\
+	--extensions .js,.json
 
 boot:
 ifeq ($(NODE_ENV), 'production')
