@@ -1,14 +1,18 @@
+var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('views/order/list.html');
+var template = require('../../views/order/list');
 
 var Item = require('./item');
 
 function ItemList(element, model) {
   this.element = element.querySelector('#order-list');
 
-  setupElement(this.element, model, this);
+  if (!this.element) {
+    this.element = domify(swig.render(template));
+  }
+
   listenToModelEvent(this.element, model, this);
 }
 
@@ -27,12 +31,6 @@ ItemList.prototype.empty = function() {
 };
 
 module.exports = ItemList;
-
-function setupElement(element, model, view) {
-  if (element) return;
-
-  view.element = domify(template);
-}
 
 function listenToModelEvent(element, model, view) {
   view.empty();

@@ -5,7 +5,7 @@
 !srv/javascripts
 !srv/stylesheets
 srv/javascripts/build.js
-srv/stylesheets/bootstrap-theme.css
+srv/stylesheets/build.css
 opt/test/app/build.js
 
 # temporary
