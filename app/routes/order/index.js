@@ -3,7 +3,6 @@ var swig = require('swig');
 var template = require('../../views/order/content');
 
 var List     = require('./list');
-var Invoice  = require('./invoice');
 var Shipment = require('./shipment');
 var Payment  = require('./payment');
 var Goodbye  = require('./goodbye');
@@ -18,35 +17,29 @@ module.exports = function(app) {
     replace(element, new List(element, model.get('items')));
   });
 
-  app('/order/1', function(context, next) {
+  app('/order/shipment', function(context, next) {
     var model   = context.order;
-    var element = context.element;
-
-    replace(element, new Invoice(element, model.get('customer')));
-  });
-
-  app('/order/2', function(context, next) {
-    var model   = context.order;
+    var params  = context.params;
     var element = context.element;
 
     replace(element, new Shipment(element, model.get('customer')));
   });
 
-  app('/order/3', function(context, next) {
+  app('/order/payment', function(context, next) {
     var model   = context.order;
     var element = context.element;
 
     replace(element, new Payment(element, model.get('customer')));
   });
 
-  app('/order/4', function(context, next) {
+  app('/order/confirm', function(context, next) {
     var model   = context.order;
     var element = context.element;
 
     replace(element, new Confirm(element, model.get('customer')));
   });
 
-  app('/order/5', function(context, next) {
+  app('/order/goodbye', function(context, next) {
     var model   = context.order;
     var element = context.element;
 
