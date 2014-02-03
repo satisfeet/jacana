@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './base.html' %}
 
 {% set title = 'satisfeet: these socks make you happy' %}
 
@@ -11,16 +11,15 @@
 
 {% block link %}
   <link rel="icon" href="/images/brand/small.svg" />
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css" /> 
-  <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css" />
+  <link rel="stylesheet" href="/stylesheets/build.css" />
 {% endblock %}
 
 {% block main %}
-  {% include 'header.html' %}
+  {% include './header.html' %}
   <section id="content">
   {% block content %}{% endblock %}
   </section>
-  {% include 'footer.html' %}
+  {% include './footer.html' %}
 {% endblock %}
 
 {% block script %}
