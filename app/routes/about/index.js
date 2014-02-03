@@ -1,4 +1,4 @@
-var template = require('views/about/content.html');
+var template = require('../../views/about/content');
 
 module.exports = function(app) {
 

@@ -3,24 +3,21 @@ var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('views/products/info.html');
+var template = require('../../views/products/info');
 
 function Product(element, model) {
   this.element = element.querySelector('#product-info');
 
-  setupElement(this.element, model, this);
+  if (!this.element || this.element.dataset.id !== model.get('_id')) {
+    this.element = domify(swig.render(template, {
+      locals: { product: model.toJSON() }
+    }));
+  }
+
   listenToSubmitEvent(this.element, model, this);
 }
 
 module.exports = Product;
-
-function setupElement(element, model, view) {
-  if (view.element && view.element.dataset.id === model.get('_id')) return;
-  // render template if this is the wrong product id
-  view.element = domify(swig.render(template, {
-    locals: { product: model.toJSON() }
-  }));
-}
 
 function listenToSubmitEvent(element, model, view) {
   var form = element.querySelector('form')

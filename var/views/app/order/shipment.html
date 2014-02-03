@@ -1,0 +1,84 @@
+{% macro label(name, value) %}
+<label for="{{ name }}" class="control-label">{{ value }}</label>
+{% endmacro %}
+
+{% macro input(name, type, value, placeholder) %}
+<input id="{{ name }}" name="{{ name }}" class="form-control" type="{{ type }}"
+  value="{{ value }}" placeholder="{{ placeholder }}" required="required" />
+{% endmacro %}
+
+<div id="order-shipment">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="25"
+          aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+          <span class="sr-only">25% Complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form" autocomplete="on" role="form">
+        <fieldset>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                {{ label('firstName', 'Vorname') }}
+                {{ input('firstName', 'text', customer.name, 'Max') }}
+              </div>
+              <div class="col-md-6">
+                {{ label('lastName', 'Nachname') }}
+                {{ input('lastName', 'text', customer.name, 'Mustermann') }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                {{ label('company', 'Unternehmen') }}
+                {{ input('company', 'text', customer.name, 'Satisfeet Einzelunternehmen') }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8">
+                {{ label('address-street', 'Straße') }}
+                {{ input('address-street', 'text', customer.address.street, 'Hauptstr.') }}
+              </div>
+              <div class="col-md-4">
+                {{ label('address-streetNr', 'Nr.') }}
+                {{ input('address-street', 'text', customer.address.streetNr, '4') }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                {{ label('address-zipCode', 'Postleitzahl') }}
+                {{ input('address-zipCode', 'number', customer.address.zipCode, '12150') }}
+              </div>
+              <div class="col-md-6">
+                {{ label('address-place', 'Ort') }}
+                {{ input('address-zipCode', 'text', customer.address.place, 'Berlin') }}
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-primary">Fortfahren</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headline-sm text-center">Informationen</h4>
+      <p class="paragraph-sm text-justify">
+        Aktuell sind nur Lieferungen innerhalb Deutschlands möglich. Standard
+        Versand ist per Deutsche Post Maxibrief. Falls dies versandtechnisch
+        auf Grund der Größe Ihrer Bestellung nicht möglich ist, bekommen Sie
+        die Ware per DHL Päckchen beziehungsweise der nächstmöglichen Größe
+        zugeschickt.
+      </p>
+    </div>
+  </div>
+</div>
