@@ -1,4 +1,3 @@
-var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
@@ -10,7 +9,7 @@ function ItemList(element, model) {
   this.element = element.querySelector('#order-list');
 
   if (!this.element) {
-    this.element = domify(swig.render(template));
+    this.element = domify(template());
   }
 
   listenToModelEvent(this.element, model, this);

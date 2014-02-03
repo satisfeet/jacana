@@ -1,0 +1,22 @@
+extends layout/base
+
+- var title = 'satisfeet - these socks make you happy';
+
+block meta
+  meta(charset='utf-8')
+  meta(name='author'      content='Bodo Kaiser')
+  meta(name='keywords'    content='socks, feet, shop, happy')
+  meta(name='description' content='buy the socks which make you happy')
+  meta(name='viewport'    content='width=device-width, initial-scale=1.0')
+
+block link
+  link(rel='icon'       href='/images/brand/small.svg')
+  link(rel='stylesheet' href='/stylesheets/build.css')
+
+block main
+  include layout/header
+  include layout/content
+  include layout/footer
+
+block script
+  script(src='/javascripts/build.js')

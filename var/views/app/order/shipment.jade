@@ -1,0 +1,47 @@
+div#order-shipment
+  div.row
+    div.col-md-12
+      div.progress
+        div.progress-bar(style='width: 25%;')
+  div.row
+    div.col-md-6
+      form(role='form' autocomplete='on')
+        fieldset
+          div.form-group
+            div.row
+              div.col-md-6
+                label.control-label(for='firstName') Vorname:
+                input.form-control(id='firstName' type='text' placeholder='Max')
+              div.col-md-6
+                label.control-label(for='lastName') Nachname:
+                input.form-control(id='lastName' type='text' placeholder='Mustermann')
+          div.form-group
+            div.row
+              div.col-md-12
+                label.control-label(for='company') Unternehmen:
+                input.form-control(id='company' type='text' placeholder='Satisfeet')
+          div.form-group
+            div.row
+              div.col-md-8
+                label.control-label(for='address-street') Straße:
+                input.form-control(id='address-street' type='text' placeholder='Hauptstr.')
+              div.col-md-4
+                label.control-label(for='address-streetNr') Nr.:
+                input.form-control(id='address-streetNr' type='text' placeholder='4')
+          div.form-group
+            div.row
+              div.col-md-6
+                label.control-label(for='address-zipCode') Postleitzahl:
+                input.form-control(id='address-zipCode' type='number' placeholder='12150')
+              div.col-md-6
+                label.control-label(for='address-place') Ort:
+                input.form-control(id='address-place' type='text' placeholder='Berlin')
+          button.btn.btn-sm.btn-primary Fortfahren
+    div.col-md-6
+      h4.headline-sm.text-center Informationen
+      p.paragraph-sm.text-justify
+        | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich. Standard
+        | Versand ist per Deutsche Post Maxibrief. Falls dies versandtechnisch
+        | auf Grund der Größe Ihrer Bestellung nicht möglich ist, bekommen Sie
+        | die Ware per DHL Päckchen beziehungsweise der nächstmöglichen Größe
+        | zugeschickt.
