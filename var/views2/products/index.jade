@@ -1,0 +1,12 @@
+extends ../layout/index
+
+block content
+  section#products
+    div.container
+      div.page-header
+        h2.headline-xl.text-center Produktübersicht
+      div.row
+        div.col-md-12
+          div#inner
+            if products
+              include list
