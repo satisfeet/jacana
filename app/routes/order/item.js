@@ -1,11 +1,10 @@
-var swig   = require('swig');
 var domify = require('domify');
 
 var template = require('../../views/order/item');
 
 function Item(model) {
-  this.element = domify(swig.render(template, {
-    locals: { item: model.toJSON() }
+  this.element = domify(template({
+    item: model.toJSON()
   }));
 
   listenToClickEvent(this.element, model, this);

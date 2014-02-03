@@ -1,6 +1,4 @@
-var swig = require('swig');
-
-var template = require('../../views/order/content');
+var template = require('../../views/order');
 
 var List     = require('./list');
 var Shipment = require('./shipment');
@@ -51,7 +49,7 @@ module.exports = function(app) {
 function replace(element, view) {
   // will insert layout template if not present
   if (!element.querySelector('#order')) {
-    element.innerHTML = swig.render(template);
+    element.innerHTML = template();
   }
   // will insert view element into selector if not present
   if (!element.contains(view.element)) {
