@@ -1,13 +1,21 @@
 <div id="order-confirm">
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="80"
-      aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-      <span class="sr-only">80% Complete</span>
+    <div class="progress-bar" role="progressbar" aria-valuenow="75"
+      aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
+      <span class="sr-only">75% Complete</span>
     </div>
   </div>
   <form class="form" autocomplete="on" role="form">
     <fieldset>
-      <a class="btn btn-sm btn-primary" href="/order/5">Abschicken</a>
+      <div class="form-group">
+        <input type="checkbox" class="form-control" />
+        <p class="paragraph-sm">
+          Hiermit erkläre ich mich mit den für diese Seite geltenden
+          <a href="/legal/terms">Allgemeinen Geschäftsbedinungen</a> 
+          einverstanden.
+        </p>
+      </div>
+      <button class="btn btn-sm btn-primary">Abschicken</button>
     </fieldset>
   </form>
 </div>
