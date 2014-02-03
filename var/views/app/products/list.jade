@@ -1,4 +1,3 @@
 ul#product-list.list-unstyled
-  if products
-    each product in products
-      include item
+  each product in products || []
+    include item
