@@ -10,7 +10,7 @@
 
   "engine": {
     "views": {
-      "path": "/var/views"
+      "path": "/var/views2"
     },
     "styles": {
       "src": "/var/styles",
