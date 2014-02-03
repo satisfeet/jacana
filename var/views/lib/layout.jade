@@ -1,4 +1,4 @@
-extends base
+extends layout/base
 
 - var title = 'satisfeet - these socks make you happy';
 
@@ -14,9 +14,9 @@ block link
   link(rel='stylesheet' href='/stylesheets/build.css')
 
 block main
-  include header
-  include content
-  include footer
+  include layout/header
+  include layout/content
+  include layout/footer
 
 block script
   script(src='/javascripts/build.js')

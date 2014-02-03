@@ -10,7 +10,8 @@
 
   "engine": {
     "views": {
-      "path": "/var/views2"
+      "path": "/var/views/lib",
+      "engine": "jade"
     },
     "styles": {
       "src": "/var/styles",
@@ -18,21 +19,17 @@
       "prefix": "/stylesheets"
     },
     "builder": {
-      "entries": [
-        "/app/index.js"
-      ],
+      "entry": "/app/index.js",
       "aliases": {
         "views": "../var/views/app"
       },
-      "templates": {
-        "compress": true
-      },
-      "output": "/srv/javascripts/build.js",
       "extensions": [
         ".js",
         ".json",
-        ".html"
-      ]
+        ".html",
+        ".jade"
+      ],
+      "output": "/srv/javascripts/build.js"
     }
   }
 
