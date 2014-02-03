@@ -1,9 +1,19 @@
-section#legal
+section#legal.section
   div.container
-    div.page-header
-      h2.headline-xl.text-center Rechtliche Informationen
     div.row
-      div.col-md-10.col-md-offset-1
-        include imprint
-        include privacy
-        include liability
+      div.col-md-3.col-md-offset-1
+        h3.text-center Informationen
+        ul.nav.nav-pills.nav-stacked
+          li: a(href='/about#imprint') Impressum
+          li: a(href='/legal#liability') Haftungsauschluss
+          li: a(href='/legal#privacy') Datenschutzerklärung
+      div.col-md-7
+        div.row
+          div.col-md-10.col-md-offset-1
+            include imprint
+        div.row
+          div.col-md-10.col-md-offset-1
+            include liability
+        div.row
+          div.col-md-10.col-md-offset-1
+            include privacy

@@ -1,12 +1,8 @@
 li.list-group-item
   div.list-group-item-header
     button.close &times;
-    h5.headline-sm #{item && item.name}
+    h5.text-left #{item && item.name}
   div.list-group-item-text
-    p.paragraph-sm
-      if item && item.attributes
-        each attribute in item.attributes
-          strong attribute
-          br
-    p.paragraph-md.text-right
+    p.text-left
+    p.text-right
       #{item && item.quantity} x #{item && item.pricing}

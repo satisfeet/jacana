@@ -1,10 +1,10 @@
 li.col-md-3(data-id=product && product._id)
-  h4.headline-sm.text-center #{product && product.name}
+  h4.text-center #{product && product.name}
   a.thumbnail(href='/products/' + (product && product._id))
     img.img-rounded.img-responsive(src=product && product.images.main.path)
-  p.paragraph-sm.text-left #{product && product.description.preview}
+  p.text-left #{product && product.description.preview}
   div.row
     div.col-md-2
       button.btn.btn-sm.btn-primary Hinzufügen
     div.col-md-4.col-md-offset-6
-      p.paragraph-md.text-right #{product && product.pricing.retail}€
+      p.text-right #{product && product.pricing.retail}€
