@@ -1,4 +1,4 @@
-var template = require('../../views/legal/content');
+var template = require('../../views/legal');
 
 module.exports = function(app) {
 
@@ -6,7 +6,7 @@ module.exports = function(app) {
     var element = context.element;
 
     if (!element.querySelector('#legal')) {
-      element.innerHTML = template;
+      element.innerHTML = template();
     }
   });
 

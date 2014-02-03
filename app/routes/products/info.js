@@ -1,5 +1,4 @@
 var util   = require('util');
-var swig   = require('swig');
 var domify = require('domify');
 var lodash = require('lodash');
 
@@ -9,8 +8,8 @@ function Product(element, model) {
   this.element = element.querySelector('#product-info');
 
   if (!this.element || this.element.dataset.id !== model.get('_id')) {
-    this.element = domify(swig.render(template, {
-      locals: { product: model.toJSON() }
+    this.element = domify(template({
+      product: model.toJSON()
     }));
   }
 

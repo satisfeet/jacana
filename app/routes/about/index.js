@@ -1,4 +1,4 @@
-var template = require('../../views/about/content');
+var template = require('../../views/about');
 
 module.exports = function(app) {
 
@@ -6,7 +6,7 @@ module.exports = function(app) {
     var element = context.element;
 
     if (!element.querySelector('#about')) {
-      element.innerHTML = template;
+      element.innerHTML = template();
     }
   });
 
