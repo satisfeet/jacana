@@ -1,15 +1,15 @@
-@navbar-height:                    50px;
+@navbar-height:                    70px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 1));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             #777;
-@navbar-default-bg:                #f8f8f8;
-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-color:             @gray-light;
+@navbar-default-bg:                fadeout(@white, 30%);
+@navbar-default-border:            none;
 
-@navbar-default-link-color:                #777;
+@navbar-default-link-color:                #666;
 @navbar-default-link-hover-color:          #333;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         #555;
@@ -17,7 +17,7 @@
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
 
-@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-color:               #777;
 @navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
 @navbar-default-brand-hover-bg:            transparent;
 

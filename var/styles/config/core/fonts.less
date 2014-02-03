@@ -1,4 +1,14 @@
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'ralweway';
+  font-weight: 100;
+  font-style: normal;
+  src: url('/fonts/raleway.eot');
+  src: url('/fonts/raleway.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/raleway.woff') format('woff'),
+       url('/fonts/raleway.ttf') format('truetype');
+}
+
+@font-family-sans-serif: 'raleway', 'Neue Helvetica', 'Helvetica';
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -20,6 +30,6 @@
 @line-height-computed:  floor((@font-size-base * @line-height-base));
 
 @headings-font-family:    inherit;
-@headings-font-weight:    500;
+@headings-font-weight:    200;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
