@@ -1,4 +1,4 @@
-div#product-info(data-id=product && product._id)
+section#product-info(data-id!=product._id)
   div.row
     div.col-md-6
       div.thumbnail
@@ -21,6 +21,7 @@ div#product-info(data-id=product && product._id)
             div.row
               div.col-md-6.col-md-offset-4
                 div.input-group
-                  input#quantity.form-control.input-sm(type='number' name='quantity', value=1)
+                  input#quantity.form-control.input-sm(type='number',
+                    name='quantity', value=1)
                   span.input-group-btn
                     button.btn.btn-sm.btn-primary Hinzufügen

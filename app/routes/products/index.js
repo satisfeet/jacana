@@ -1,7 +1,5 @@
-var template = require('../../views/products');
-
-var ProductInfo = require('./info');
-var ProductList = require('./list');
+var Show = require('./show');
+var List = require('./list');
 
 module.exports = function(app) {
 
@@ -9,7 +7,7 @@ module.exports = function(app) {
     var collection = context.products;
     var element    = context.element;
 
-    replace(element, new ProductList(element, collection));
+    replace(element, new List(element, collection));
   });
 
   app('/products/:id', function(context, next) {
@@ -18,19 +16,14 @@ module.exports = function(app) {
     var params     = context.params;
     var model      = collection.find({ _id: params.id });
 
-    replace(element, new ProductInfo(element, model));
+    replace(element, new Show(element, model));
   });
 
 };
 
 function replace(element, view) {
-  // will insert layout template if not present
-  if (!element.querySelector('#products')) {
-    element.innerHTML = template();
-  }
   // will insert view element into selector if not present
   if (!element.contains(view.element)) {
-    element = element.querySelector('#inner');
     while (element.lastElementChild) {
       element.lastElementChild.remove();
     }

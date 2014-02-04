@@ -16,13 +16,17 @@ function ProductList(element, collection) {
 }
 
 ProductList.prototype.push = function(model) {
-  this.element.appendChild(new ProductItem(model).element);
+  var element = this.element.querySelector('ul');
+
+  element.appendChild(new ProductItem(model).element);
 
   return this;
 };
 
 ProductList.prototype.select = function(model) {
-  lodash.forEach(this.element.children, function(element) {
+  var element = this.element.querySelector('ul');
+
+  lodash.forEach(element.children, function(element) {
     if (element.id === model.get('_id')) {
       element.classList.add('selected')
     } else {
@@ -34,8 +38,10 @@ ProductList.prototype.select = function(model) {
 };
 
 ProductList.prototype.empty = function() {
-  while (this.element.lastElementChild) {
-    this.element.lastElementChild.remove();
+  var element = this.element.querySelector('ul');
+
+  while (element.lastElementChild) {
+    element.lastElementChild.remove();
   }
 
   return this;
