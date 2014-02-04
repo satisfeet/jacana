@@ -1,9 +1,9 @@
-var chai   = require('chai');
-var lodash = require('lodash');
+var chai    = require('chai');
+var lodash  = require('lodash');
+var exempel = require('exempel');
 
 module.exports = function(app, mockup) {
 
-  var Collection = require('../../../../../app/models/core/collection');
   var Product    = require('../../../../../app/models/product/model');
   var Products   = require('../../../../../app/models/product/collection');
 
@@ -12,7 +12,7 @@ module.exports = function(app, mockup) {
     describe('new Products([source])', function() {
 
       it('should be an instance of Collection', function() {
-        chai.expect(new Products()).to.be.an.instanceOf(Collection);
+        chai.expect(new Products()).to.be.an.instanceOf(exempel.Collection);
       });
 
     });

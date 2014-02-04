@@ -1,12 +1,12 @@
-var util = require('util');
+var util    = require('util');
+var exempel = require('exempel');
 
-var Model    = require('../core/model');
 var Items    = require('./item/collection');
 var Pricing  = require('./pricing/model');
 var Customer = require('./customer/model');
 
 function Order(source) {
-  Model.call(this, source);
+  exempel.Model.call(this, source);
 
   setupAttributes(this);
   listenToPushEvent(this);
@@ -15,7 +15,7 @@ function Order(source) {
   listenToSubmitEvent(this);
 }
 
-util.inherits(Order, Model);
+util.inherits(Order, exempel.Model);
 
 Order.prototype.submit = function() {
   this.emit('submit', this.toJSON());

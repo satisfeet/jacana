@@ -1,11 +1,10 @@
-var util = require('util');
-
-var Model = require('../../core/model');
+var util    = require('util');
+var exempel = require('exempel');
 
 function Item(source) {
-  Model.call(this, source);
+  exempel.Model.call(this, source);
 }
 
-util.inherits(Item, Model);
+util.inherits(Item, exempel.Model);
 
 module.exports = Item;

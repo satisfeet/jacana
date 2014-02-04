@@ -1,14 +1,13 @@
-var util = require('util');
-
-var Model = require('../../core/model');
+var util    = require('util');
+var exempel = require('exempel');
 
 function Pricing(source) {
-  Model.call(this, source);
+  exempel.Model.call(this, source);
 
   setupAttributes(source, this);
 }
 
-util.inherits(Pricing, Model);
+util.inherits(Pricing, exempel.Model);
 
 Pricing.prototype.addRetail = function(value) {
   var retail = this.get('retail');

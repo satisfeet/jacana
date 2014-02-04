@@ -1,13 +1,12 @@
-var util = require('util');
-
-var Collection = require('../../core/collection');
+var util    = require('util');
+var exempel = require('exempel');
 
 function Items(source) {
   this.Model = require('./model');
 
-  Collection.call(this, source);
+  exempel.Collection.call(this, source);
 }
 
-util.inherits(Items, Collection);
+util.inherits(Items, exempel.Collection);
 
 module.exports = Items;
