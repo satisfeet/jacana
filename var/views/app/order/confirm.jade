@@ -1,14 +1,26 @@
+include ../mixins/control
+include ../mixins/progress
+
 div#order-confirm
-  div.progress
-    div.progress-bar(style='width: 75%;')
-  form
-    fieldset
-      div.row
-        div.col-md-12
-          div.form-group
-            input.form-control(type='checkbox')
-            p.text-center
-              | Hiermit erkläre ich mich mit den für diese Seite geltenden
-              a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
-              | einverstanden.
-      button.btn.btn-sm.btn-primary Abschicken
+  div.row
+    div.col-md-12
+      +progress(75)
+  div.row
+    div.col-md-6
+      h4.text-center Bestellübersicht
+      p.text-justify
+        | Bitte prüfen Sie die von Ihnen eingetragene Bestellinformationen
+        | ein letztes Mal. Nach dem Abschicken erhalten Sie dann Ihre 
+        | Bestellbestätigung.
+    div.col-md-6
+      form(role='form', autocomplete='on')
+        fieldset
+          div.row
+            div.col-md-12
+              div.form-group
+                input.form-control(type='checkbox')
+                p.text-center
+                  | Hiermit erkläre ich mich mit den für diese Seite geltenden
+                  a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
+                  | einverstanden.
+          button.btn.btn-sm.btn-primary Abschicken

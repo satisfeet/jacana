@@ -1,38 +1,49 @@
+include ../mixins/control
+include ../mixins/progress
+
 div#order-invoice
-  div.progress
-    div.probess-bar(style='width: 50%;')
-  form
-    fieldset
-      div.row
-        div.col-md-6
-          div.form-group
-            label.control-label Vorname:
-            input.form-control(type='text')
-        div.col-md-6
-          div.form-group
-            label.control-label Nachname:
-            input.form-control(type='text')
-      div.row
-        div.col-md-12
-          div.form-group
-            label.control-label Email:
-            input.form-control(type='email')
-      div.row
-        div.col-md-8
-          div.form-group
-            label.control-label Straße:
-            input.form-control(type='text')
-        div.col-md-4
-          div.form-group
-            label.control-label Nr.:
-            input.form-contorl(type='text')
-      div.row
-        div.col-md-6
-          div.form-group
-            label.control-label Postleitzahl:
-            input.form-control(type='number')
-        div.col-md-6
-          div.form-group
-            label.control-label Ort:
-            input.form-control(type='text')
-      button.btn.btn-sm.btn-primary Forfahren
+  div.row
+    div.col-md-12
+      +progress(50)
+  div.row
+    div.col-md-6
+      form(role='form' autocomplete='on')
+        fieldset
+          div.row
+            div.col-md-6
+              +control('firstName', 'Vorname')(type='text',
+                placeholder='Max', required='required')
+            div.col-md-6
+              +control('lastName', 'Nachname')(type='text',
+                placeholder='Mustermann', required='required')
+          div.row
+            div.col-md-12
+              +control('company', 'Unternehmen')(type='text',
+                placeholder='satisfeet')
+          div.row
+            div.col-md-12
+              +control('email', 'Email')(type='email',
+                placeholder='you@satisfeet.me', required='required')
+          div.row
+            div.col-md-8
+              +control('address-street', 'Straße')(type='text',
+                placeholder='Hauptstr.', required='required')
+            div.col-md-4
+              +control('address-streetNr', 'Nr.')(type='text',
+                placeholder='4A', required='required')
+          div.row
+            div.col-md-6
+              +control('address-place', 'Ort')(
+                type='text', placeholder='Berlin', required='required')
+            div.col-md-6
+              +control('address-zipCode', 'Postleitzahl')(
+                type='number', placeholder='12345', required='required',
+                min='10000' max='99999')
+        button.btn.btn-sm.btn-primary Forfahren
+    div.col-md-6
+      h4.text-center Rechnungsinformationen
+      p.text-justify
+        | Bitte tragen Sie hier Ihre Rechnungsinformationen ein. Sie bekommen
+        | eine vorläufige Rechnung per Email auf die hier bestimmten
+        | Informationen. In der Warensendung ist zustäzlich eine gedruckte
+        | Rechnung vorhanden.
