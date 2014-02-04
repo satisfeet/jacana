@@ -1,8 +1,7 @@
-var chai = require('chai');
+var chai    = require('chai');
+var exempel = require('exempel');
 
 module.exports = function(app) {
-
-  var Model = require('../../../../../../app/models/core/model');
 
   var Pricing = require('../../../../../../app/models/order/pricing/model');
 
@@ -11,7 +10,7 @@ module.exports = function(app) {
     describe('new Pricing([source])', function() {
 
       it('should be an instance of Model', function() {
-        chai.expect(new Pricing()).to.be.an.instanceOf(Model);
+        chai.expect(new Pricing()).to.be.an.instanceOf(exempel.Model);
       });
 
       it('should set attributes to zero', function() {

@@ -1,13 +1,12 @@
-var util   = require('util');
-var lodash = require('lodash');
-
-var Model = require('../core/model');
+var util    = require('util');
+var lodash  = require('lodash');
+var exempel = require('exempel');
 
 function Product(source) {
-  Model.call(this, source);
+  exempel.Model.call(this, source);
 }
 
-util.inherits(Product, Model);
+util.inherits(Product, exempel.Model);
 
 Product.prototype.order = function(options) {
   var source = lodash.merge(this.toJSON(), options);

@@ -7,14 +7,6 @@ module.exports = function(app) {
 
   describe('app/models3', function() {
 
-    describe('core', function() {
-
-      require('./core/model')(app, mockup);
-
-      require('./core/collection')(app, mockup);
-
-    });
-
     describe('order', function() {
 
       require('./order/model')(app, mockup);

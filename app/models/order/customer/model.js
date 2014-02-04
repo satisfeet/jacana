@@ -1,17 +1,16 @@
-var util   = require('util');
-var lodash = require('lodash');
-
-var Model = require('../../core/model');
+var util    = require('util');
+var lodash  = require('lodash');
+var exempel = require('exempel');
 
 function Customer(source) {
-  Model.call(this, source);
+  exempel.Model.call(this, source);
 
   if (!this.has('address')) {
     this.set('address', {});
   }
 }
 
-util.inherits(Customer, Model);
+util.inherits(Customer, exempel.Model);
 
 Customer.prototype.hasAddress = function(key) {
   return lodash.has(this.get('address'), key);

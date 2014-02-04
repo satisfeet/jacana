@@ -1,7 +1,6 @@
-var util   = require('util');
-var lodash = require('lodash');
-
-var Collection = require('../core/collection');
+var util    = require('util');
+var lodash  = require('lodash');
+var exempel = require('exempel');
 
 function Products(source) {
   this.Model = require('./model');
@@ -9,10 +8,10 @@ function Products(source) {
   listenToPushEvent(this);
   listenToRemoveEvent(this);
 
-  Collection.call(this, source);
+  exempel.Collection.call(this, source);
 }
 
-util.inherits(Products, Collection);
+util.inherits(Products, exempel.Collection);
 
 Products.prototype.find = function(query) {
   return lodash.find(this.models, {

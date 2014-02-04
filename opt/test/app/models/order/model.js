@@ -1,8 +1,7 @@
-var chai = require('chai');
+var chai    = require('chai');
+var exempel = require('exempel');
 
 module.exports = function(app, mockup) {
-
-  var Model = require('../../../../../app/models/core/model');
 
   var Order = require('../../../../../app/models/order/model');
   var Item = require('../../../../../app/models/order/item/model');
@@ -17,7 +16,7 @@ module.exports = function(app, mockup) {
       it('should be an instance of Model', function() {
         var order = new Order();
 
-        chai.expect(order).to.be.an.instanceOf(Model);
+        chai.expect(order).to.be.an.instanceOf(exempel.Model);
       });
 
       it('should set attributes to instances', function() {
