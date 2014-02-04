@@ -1,16 +1,12 @@
-div#order-goodbye
-  div.progress
-    div.progress-bar(style='width: 100%;')
-  div.row
-    div.col-md-12
-      h4.text-center Vielen Dank
-      p.text-center
-        | Ihre Bestellung ist bei uns eingegangen und wird nach Geldeingang sofort
-        | bearbeitet. Bis zum nächsten Mal können Sie noch festlegen, ob wir Ihre
-        | Kundendaten für den nächsten Einkauf in Ihrem Browser speichern sollen.
+include ../mixins/progress
+
+section#order-goodbye
   div.row
     div.col-md-6.col-md-offset-3
-      form
+      +progress(100)
+  div.row
+    div.col-md-4.col-md-offset-2
+      form(role='form')
         fieldset
           div.row
             div.col-md-12
@@ -18,3 +14,9 @@ div#order-goodbye
                 input(type='checkbox')
                 span.text-center
                   | Kundendaten in Browser speichern
+    div.col-md-4
+      h4.text-center Vielen Dank
+      p.text-justify
+        | Ihre Bestellung ist bei uns eingegangen und wird nach Geldeingang sofort
+        | bearbeitet. Bis zum nächsten Mal können Sie noch festlegen, ob wir Ihre
+        | Kundendaten für den nächsten Einkauf in Ihrem Browser speichern sollen.

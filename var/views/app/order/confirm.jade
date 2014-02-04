@@ -1,18 +1,12 @@
 include ../mixins/control
 include ../mixins/progress
 
-div#order-confirm
+section#order-confirm
   div.row
-    div.col-md-12
+    div.col-md-6.col-md-offset-3
       +progress(75)
   div.row
-    div.col-md-6
-      h4.text-center Bestellübersicht
-      p.text-justify
-        | Bitte prüfen Sie die von Ihnen eingetragene Bestellinformationen
-        | ein letztes Mal. Nach dem Abschicken erhalten Sie dann Ihre 
-        | Bestellbestätigung.
-    div.col-md-6
+    div.col-md-4.col-md-offset-2
       form(role='form', autocomplete='on')
         fieldset
           div.row
@@ -24,3 +18,9 @@ div#order-confirm
                   a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
                   | einverstanden.
           button.btn.btn-sm.btn-primary Abschicken
+    div.col-md-4
+      h4.text-center Bestellübersicht
+      p.text-justify
+        | Bitte prüfen Sie die von Ihnen eingetragene Bestellinformationen
+        | ein letztes Mal. Nach dem Abschicken erhalten Sie dann Ihre 
+        | Bestellbestätigung.

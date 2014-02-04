@@ -1,5 +1,3 @@
-var template = require('../../views/order');
-
 var List     = require('./list');
 var Shipment = require('./shipment');
 var Payment  = require('./payment');
@@ -47,13 +45,7 @@ module.exports = function(app) {
 };
 
 function replace(element, view) {
-  // will insert layout template if not present
-  if (!element.querySelector('#order')) {
-    element.innerHTML = template();
-  }
-  // will insert view element into selector if not present
   if (!element.contains(view.element)) {
-    element = element.querySelector('#inner');
     while (element.lastElementChild) {
       element.lastElementChild.remove();
     }

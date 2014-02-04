@@ -16,14 +16,18 @@ function ItemList(element, model) {
 }
 
 ItemList.prototype.push = function(item) {
-  this.element.firstElementChild.appendChild(new Item(item).element);
+  var element = this.element.querySelector('ul');
+
+  element.appendChild(new Item(item).element);
 
   return this;
 };
 
 ItemList.prototype.empty = function() {
-  while (this.element.firstElementChild.lastElementChild) {
-    this.element.firstElementChild.lastElementChild.remove();
+  var element = this.element.querySelector('ul');
+
+  while (element.lastElementChild) {
+    element.lastElementChild.remove();
   }
 
   return this;
