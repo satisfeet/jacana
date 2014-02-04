@@ -1,0 +1,23 @@
+.navbar-default {
+  background: none;
+  border: none;
+}
+
+// no idea why I have to
+// overwrite navbar-height
+// setting min-height does
+// not work...
+@navbar-height: 74px;
+
+.navbar-default .navbar-brand {
+  color: lighten(@blue, 20%);
+  font-size: 48px;
+  font-weight: 200;
+  letter-spacing: -1px;
+}
+
+// stops navbar button from sticking
+// on the right page side
+.navbar-form.navbar-right {
+  margin-right: 0 !important;
+}
