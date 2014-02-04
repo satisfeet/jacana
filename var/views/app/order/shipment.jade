@@ -1,44 +1,43 @@
+include ../mixins/control
+include ../mixins/progress
+
 div#order-shipment
   div.row
     div.col-md-12
-      div.progress
-        div.progress-bar(style='width: 25%;')
+      +progress(25)
   div.row
     div.col-md-6
       form(role='form' autocomplete='on')
         fieldset
-          div.form-group
-            div.row
-              div.col-md-6
-                label.control-label(for='firstName') Vorname:
-                input.form-control(id='firstName' type='text' placeholder='Max')
-              div.col-md-6
-                label.control-label(for='lastName') Nachname:
-                input.form-control(id='lastName' type='text' placeholder='Mustermann')
-          div.form-group
-            div.row
-              div.col-md-12
-                label.control-label(for='company') Unternehmen:
-                input.form-control(id='company' type='text' placeholder='Satisfeet')
-          div.form-group
-            div.row
-              div.col-md-8
-                label.control-label(for='address-street') Straße:
-                input.form-control(id='address-street' type='text' placeholder='Hauptstr.')
-              div.col-md-4
-                label.control-label(for='address-streetNr') Nr.:
-                input.form-control(id='address-streetNr' type='text' placeholder='4')
-          div.form-group
-            div.row
-              div.col-md-6
-                label.control-label(for='address-zipCode') Postleitzahl:
-                input.form-control(id='address-zipCode' type='number' placeholder='12150')
-              div.col-md-6
-                label.control-label(for='address-place') Ort:
-                input.form-control(id='address-place' type='text' placeholder='Berlin')
+          div.row
+            div.col-md-6
+              +control('firstName', 'Vorname')(
+                type='text', placeholder='Max', required='required')
+            div.col-md-6
+              +control('lastName', 'Nachname')(
+                type='text', placeholder='Mustermann', required='required')
+          div.row
+            div.col-md-12
+              +control('company', 'Unternehmen')(
+                type='text' placeholder='satisfeet')
+          div.row
+            div.col-md-8
+              +control('address-street', 'Straße')(
+                type='text', placeholder='Hauptstr.', required='required')
+            div.col-md-4
+              +control('address-streetNr', 'Nr.')(
+                type='text', placeholder='4A', required='required')
+          div.row
+            div.col-md-6
+              +control('address-place', 'Ort')(
+                type='text', placeholder='Berlin', required='required')
+            div.col-md-6
+              +control('address-zipCode', 'Postleitzahl')(
+                type='number', placeholder='12345', required='required',
+                min='10000' max='99999')
           button.btn.btn-sm.btn-primary Fortfahren
     div.col-md-6
-      h4.text-center Informationen
+      h4.text-center Versandinformationen
       p.text-justify
         | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich. Standard
         | Versand ist per Deutsche Post Maxibrief. Falls dies versandtechnisch
