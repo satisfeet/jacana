@@ -2,8 +2,9 @@
 
 var util       = require('util');
 var path       = require('path');
-var swigify    = require('swigify');
 var express    = require('express');
+var jadeify    = require('jadeify');
+var shortify   = require('shortify');
 var commander  = require('commander');
 var browserify = require('browserify');
 
@@ -24,7 +25,8 @@ commander
     options.standalone = 'test';
 
     var builder = browserify(options);
-    builder.transform(swigify(options.transform));
+    builder.transform(shortify(options.aliases));
+    builder.transform(jadeify);
     builder.bundle(options).pipe(process.stdout);
   });
 

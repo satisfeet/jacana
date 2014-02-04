@@ -2,7 +2,6 @@
 
 var util      = require('util');
 var path      = require('path');
-var prompt    = require('prompt');
 var express   = require('express');
 var mongoose  = require('mongoose');
 var commander = require('commander');
