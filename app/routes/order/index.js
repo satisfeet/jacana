@@ -10,6 +10,8 @@ module.exports = function(app) {
     var model   = context.order;
     var element = context.element;
 
+    context.navbar.setBrand('Bestellübersicht');
+
     replace(element, new List(element, model.get('items')));
   });
 
@@ -17,13 +19,16 @@ module.exports = function(app) {
     var model   = context.order;
     var element = context.element;
 
+    context.navbar.setBrand('Rechnungsinformationen');
+
     replace(element, new Payment(element, model.get('customer')));
   });
 
   app('/order/shipment', function(context, next) {
     var model   = context.order;
-    var params  = context.params;
     var element = context.element;
+
+    context.navbar.setBrand('Versandinformationen');
 
     replace(element, new Shipment(element, model.get('customer')));
   });
@@ -32,12 +37,16 @@ module.exports = function(app) {
     var model   = context.order;
     var element = context.element;
 
+    context.navbar.setBrand('Bestellbestätigung');
+
     replace(element, new Confirm(element, model.get('customer')));
   });
 
   app('/order/goodbye', function(context, next) {
     var model   = context.order;
     var element = context.element;
+
+    context.navbar.setBrand('Vielen Dank');
 
     replace(element, new Goodbye(element, model.get('customer')));
   });

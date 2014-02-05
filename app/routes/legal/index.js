@@ -3,10 +3,10 @@ var template = require('../../views/legal');
 module.exports = function(app) {
 
   app('/legal', function(context, next) {
-    var element = context.element;
+    context.navbar.setBrand('Rechtliches');
 
-    if (!element.querySelector('#legal')) {
-      element.innerHTML = template();
+    if (!context.element.querySelector('#legal')) {
+      context.element.innerHTML = template();
     }
   });
 

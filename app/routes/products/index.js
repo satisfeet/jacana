@@ -4,19 +4,17 @@ var List = require('./list');
 module.exports = function(app) {
 
   app('/products', function(context, next) {
-    var collection = context.products;
-    var element    = context.element;
+    context.navbar.setBrand('Produktübersicht');
 
-    replace(element, new List(element, collection));
+    replace(context.element, new List(context.element, context.products));
   });
 
   app('/products/:id', function(context, next) {
-    var collection = context.products;
-    var element    = context.element;
-    var params     = context.params;
-    var model      = collection.find({ _id: params.id });
+    context.navbar.setBrand('Produktansicht');
 
-    replace(element, new Show(element, model));
+    var model = context.products.find({ _id: context.params.id });
+
+    replace(context.element, new Show(context.element, model));
   });
 
 };

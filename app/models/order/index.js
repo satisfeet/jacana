@@ -20,6 +20,8 @@ module.exports = function(app) {
 
 function createOrder(context) {
   context.order = new Order(store.get('order'));
+
+  context.navbar.setOrderBadge(context.order.get('items').models.length);
 }
 
 function listenToOrderEvent(context) {
@@ -33,6 +35,8 @@ function listenToOrderEvent(context) {
 function listenToChangeEvent(context) {
   context.order.on('change', function() {
     store.set('order', context.order);
+
+    context.navbar.setOrderBadge(context.order.get('items').models.length);
   });
 }
 

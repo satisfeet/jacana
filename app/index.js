@@ -2,7 +2,7 @@ var page = require('page');
 
 var app = page;
 
-require('./query')(app);
+require('./layout')(app);
 
 require('./events')(app);
 
