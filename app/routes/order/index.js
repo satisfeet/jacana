@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     context.navbar.setBrand('Bestellübersicht');
 
-    replace(element, new List(element, model.get('items')));
+    replace(element, new List(element, model));
   });
 
   app('/order/payment', function(context, next) {

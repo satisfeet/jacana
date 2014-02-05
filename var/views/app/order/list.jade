@@ -2,4 +2,11 @@ section#order-list
   div.row
     div.col-md-8.col-md-offset-2
       ul.list-group
+  div.row
+    div.col-md-2.col-md-offset-2
+      p.lead
+        | Gesamt: 
+        span#total= order && order.pricing.total
+        | €
+    div.col-md-2.col-md-offset-4
       a.btn.btn-md.btn-primary.pull-right(href='/order/payment') Bestellen
