@@ -8,11 +8,12 @@ var Item = require('./item');
 function ItemList(element, model) {
   this.element = element.querySelector('#order-list');
 
-  if (!this.element) {
+  if (this.element) {
     this.element = domify(template());
   }
 
-  listenToModelEvent(this.element, model, this);
+  listenToPushEvent(this.element, model, this);
+  listenToChangeEvent(this.element, model, this);
 }
 
 ItemList.prototype.push = function(item) {
@@ -33,14 +34,27 @@ ItemList.prototype.empty = function() {
   return this;
 };
 
+ItemList.prototype.setTotal = function(value) {
+  this.element.querySelector('#total').innerText = value;
+
+  return this;
+};
+
 module.exports = ItemList;
 
-function listenToModelEvent(element, model, view) {
+function listenToPushEvent(element, model, view) {
   view.empty();
 
-  model.on('push', function(item) {
+  model.get('items').on('push', function(item) {
     view.push(item);
   }).forEach(function(item) {
     view.push(item);
   });
+}
+
+function listenToChangeEvent(element, model, view) {
+  model.get('pricing').on('change:total', function(value) {
+    view.setTotal(value);
+  });
+  view.setTotal(model.get('pricing').get('total'));
 }
