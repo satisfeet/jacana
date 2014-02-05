@@ -1,9 +1,13 @@
 li.list-group-item
   div.list-group-item-header
     button.close &times;
-    h5.text-left= item.name
+    h4.text-left
+      a.link-unstyled(href='/products/' + item._id)= item.name
   div.list-group-item-text
-    p.text-left
+    p.text-left= item.description.preview
+    ul.list-inline
+      each attribute, name in item.attributes
+        li: small.text-muted= name + ': ' + attribute
     p.text-right
       em= item.quantity + 'x '
       strong= item.pricing
