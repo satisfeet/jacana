@@ -1,8 +1,9 @@
 li.list-group-item
   div.list-group-item-header
     button.close &times;
-    h5.text-left #{item && item.name}
+    h5.text-left= item.name
   div.list-group-item-text
     p.text-left
     p.text-right
-      #{item && item.quantity} x #{item && item.pricing}
+      em= item.quantity + 'x '
+      strong= item.pricing

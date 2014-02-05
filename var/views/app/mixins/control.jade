@@ -2,5 +2,5 @@ mixin control(name, label)
   div.form-group
     label.control-label(for=name)= label
     input.form-control(id=name, name=name, type!=attributes.type,
-      min!=attributes.min, max!=attributes.max required!=attributes.required, 
+      min!=attributes.min, max!=attributes.max required!=attributes.required,
       placeholder!=attributes.placeholder)
