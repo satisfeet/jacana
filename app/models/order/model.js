@@ -9,8 +9,6 @@ function Order(source) {
   exempel.Model.call(this, source);
 
   setupAttributes(this);
-  listenToPushEvent(this);
-  listenToRemoveEvent(this);
   listenToChangeEvent(this);
   listenToSubmitEvent(this);
 }
@@ -39,24 +37,19 @@ function setupAttributes(model) {
   model.set('customer', new Customer(model.get('customer')));
 }
 
-function listenToPushEvent(model) {
-  model.get('items').on('push', function(item) {
-    var retail = item.get('pricing') * item.get('quantity');
-
-    model.get('pricing').addRetail(retail);
-  });
-}
-
-function listenToRemoveEvent(model) {
-  model.get('items').on('remove', function(item) {
-    var retail = item.get('pricing') * item.get('quantity');
-
-    model.get('pricing').subRetail(retail);
-  });
-}
-
 function listenToChangeEvent(model) {
-  model.get('items').on('change', emit);
+  model.get('items').on('change', function() {
+    model.get('pricing').set('total', 0);
+    model.get('pricing').set('retail', 0);
+
+    model.get('items').forEach(function(item) {
+      var retail = item.get('pricing') * item.get('quantity');
+
+      model.get('pricing').addRetail(retail);
+    });
+
+    model.emit('change');
+  });
   model.get('pricing').on('change', emit);
   model.get('customer').on('change', emit);
 

@@ -1,13 +1,20 @@
 li.list-group-item
   div.list-group-item-header
     button.close &times;
-    h4.text-left
-      a.link-unstyled(href='/products/' + item._id)= item.name
+    a.link-unstyled(href='/products/' + item._id)
+      h4.text-left= item.name
+      h5.text-left= item.description.preview
   div.list-group-item-text
-    p.text-left= item.description.preview
-    ul.list-inline
-      each attribute, name in item.attributes
-        li: small.text-muted= name + ': ' + attribute
-    p.text-right
-      em= item.quantity + 'x '
-      strong= item.pricing
+    div.row
+      div.col-md-8
+        ul.list-inline
+          each attribute, name in item.attributes
+            li: small.text-muted= name + ': ' + attribute
+      div.col-md-4
+        form.form-horizontal
+          div.form-group
+            div.col-md-4.col-md-offset-3
+              input.input-sm.form-control(id='quantity', name='quantity', 
+                type='number', value=item.quantity, min='1')
+            div.col-md-5
+              label.control-label.pull-right= ' x ' + item.pricing + '€'
