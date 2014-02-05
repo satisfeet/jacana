@@ -13,19 +13,19 @@ module.exports = function(app) {
     replace(element, new List(element, model.get('items')));
   });
 
+  app('/order/payment', function(context, next) {
+    var model   = context.order;
+    var element = context.element;
+
+    replace(element, new Payment(element, model.get('customer')));
+  });
+
   app('/order/shipment', function(context, next) {
     var model   = context.order;
     var params  = context.params;
     var element = context.element;
 
     replace(element, new Shipment(element, model.get('customer')));
-  });
-
-  app('/order/payment', function(context, next) {
-    var model   = context.order;
-    var element = context.element;
-
-    replace(element, new Payment(element, model.get('customer')));
   });
 
   app('/order/confirm', function(context, next) {

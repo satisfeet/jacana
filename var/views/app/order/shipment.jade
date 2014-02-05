@@ -4,7 +4,7 @@ include ../mixins/progress
 section#order-shipment
   div.row
     div.col-md-6.col-md-offset-3
-      +progress(25)
+      +progress(50)
   div.row
     div.col-md-4.col-md-offset-2
       form(role='form' autocomplete='on')
@@ -17,10 +17,6 @@ section#order-shipment
               +control('lastName', 'Nachname')(
                 type='text', placeholder='Mustermann', required='required')
           div.row
-            div.col-md-12
-              +control('company', 'Unternehmen')(
-                type='text' placeholder='satisfeet')
-          div.row
             div.col-md-8
               +control('address-street', 'Straße')(
                 type='text', placeholder='Hauptstr.', required='required')
@@ -29,12 +25,12 @@ section#order-shipment
                 type='text', placeholder='4A', required='required')
           div.row
             div.col-md-6
-              +control('address-place', 'Ort')(
-                type='text', placeholder='Berlin', required='required')
-            div.col-md-6
               +control('address-zipCode', 'Postleitzahl')(
                 type='number', placeholder='12345', required='required',
                 min='10000' max='99999')
+            div.col-md-6
+              +control('address-place', 'Ort')(
+                type='text', placeholder='Berlin', required='required')
           button.btn.btn-sm.btn-primary Fortfahren
     div.col-md-4
       h4.text-center Versandinformationen
