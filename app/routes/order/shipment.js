@@ -19,6 +19,6 @@ function listenToSubmitEvent(element, model, view) {
   element.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    page('/order/payment');
+    page('/order/confirm');
   });
 }
