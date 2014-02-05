@@ -3,10 +3,10 @@ var template = require('../../views/main');
 module.exports = function(app) {
 
   app('/', function(context, next) {
-    var element = context.element;
+    context.navbar.setBrand('Startseite');
 
-    if (!element.querySelector('#main')) {
-      element.innerHTML = template();
+    if (!context.element.querySelector('#main')) {
+      context.element.innerHTML = template();
     }
   });
 

@@ -3,10 +3,10 @@ var template = require('../../views/about');
 module.exports = function(app) {
 
   app('/about', function(context, next) {
-    var element = context.element;
+    context.navbar.setBrand('Über Uns');
 
-    if (!element.querySelector('#about')) {
-      element.innerHTML = template();
+    if (!context.element.querySelector('#about')) {
+      context.element.innerHTML = template();
     }
   });
 
