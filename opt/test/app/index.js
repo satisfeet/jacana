@@ -4,7 +4,7 @@ var app = page;
 
 app.offline = true;
 
-require('../../../app/query')(app);
+require('../../../app/layout')(app);
 
 require('../../../app/events')(app);
 
