@@ -2,9 +2,9 @@ li.col-md-3(data-id=product._id)
   h4.text-center= product.name
   a.thumbnail(href='/products/' + product._id)
     img.img-rounded.img-responsive(src=product.images.main.path)
-  p.text-left= product.description.preview
   div.row
-    div.col-md-2
-      button.btn.btn-sm.btn-primary Hinzufügen
-    div.col-md-4.col-md-offset-6
-      p.text-right= product.pricing.retail + '€'
+    div.col-md-10.col-md-offset-1
+      p.text-left= product.description.preview
+  div.row
+    div.col-md-11.col-md-offset-1
+      p.lead.text-right= product.pricing.retail + '€'
