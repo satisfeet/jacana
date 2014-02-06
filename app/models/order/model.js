@@ -8,9 +8,12 @@ var Customer = require('./customer/model');
 function Order(source) {
   exempel.Model.call(this, source);
 
-  setupAttributes(this);
+  this.set('items', new Items(this.get('items')));
+  this.set('pricing', new Pricing(this.get('pricing')));
+  this.set('payment', new Customer(this.get('payment')));
+  this.set('shipment', new Customer(this.get('shipment')));
+
   listenToChangeEvent(this);
-  listenToSubmitEvent(this);
 }
 
 util.inherits(Order, exempel.Model);
@@ -25,17 +28,12 @@ Order.prototype.toJSON = function() {
   return {
     items: this.get('items').toJSON(),
     pricing: this.get('pricing').toJSON(),
-    customer: this.get('customer').toJSON()
+    payment: this.get('payment').toJSON(),
+    shipment: this.get('shipment').toJSON()
   };
 };
 
 module.exports = Order;
-
-function setupAttributes(model) {
-  model.set('items', new Items(model.get('items')));
-  model.set('pricing', new Pricing(model.get('pricing')));
-  model.set('customer', new Customer(model.get('customer')));
-}
 
 function listenToChangeEvent(model) {
   model.get('items').on('change', function() {
@@ -43,7 +41,7 @@ function listenToChangeEvent(model) {
     model.get('pricing').set('retail', 0);
 
     model.get('items').forEach(function(item) {
-      var retail = item.get('pricing') * item.get('quantity');
+      var retail = item.get('pricing.total');
 
       model.get('pricing').addRetail(retail);
     });
@@ -51,15 +49,10 @@ function listenToChangeEvent(model) {
     model.emit('change');
   });
   model.get('pricing').on('change', emit);
-  model.get('customer').on('change', emit);
+  model.get('payment').on('change', emit);
+  model.get('shipment').on('change', emit);
 
   function emit() {
     model.emit('change');
   }
-}
-
-function listenToSubmitEvent(model) {
-  model.get('customer').on('submit', function() {
-    model.submit();
-  });
 }

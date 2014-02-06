@@ -4,11 +4,9 @@ var domify = require('domify');
 var template = require('../../views/order/confirm');
 
 function Confirm(element, model) {
-  this.element = element.querySelector('#order-confirm');
-
-  if (!this.element) {
-    this.element = domify(template());
-  }
+  this.element = domify(template({
+    order: model.toJSON()
+  }));
 
   listenToSubmitEvent(this.element, model, this);
 }

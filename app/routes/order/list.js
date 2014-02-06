@@ -8,7 +8,7 @@ var Item = require('./item');
 function ItemList(element, model) {
   this.element = element.querySelector('#order-list');
 
-  if (this.element) {
+  if (!this.element) {
     this.element = domify(template());
   }
 

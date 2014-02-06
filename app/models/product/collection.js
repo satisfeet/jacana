@@ -23,8 +23,8 @@ module.exports = Products;
 
 function listenToPushEvent(collection) {
   collection.on('push', function(model) {
-    model.on('order', function(source) {
-      collection.emit('order', source, model);
+    model.on('order', function(options) {
+      collection.emit('order', model, options);
     });
   });
 }

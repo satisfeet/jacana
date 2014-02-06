@@ -11,26 +11,32 @@ section#order-shipment
         fieldset
           div.row
             div.col-md-6
-              +control('firstName', 'Vorname')(
-                type='text', placeholder='Max', required='required')
+              +control('name-first', 'Vorname')(
+                type='text', value=order && order.shipment.name.first,
+                placeholder='Max', required='required')
             div.col-md-6
-              +control('lastName', 'Nachname')(
-                type='text', placeholder='Mustermann', required='required')
+              +control('name-last', 'Nachname')(
+                type='text', value=order && order.shipment.name.last,
+                placeholder='Mustermann', required='required')
           div.row
             div.col-md-8
               +control('address-street', 'Straße')(
-                type='text', placeholder='Hauptstr.', required='required')
+                type='text', value=order && order.shipment.address.street,
+                placeholder='Hauptstr.', required='required')
             div.col-md-4
               +control('address-streetNr', 'Nr.')(
-                type='text', placeholder='4A', required='required')
+                type='text', value=order && order.shipment.address.streetNr,
+                placeholder='4A', required='required')
           div.row
             div.col-md-6
               +control('address-zipCode', 'Postleitzahl')(
-                type='number', placeholder='12345', required='required',
+                type='number', value=order && order.shipment.address.zipCode,
+                placeholder='12345', required='required',
                 min='10000' max='99999')
             div.col-md-6
               +control('address-place', 'Ort')(
-                type='text', placeholder='Berlin', required='required')
+                type='text', value=order && order.shipment.address.place,
+                placeholder='Berlin', required='required')
           button.btn.btn-sm.btn-primary Fortfahren
     div.col-md-4
       h4.text-center Versandinformationen

@@ -22,7 +22,9 @@ function listenToClickEvent(element, model, view) {
 
 function listenToChangeEvent(element, model, view) {
   element.querySelector('form').addEventListener('change', function(e) {
-    model.set(e.target.name, e.target.value);
+    var key = e.target.name.split('-').join('.');
+
+    model.set(key, e.target.value);
   });
 }
 
