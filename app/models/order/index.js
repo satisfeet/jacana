@@ -1,4 +1,5 @@
 var store      = require('store');
+var lodash     = require('lodash');
 var superagent = require('superagent');
 
 var Order     = require('./model');
@@ -19,16 +20,20 @@ module.exports = function(app) {
 };
 
 function createOrder(context) {
-  context.order = new Order(store.get('order'));
+  window.order = context.order = new Order(store.get('order'));
 
   context.navbar.setOrderBadge(context.order.get('items').length);
 }
 
 function listenToOrderEvent(context) {
-  context.products.on('order', function(source) {
-    var items = context.order.get('items');
+  context.products.on('order', function(product, options) {
+    var item = new OrderItem(product.toJSON());
 
-    items.push(new OrderItem(source));
+    lodash.forIn(options, function(value, key) {
+      item.set(key, value);
+    });
+
+    context.order.get('items').push(item);
   });
 }
 

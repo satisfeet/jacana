@@ -11,18 +11,18 @@ section#order-invoice
         fieldset
           div.row
             div.col-md-12
-              +control('company', 'Unternehmen')(type='text',
+              +control('name-company', 'Unternehmen')(type='text',
                 placeholder='satisfeet (optional)')
           div.row
             div.col-md-6
-              +control('firstName', 'Vorname')(type='text',
+              +control('name-first', 'Vorname')(type='text',
                 placeholder='Max', required='required')
             div.col-md-6
-              +control('lastName', 'Nachname')(type='text',
+              +control('name-last', 'Nachname')(type='text',
                 placeholder='Mustermann', required='required')
           div.row
             div.col-md-12
-              +control('email', 'Email')(type='email',
+              +control('name-email', 'Email')(type='email',
                 placeholder='you@satisfeet.me', required='required')
           div.row
             div.col-md-8

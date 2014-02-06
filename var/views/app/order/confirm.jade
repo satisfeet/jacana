@@ -7,21 +7,63 @@ section#order-confirm
       +progress(75)
   div.row
     div.col-md-4.col-md-offset-2
-      form(role='form', autocomplete='on')
-        fieldset
-          div.row
-            div.col-md-12
-              div.form-group
-                input.form-control(type='checkbox')
-                p.text-center
-                  | Hiermit erkläre ich mich mit den für diese Seite geltenden
-                  a(href='/legal/terms')
-                    |  Allgemeinen Geschäftsbedingungen
-                  | einverstanden.
-          button.btn.btn-sm.btn-primary Abschicken
+      h5.text-center Rechnung an
+      address.text-center
+        span= order && order.payment.name.first
+        | 
+        span= order && order.payment.name.last
+        if order && order.payment.name.company
+          span= ' (' + order.payment.name.company + ')'
+          br
+        span= order && order.payment.address.street
+        | 
+        span= order && order.payment.address.streetNr
+        br
+        span= order && order.payment.address.zipCode
+        | 
+        span= order && order.payment.address.place
     div.col-md-4
-      h4.text-center Bestellübersicht
-      p.text-justify
-        | Bitte prüfen Sie die von Ihnen eingetragene Bestellinformationen
-        | ein letztes Mal. Nach dem Abschicken erhalten Sie dann Ihre 
-        | Bestellbestätigung.
+      h5.text-center Versand an
+      address.text-center
+        span= order && order.shipment.name.first
+        | 
+        span= order && order.shipment.name.last
+        if order && order.shipment.name.company
+          span= ' (' + order.shipment.name.company + ')'
+        br
+        span= order && order.shipment.address.street
+        | 
+        span= order && order.shipment.address.streetNr
+        br
+        span= order && order.shipment.address.zipCode
+        | 
+        span= order && order.shipment.address.place
+    div.row
+      div.col-md-6.col-md-offset-3
+        h5.text-center Bestellung
+        table.table
+          each item in order && order.items || []
+            tr
+              td= item.name
+              td
+                each key, value in item.attributes
+                  #{key}: #{value}
+              td= item.pricing.quantity + ' x ' + item.pricing.retail
+              td= item.pricing.total
+        ul.list-inline.pull-right
+          li= 'Produke: ' + (order && order.pricing.retail)
+          li= 'Versand: ' + (order && order.pricing.shipment)
+          li= 'Gesamt: ' + (order && order.pricing.total)
+    div.row
+      div.col-md-6.col-md-offset-3
+        form.form-horizontal(role='form', autocomplete='on')
+          fieldset
+            div.form-group
+              div.checkbox
+                label
+                  input(type='checkbox', required='required')
+                  | Hiermit erkläre ich mich mit den für diese Seite
+                  | geltenden 
+                  a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
+                  |  einverstanden.
+            button.btn.btn-sm.btn-primary.pull-right Abschicken

@@ -19,23 +19,16 @@ function Product(element, model) {
 module.exports = Product;
 
 function listenToSubmitEvent(element, model, view) {
-  var form = element.querySelector('form')
-
-  form.addEventListener('submit', function(e) {
+  element.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    var attributes = {};
-    lodash.forEach(form.elements, function(element) {
-      if (element instanceof HTMLInputElement && element.checked) {
-        attributes[element.name] = element.value;
+    var order = {};
+    lodash.forEach(e.target.elements, function(element) {
+      if (element instanceof HTMLInputElement) {
+        order[element.name.split('-').join('.')] = element.value;
       }
     });
 
-    var quantity = element.querySelector('#quantity');
-
-    model.order({
-      attributes: attributes,
-      quantity: quantity.value
-    });
+    model.order(order);
   });
 }

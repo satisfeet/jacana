@@ -24,7 +24,7 @@
     "store": "1.3.14",
     "lodash": "2.4.1",
     "domify": "1.2.1",
-    "exempel": "0.0.1",
+    "exempel": "0.0.2",
     "jadeify": "2.1.1",
     "express": "3.4.8",
     "mongoose": "3.8.6",

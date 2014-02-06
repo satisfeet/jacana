@@ -21,7 +21,7 @@ module.exports = function(app) {
 
     context.navbar.setBrand('Rechnungsinformationen');
 
-    replace(element, new Payment(element, model.get('customer')));
+    replace(element, new Payment(element, model));
   });
 
   app('/order/shipment', function(context, next) {
@@ -30,7 +30,7 @@ module.exports = function(app) {
 
     context.navbar.setBrand('Versandinformationen');
 
-    replace(element, new Shipment(element, model.get('customer')));
+    replace(element, new Shipment(element, model));
   });
 
   app('/order/confirm', function(context, next) {
@@ -39,7 +39,7 @@ module.exports = function(app) {
 
     context.navbar.setBrand('Bestellbestätigung');
 
-    replace(element, new Confirm(element, model.get('customer')));
+    replace(element, new Confirm(element, model));
   });
 
   app('/order/goodbye', function(context, next) {
@@ -48,7 +48,7 @@ module.exports = function(app) {
 
     context.navbar.setBrand('Vielen Dank');
 
-    replace(element, new Goodbye(element, model.get('customer')));
+    replace(element, new Goodbye(element, model));
   });
 
 };
