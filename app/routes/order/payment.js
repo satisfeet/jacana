@@ -8,7 +8,17 @@ function Payment(element, model) {
   this.element = element.querySelector('#order-payment');
 
   if (!this.element) {
-    this.element = domify(template());
+    this.element = domify(template({
+      order: model.toJSON()
+    }));
+  } else {
+    var elements = this.element.querySelectorAll('input');
+
+    lodash.forEach(elements, function(element) {
+      var key = element.name.split('-').join('.');
+
+      element.value = model.get('payment').get(key);
+    });
   }
 
   listenToSubmitEvent(this.element, model, this);

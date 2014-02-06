@@ -6,64 +6,84 @@ section#order-confirm
     div.col-md-6.col-md-offset-3
       +progress(75)
   div.row
-    div.col-md-4.col-md-offset-2
-      h5.text-center Rechnung an
-      address.text-center
-        span= order && order.payment.name.first
-        | 
-        span= order && order.payment.name.last
-        if order && order.payment.name.company
-          span= ' (' + order.payment.name.company + ')'
-          br
-        span= order && order.payment.address.street
-        | 
-        span= order && order.payment.address.streetNr
-        br
-        span= order && order.payment.address.zipCode
-        | 
-        span= order && order.payment.address.place
-    div.col-md-4
-      h5.text-center Versand an
-      address.text-center
-        span= order && order.shipment.name.first
-        | 
-        span= order && order.shipment.name.last
-        if order && order.shipment.name.company
-          span= ' (' + order.shipment.name.company + ')'
-        br
-        span= order && order.shipment.address.street
-        | 
-        span= order && order.shipment.address.streetNr
-        br
-        span= order && order.shipment.address.zipCode
-        | 
-        span= order && order.shipment.address.place
-    div.row
-      div.col-md-6.col-md-offset-3
-        h5.text-center Bestellung
-        table.table
+    div.col-md-8.col-md-offset-2
+      h4.text-center Bestellbestätigung
+      p.text-justify
+        | Hier erhalten Sie Einsicht auf die bisher von Ihnen eingegebenen
+        | Informationen. Falls Sie Änderungen vornehmen möchten benutzen Sie
+        | die "Zurück" Taste Ihres Browsers, wenn Ihre Bestellung stimmt und
+        | Sie die Allgemeinen Geschäftsbedingungen akzeptiert haben. Setzen
+        | Sie ein Häckchen in den unten gezeigten Kasten und klicken Sie auf
+        | "Abschicken".
+  div.row
+    div.col-md-10.col-md-offset-1
+      table.table.table-striped
+        thead
+          tr
+            th Verwendungszweck
+            th Name (Unternehmen)
+            th Addresse
+            th Ort
+        tbody
+          tr
+            td Rechnungsaddresse
+            td
+              | #{order && order.payment.name.first} 
+              | #{order && order.payment.name.last}
+              if (order && order.payment.name.company)
+                #{' (' + order.payment.name.company + ')'}
+            td
+              | #{order && order.payment.address.street} 
+              | #{order && order.payment.address.streetNr}
+            td
+              | #{order && order.payment.address.zipCode} 
+              | #{order && order.payment.address.place}
+          tr
+            td Versandaddresse
+            td
+              | #{order && order.shipment.name.first} 
+              | #{order && order.shipment.name.last}
+              if (order && order.shipment.name.company)
+                #{' (' + order.shipment.name.company + ')'}
+            td
+              | #{order && order.shipment.address.street} 
+              | #{order && order.shipment.address.streetNr}
+            td
+              | #{order && order.shipment.address.zipCode} 
+              | #{order && order.shipment.address.place}
+  div.row
+    div.col-md-10.col-md-offset-1
+      table.table.table-striped
+        thead
+          tr
+            th Name
+            th Version
+            th Anzahl
+            th Gesamt
+        tbody
           each item in order && order.items || []
             tr
               td= item.name
               td
                 each key, value in item.attributes
                   #{key}: #{value}
-              td= item.pricing.quantity + ' x ' + item.pricing.retail
-              td= item.pricing.total
-        ul.list-inline.pull-right
-          li= 'Produke: ' + (order && order.pricing.retail)
-          li= 'Versand: ' + (order && order.pricing.shipment)
-          li= 'Gesamt: ' + (order && order.pricing.total)
-    div.row
-      div.col-md-6.col-md-offset-3
-        form.form-horizontal(role='form', autocomplete='on')
-          fieldset
-            div.form-group
-              div.checkbox
-                label
-                  input(type='checkbox', required='required')
-                  | Hiermit erkläre ich mich mit den für diese Seite
-                  | geltenden 
-                  a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
-                  |  einverstanden.
-            button.btn.btn-sm.btn-primary.pull-right Abschicken
+              td= item.pricing.quantity + ' x ' + item.pricing.retail + '€'
+              td= item.pricing.total + '€'
+      small.text-muted Alle Preise inkl. MwSt.
+      ul.list-inline.pull-right
+        li= 'Produke: ' + (order && order.pricing.retail) + '€'
+        li= 'Versand: ' + (order && order.pricing.shipment) + '€'
+        li= 'Gesamt: ' + (order && order.pricing.total) + '€'
+  div.row
+    div.col-md-8.col-md-offset-2
+      form.form-horizontal(role='form', autocomplete='on')
+        fieldset
+          div.form-group
+            div.checkbox
+              label
+                input(type='checkbox', required='required')
+                | Hiermit erkläre ich mich mit den geltenden 
+                a(href='/legal/terms') Allgemeinen Geschäftsbedingungen
+                |  einverstanden.
+          div.col-md-6.col-md-offset-3
+            button.btn.btn-sm.btn-primary.btn-block Abschicken
