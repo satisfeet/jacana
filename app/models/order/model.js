@@ -43,20 +43,29 @@ module.exports = Order;
 
 function listenToChangeEvent(model) {
   model.get('items').on('change', function() {
-    model.get('pricing').set('total', 0);
-    model.get('pricing').set('retail', 0);
+    var pricing = model.get('pricing');
+
+    pricing.set('total', 0);
+    pricing.set('retail', 0);
+    pricing.set('quantity', 0);
 
     model.get('items').forEach(function(item) {
-      var retail = item.get('pricing.total');
+      var retail = item.get('pricing.retail');
+      var quantity = item.get('pricing.quantity');
 
-      model.get('pricing').addRetail(retail);
+      pricing.addRetail(retail * quantity);
+      pricing.addQuantity(quantity);
     });
 
     model.emit('change');
   });
   model.get('pricing').on('change', emit);
   model.get('payment').on('change', emit);
-  model.get('shipment').on('change', emit);
+  model.get('shipment').on('change', function(key, value) {
+    if (key === 'shipping') model.get('pricing').set('shipment', parseFloat(value));
+
+    emit();
+  });
 
   function emit() {
     model.emit('change');
