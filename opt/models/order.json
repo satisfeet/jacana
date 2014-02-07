@@ -33,7 +33,7 @@
     },
     "items": [
       {
-        "name": "Grauer Burgunder",
+        "name": "Grauen Socken",
           "images": {
             "main": {
               "path": "/images/products/gray.jpeg"
@@ -44,7 +44,7 @@
           },
           "description": {
             "preview": "Günstige Freizeitsocke für ein schönes Wochenende.",
-            "extended": "Die Grauen Burgunder Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
+            "extended": "Die grauen Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
           },
           "elements": {
             "Baumwolle": "80%",

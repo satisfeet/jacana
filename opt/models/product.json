@@ -1,6 +1,6 @@
 [
   {
-    "name": "Grauer Burgunder",
+    "name": "Die Grauen Socken",
       "images": {
         "main": {
           "path": "/images/products/gray.jpeg"
@@ -11,7 +11,7 @@
       },
       "description": {
         "preview": "Günstige Freizeitsocke für ein schönes Wochenende.",
-        "extended": "Die Grauen Burgunder Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
+        "extended": "Die Grauen Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
       },
       "elements": {
         "Baumwolle": "80%",
@@ -23,7 +23,7 @@
       }
   },
   {
-    "name": "Mariner Monarch",
+    "name": "Die Blauen Socken",
       "images": {
         "main": {
           "path": "/images/products/blue.jpeg"
@@ -34,7 +34,7 @@
       },
       "description": {
         "preview": "Edeles Blau für einen edlen Abend.",
-        "extended": "Stillvoll aber nicht überhoben. Perfekt für einen feinen Abend der nicht zu viel Wert auf Förmlichkeiten legt."
+        "extended": "Stillvoll aber nicht überhoben. Perfekt für einen feinen Abend, der nicht zu viel Wert auf Förmlichkeiten legt."
       },
       "elements": {
         "Baumwolle": "80%",
@@ -46,7 +46,7 @@
       }
   },
   {
-    "name": "Schwarzer Tausendsassa",
+    "name": "Die Schwarzen Socken",
       "images": {
         "main": {
           "path": "/images/products/black.jpeg"
@@ -69,7 +69,7 @@
       }
   },
   {
-    "name": "Ohne Gleichnis",
+    "name": "Die Survival Socken",
     "images": {
       "main": {
         "path": "/images/products/olive.jpeg"
