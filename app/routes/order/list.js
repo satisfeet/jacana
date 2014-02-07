@@ -53,8 +53,8 @@ function listenToPushEvent(element, model, view) {
 }
 
 function listenToChangeEvent(element, model, view) {
-  model.get('pricing').on('change:total', function(value) {
+  model.get('pricing').on('change:retail', function(value) {
     view.setTotal(value);
   });
-  view.setTotal(model.get('pricing').get('total'));
+  view.setTotal(model.get('pricing').get('retail'));
 }

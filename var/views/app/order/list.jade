@@ -3,10 +3,12 @@ section#order-list
     div.col-md-8.col-md-offset-2
       ul.list-group
   div.row
-    div.col-md-2.col-md-offset-2
-      p.lead
+    div.col-md-4.col-md-offset-2
+      p.lead.text-left
         | Gesamt: 
-        span#total= order && order.pricing.total
+        span#total= order && order.pricing.retail
         | €
+      p.text-muted.text-left
+        | Inkl. MwSt., zzgl. Versandkosten
     div.col-md-2.col-md-offset-4
       a.btn.btn-md.btn-primary.pull-right(href='/order/payment') Bestellen
