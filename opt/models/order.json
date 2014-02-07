@@ -29,7 +29,8 @@
     "pricing": {
       "shipment": 2.11,
       "retail": 8.97,
-      "total": 11.08
+      "total": 11.08,
+      "quantity": 3
     },
     "items": [
       {

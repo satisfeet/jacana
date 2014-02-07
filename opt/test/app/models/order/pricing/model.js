@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     });
 
-    describe('#addRetail(value)', function() {
+    xdescribe('#addRetail(value)', function() {
 
       it('should return pricing', function() {
         var pricing = new Pricing();
@@ -41,23 +41,9 @@ module.exports = function(app) {
 
     });
 
-    describe('#subRetail(value)', function() {
 
-      it('should return pricing', function() {
-        var pricing = new Pricing();
-
-        chai.expect(pricing.subRetail(2.99)).to.equal(pricing);
-      });
-
-      it('should decrease attributes by value', function() {
-        var pricing = new Pricing({
-          retail: 2.99, total: 3.99
-        }).subRetail(1.00);
-
-        chai.expect(pricing.get('retail')).to.equal(1.99);
-        chai.expect(pricing.get('total')).to.equal(2.99);
-      });
-
+    describe('#addQuantity', function() {
+      // TODO: stll missing
     });
 
   });

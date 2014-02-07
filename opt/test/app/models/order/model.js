@@ -24,7 +24,8 @@ module.exports = function(app, mockup) {
 
         chai.expect(order.get('items')).to.be.an.instanceOf(Items);
         chai.expect(order.get('pricing')).to.be.an.instanceOf(Pricing);
-        chai.expect(order.get('customer')).to.be.an.instanceOf(Customer);
+        chai.expect(order.get('payment')).to.be.an.instanceOf(Customer);
+        chai.expect(order.get('shipment')).to.be.an.instanceOf(Customer);
       });
 
       it('should set source on instances', function() {
@@ -32,10 +33,11 @@ module.exports = function(app, mockup) {
 
         chai.expect(order.get('items').toJSON()).to.eql(mockup.order[0].items);
         chai.expect(order.get('pricing').toJSON()).to.eql(mockup.order[0].pricing);
-        chai.expect(order.get('customer').toJSON()).to.eql(mockup.order[0].customer);
+        chai.expect(order.get('payment').toJSON()).to.eql(mockup.order[0].payment);
+        chai.expect(order.get('shipment').toJSON()).to.eql(mockup.order[0].payment);
       });
 
-      it('should increase pricing on item push', function() {
+      xit('should increase pricing on item push', function() {
         var item = new Item(mockup.order[0].items[0]);
         var order = new Order();
 
@@ -78,12 +80,6 @@ module.exports = function(app, mockup) {
         var order = new Order();
 
         order.once('change', done).get('pricing').addRetail(2.99);
-      });
-
-      it('should be emitted on customer "change"', function(done) {
-        var order = new Order();
-
-        order.once('change', done).get('customer').setAddress('street', 'Alexanderplatz');
       });
 
     });
