@@ -8,22 +8,20 @@ var OrderItem = require('./item/model');
 module.exports = function(app) {
 
   app('*', function(context, next) {
-    createOrder(context);
+    context.order = new Order(store.get('order'));
 
     listenToOrderEvent(context);
     listenToChangeEvent(context);
     listenToSubmitEvent(context);
+    listenToRemoveEvent(context);
+
+    var itemsLength = context.order.get('items').length;
+    context.navbar.setOrderBadge(itemsLength);
 
     next();
   });
 
 };
-
-function createOrder(context) {
-  window.order = context.order = new Order(store.get('order'));
-
-  context.navbar.setOrderBadge(context.order.get('items').length);
-}
 
 function listenToOrderEvent(context) {
   context.products.on('order', function(product, options) {
@@ -51,5 +49,13 @@ function listenToSubmitEvent(context) {
 
     request.send(context.order);
     request.end();
+  });
+}
+
+function listenToRemoveEvent(context) {
+  context.order.once('remove', function() {
+    context.order.removeAllListeners();
+
+    store.remove('order');
   });
 }
