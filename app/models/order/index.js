@@ -8,7 +8,7 @@ var OrderItem = require('./item/model');
 module.exports = function(app) {
 
   app('*', function(context, next) {
-    context.order = new Order(store.get('order'));
+    window.order = context.order = new Order(store.get('order'));
 
     listenToOrderEvent(context);
     listenToChangeEvent(context);

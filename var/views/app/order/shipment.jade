@@ -37,6 +37,21 @@ section#order-shipment
               +control('address-place', 'Ort')(
                 type='text', value=order && order.shipment.address.place,
                 placeholder='Berlin', required='required')
+          div.row
+            div.col-md-12.div.col-md-offset-0
+              label.control-label Versandart
+                div.form-group
+                  if (order && order.pricing.quantity < 3)
+                    div.radio
+                      label
+                        input(id='shipping', name='shipping', type='radio',
+                          value='2.40', required='required')
+                        | Deutsche Post Maxibrief (Preis: 2.40€)
+                  div.radio
+                    label
+                      input(id='shipping', name='shipping', type='radio',
+                        value='4.30', required='required')
+                      | DHL Packet, versichert (Preis: 4.30€)
           button.btn.btn-sm.btn-primary Fortfahren
     div.col-md-4
       h4.text-center Versandinformationen
@@ -44,5 +59,6 @@ section#order-shipment
         | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich.
         | Standard Versand ist per Deutsche Post Maxibrief. Falls dies
         | versandtechnisch auf Grund der Größe Ihrer Bestellung nicht möglich
-        | ist, bekommen Sie die Ware per DHL Päckchen beziehungsweise der
-        | nächstmöglichen Größe zugeschickt.
+        | ist, bekommen Sie die Ware per DHL Packet zugeschickt. Falls Sie
+        | doch lieber ein versichertes DHL Packet vorziehen, können Sie dies
+        | jederzeit selbst auswählen.

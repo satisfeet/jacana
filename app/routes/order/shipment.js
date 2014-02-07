@@ -5,21 +5,9 @@ var lodash = require('lodash');
 var template = require('../../views/order/shipment');
 
 function Shipment(element, model) {
-  this.element = element.querySelector('#order-shipment');
-
-  if (!this.element) {
-    this.element = domify(template({
-      order: model.toJSON()
-    }));
-  } else {
-    var elements = this.element.querySelectorAll('input');
-
-    lodash.forEach(elements, function(element) {
-      var key = element.name.split('-').join('.');
-
-      element.value = model.get('shipment').get(key);
-    });
-  }
+  this.element = domify(template({
+    order: model.toJSON()
+  }));
 
   listenToSubmitEvent(this.element, model, this);
 }
