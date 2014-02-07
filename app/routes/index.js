@@ -10,4 +10,6 @@ module.exports = function(app) {
 
   require('./products')(app);
 
+  require('./errors')(app);
+
 };
