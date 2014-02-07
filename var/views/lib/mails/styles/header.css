@@ -1,0 +1,29 @@
+.header {
+  color: #888;
+  height: 20px;
+  padding: 10px 20px;
+}
+
+.header-brand {
+  float: left;
+  color: #888;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.header-right {
+  float: right;
+}
+
+.header-btn {
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 100;
+  text-decoration: none;
+  background: #929f88;
+  border-radius: 4px;
+}
+
+.header-btn:hover {
+  background: #727E69;
+}
