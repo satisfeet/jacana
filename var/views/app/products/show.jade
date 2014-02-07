@@ -8,12 +8,6 @@ section#product-info(data-id=product._id)
         div.col-md-10.col-md-offset-1
           h3.text-center= product.name
           p.text-justify= product.description.extended
-          p.text-right
-            | Preis pro Stück: 
-            strong= product.pricing.retail + '€'
-            br
-            small.text-muted Alle Preise inkl. MwSt und zzgl. Versandkosten
-            br
       div.row
         div.col-md-8.col-md-offset-2
           table.table
@@ -21,6 +15,11 @@ section#product-info(data-id=product._id)
               tr
                 td= key
                 td= value
+          p.text-right
+            | Preis pro Stück: 
+            strong= product.pricing.retail + '€'
+            br
+            small.text-muted Alle Preise inkl. MwSt und zzgl. Versandkosten
       div.row
         form.form-horizontal(role='form')
           fieldset
