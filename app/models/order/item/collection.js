@@ -9,4 +9,12 @@ function Items(source) {
 
 util.inherits(Items, exempel.Collection);
 
+Items.prototype.reset = function() {
+  this.forEach(function(item) {
+    item.remove();
+  });
+
+  return this;
+};
+
 module.exports = Items;

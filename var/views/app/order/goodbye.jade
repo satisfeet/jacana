@@ -5,18 +5,23 @@ section#order-goodbye
     div.col-md-6.col-md-offset-3
       +progress(100)
   div.row
-    div.col-md-4.col-md-offset-2
-      form(role='form')
-        fieldset
-          div.row
-            div.col-md-12
-              div.form-group
-                input(type='checkbox')
-                span.text-center
-                  |  Kundendaten in Browser speichern
-    div.col-md-4
+    div.col-md-6.col-md-offset-3
       h4.text-center Vielen Dank
       p.text-justify
         | Ihre Bestellung ist bei uns eingegangen und wird nach Geldeingang sofort
         | bearbeitet. Bis zum nächsten Mal können Sie noch festlegen, ob wir Ihre
         | Kundendaten für den nächsten Einkauf in Ihrem Browser speichern sollen.
+  div.row
+    div.col-md-4.col-md-offset-4
+      form.form-horizontal(role='form')
+        fieldset
+          div.row
+            div.col-md-10.col-md-offset-1
+              div.form-group
+                div.checkbox
+                  label
+                    input(type='checkbox')
+                    | Kundendaten in Browser speichern
+          div.row
+            div.col-md-6.col-md-offset-3
+              button.btn.btn-primary.btn-block Fertig

@@ -24,6 +24,12 @@ Order.prototype.submit = function() {
   return this;
 };
 
+Order.prototype.clear = function() {
+  this.get('items').reset();
+
+  return this;
+};
+
 Order.prototype.toJSON = function() {
   return {
     items: this.get('items').toJSON(),
