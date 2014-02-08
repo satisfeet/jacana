@@ -3,12 +3,16 @@ section#legal.section
     div.col-md-3.col-md-offset-1
       ul.nav.nav-pills.nav-stacked
         li: a(href='/about#imprint') Impressum
+        li: a(href='/legal#condition') Geschäftsbedingungen
         li: a(href='/legal#liability') Haftungsauschluss
         li: a(href='/legal#privacy') Datenschutzerklärung
     div.col-md-7
       div.row
         div.col-md-10.col-md-offset-1
           include imprint
+      div.row
+        div.col-md-10.col-md-offset-1
+          include condition
       div.row
         div.col-md-10.col-md-offset-1
           include liability
