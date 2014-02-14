@@ -57,7 +57,7 @@
       },
       "description": {
         "preview": "Universell einsetzbar. Wenn man mal nicht genau weiß.",
-        "extended": "Wenn man mal in Eile ist oder nicht weiß was kommt, so weiß man doch, dass die Socken immer richtig sind."
+        "extended": "Wenn man mal in Eile ist oder nicht weiß was kommt, so weiß man doch, dass diese Socken immer richtig sind."
       },
       "elements": {
         "Baumwolle": "80%",
@@ -69,7 +69,7 @@
       }
   },
   {
-    "name": "Die Survival Socken",
+    "name": "Die Überlebens Socken",
     "images": {
       "main": {
         "path": "/images/products/olive.jpeg"
@@ -79,8 +79,8 @@
       "sizes": ["42-44"]
     },
     "description": {
-      "preview": "Wild, dennoch sanft umschmeichelnd.",
-      "extended": "Keine Kompromisse, wenn es drauf ankommen sollte. Verlässlich mit Stil."
+      "preview": "Wild, dennoch sanft umschmeichelnd im Gemüt.",
+      "extended": "Keine Kompromisse, wenn es darauf ankommen sollte. Verlässlichkeit mit Stil."
     },
     "elements": {
       "Schurwolle": "50%",
