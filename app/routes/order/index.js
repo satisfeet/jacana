@@ -54,7 +54,7 @@ module.exports = function(app) {
 };
 
 function replace(element, view) {
-  if (!element.contains(view.element)) {
+  if (element.lastElementChild !== view.element) {
     while (element.lastElementChild) {
       element.lastElementChild.remove();
     }
