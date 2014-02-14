@@ -21,7 +21,7 @@ module.exports = function(app) {
 
 function replace(element, view) {
   // will insert view element into selector if not present
-  if (!element.contains(view.element)) {
+  if (element.lastElementChild !== view.element) {
     while (element.lastElementChild) {
       element.lastElementChild.remove();
     }
