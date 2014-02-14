@@ -4,9 +4,9 @@
       "name": {
         "last": "Kaiser",
         "first": "Bodo",
-        "company": null
+        "company": null,
+        "email": "kyogron@gmail.com"
       },
-      "email": "kyogron@gmail.com",
       "address": {
         "street": "Geiserichstraße",
         "streetNr": "3",
@@ -18,7 +18,8 @@
       "name": {
         "last": "Kaiser",
         "first": "Bodo",
-        "company": null
+        "company": null,
+        "email": "kyogron@gmail.com"
       },
       "address": {
         "street": "Geiserichstraße",
