@@ -22,7 +22,7 @@ Pricing.prototype.addRetail = function(value) {
 };
 
 Pricing.prototype.addQuantity = function(value) {
-  this.set('quantity', parseInt(this.get('quantity') + value));
+  this.set('quantity', this.get('quantity') + parseInt(value));
 
   return this;
 };
