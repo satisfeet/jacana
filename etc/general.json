@@ -10,18 +10,18 @@
 
   "engine": {
     "views": {
-      "path": "/var/views/lib",
+      "path": "/usr/views/lib",
       "engine": "jade"
     },
     "styles": {
-      "src": "/var/styles",
+      "src": "/usr/styles",
       "dest": "/srv/stylesheets",
       "prefix": "/stylesheets"
     },
     "builder": {
       "entry": "/app/index.js",
       "aliases": {
-        "views": "../var/views/app"
+        "views": "../usr/views/app"
       },
       "extensions": [
         ".js",

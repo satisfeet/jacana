@@ -13,11 +13,7 @@ SUPERVISOR_FLAGS = \
 	--extensions js,json
 
 boot:
-ifeq ($(NODE_ENV), 'production')
-	@node lib
-else
 	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
-endif
 
 test: \
 	test-lib \

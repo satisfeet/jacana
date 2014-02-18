@@ -25,7 +25,7 @@ section#order-invoice
                 placeholder='Mustermann', required='required')
           div.row
             div.col-md-12
-              +control('email', 'Email')(
+              +control('name-email', 'Email')(
                 type='email', value=order && order.payment.name.email,
                 placeholder='you@satisfeet.me', required='required')
           div.row
