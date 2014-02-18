@@ -1,14 +1,14 @@
 section#order-list
   div.row
-    div.col-md-8.col-md-offset-2
+    div.col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
       ul.list-group
   div.row
-    div.col-md-4.col-md-offset-2
+    div.col-xs-8.col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-2
       p.lead.text-left
         | Gesamt: 
         span#total= order && order.pricing.retail
         | €
       p.text-muted.text-left
         | Inkl. MwSt., zzgl. Versandkosten
-    div.col-md-2.col-md-offset-4
+    div.col-xs-2.col-xs-offset-2.col-sm-3.col-sm-offset-0.col-md-2
       a.btn.btn-md.btn-primary.pull-right(href='/order/payment') Bestellen

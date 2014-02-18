@@ -1,15 +1,15 @@
 section#product-info(data-id=product._id)
   div.row
-    div.col-md-6
+    div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
       div.thumbnail
         img.responsive(src=product.images.main.path)
-    div.col-md-6
+    div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
       div.row
-        div.col-md-10.col-md-offset-1
+        div.col-xs-10.col-xs-offset-1
           h3.text-center= product.name
           p.text-justify= product.description.extended
       div.row
-        div.col-md-8.col-md-offset-2
+        div.col-xs-8.col-xs-offset-2
           table.table
             each value, key in product.elements
               tr
@@ -24,7 +24,7 @@ section#product-info(data-id=product._id)
         form.form-horizontal(role='form')
           fieldset
             div.row
-              div.col-md-8.col-md-offset-2
+              div.col-xs-8.col-xs-offset-2
                 each options, name in product.attributes
                   div.form-group
                     h5.text-left= name + ':'
@@ -35,7 +35,7 @@ section#product-info(data-id=product._id)
                             required='required', value=option)
                           span!= option
             div.row
-              div.col-md-4.col-md-offset-4
+              div.col-xs-4.col-xs-offset-4
                 div.form-group
                   div.input-group
                     input.form-control.input-sm(type='number',

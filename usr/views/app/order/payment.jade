@@ -3,10 +3,17 @@ include ../mixins/progress
 
 section#order-invoice
   div.row
-    div.col-md-6.col-md-offset-3
+    div.col-xs-8.col-xs-offset-2
+      h4.text-center Rechnungsinformationen
       +progress(25)
   div.row
-    div.col-md-4.col-md-offset-2
+    div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-1
+      p.text-justify
+        | Bitte tragen Sie hier Ihre Rechnungsinformationen ein. Sie bekommen
+        | eine vorläufige Rechnung per Email auf die hier bestimmten
+        | Informationen. In der Warensendung ist zustäzlich eine gedruckte
+        | Rechnung vorhanden.
+    div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-0
       form(role='form' autocomplete='on')
         fieldset
           div.row
@@ -15,43 +22,36 @@ section#order-invoice
                 type='text', value=order && order.payment.name.company,
                 placeholder='satisfeet (optional)')
           div.row
-            div.col-md-6
+            div.col-xs-6
               +control('name-first', 'Vorname')(
                 type='text', value=order && order.payment.name.first,
                 placeholder='Max', required='required')
-            div.col-md-6
+            div.col-xs-6
               +control('name-last', 'Nachname')(
                 type='text', value=order && order.payment.name.last,
                 placeholder='Mustermann', required='required')
           div.row
-            div.col-md-12
+            div.col-xs-12
               +control('name-email', 'Email')(
                 type='email', value=order && order.payment.name.email,
                 placeholder='you@satisfeet.me', required='required')
           div.row
-            div.col-md-8
+            div.col-xs-8
               +control('address-street', 'Straße')(
                 type='text', value=order && order.payment.address.street,
                 placeholder='Hauptstr.', required='required')
-            div.col-md-4
+            div.col-xs-4
               +control('address-streetNr', 'Nr.')(
                 type='text', value=order && order.payment.address.streetNr,
                 placeholder='4A', required='required')
           div.row
-            div.col-md-6
+            div.col-xs-6
               +control('address-zipCode', 'Postleitzahl')(
                 type='number', value=order && order.payment.address.zipCode,
                 placeholder='12345', required='required',
                 min='10000' max='99999')
-            div.col-md-6
+            div.col-xs-6
               +control('address-place', 'Ort')(
                 type='text', value=order && order.payment.address.place,
                 placeholder='Berlin', required='required')
-        button.btn.btn-sm.btn-primary Forfahren
-    div.col-md-4
-      h4.text-center Rechnungsinformationen
-      p.text-justify
-        | Bitte tragen Sie hier Ihre Rechnungsinformationen ein. Sie bekommen
-        | eine vorläufige Rechnung per Email auf die hier bestimmten
-        | Informationen. In der Warensendung ist zustäzlich eine gedruckte
-        | Rechnung vorhanden.
+        button.btn.btn-sm.btn-primary.pull-right Forfahren

@@ -3,11 +3,11 @@ include ../mixins/progress
 
 section#order-confirm
   div.row
-    div.col-md-6.col-md-offset-3
+    div.col-xs-8.col-xs-offset-2
+      h4.text-center Bestellbestätigung
       +progress(75)
   div.row
-    div.col-md-8.col-md-offset-2
-      h4.text-center Bestellbestätigung
+    div.col-xs-10.col-xs-offset-1
       p.text-justify
         | Hier erhalten Sie eine Übersicht auf die bisher von Ihnen
         | eingetragenen Informationen. Falls Sie Änderungen vornehmen möchten
@@ -16,7 +16,7 @@ section#order-confirm
         | Setzen Sie ein Häckchen in den unten gezeigten Kasten und klicken Sie
         | auf "Abschicken".
   div.row
-    div.col-md-10.col-md-offset-1
+    div.col-xs-12.col-sm-8.col-sm-offset-2
       table.table.table-striped
         thead
           tr
@@ -52,7 +52,7 @@ section#order-confirm
               | #{order && order.shipment.address.zipCode} 
               | #{order && order.shipment.address.place}
   div.row
-    div.col-md-10.col-md-offset-1
+    div.col-xs-12.col-sm-10.col-sm-offset-1
       table.table.table-striped
         thead
           tr
@@ -75,7 +75,7 @@ section#order-confirm
         li= 'Versand: ' + (order && order.pricing.shipment) + '€'
         li= 'Gesamt: ' + (order && order.pricing.total) + '€'
   div.row
-    div.col-md-8.col-md-offset-2
+    div.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
       form.form-horizontal(role='form', autocomplete='on')
         fieldset
           div.form-group
@@ -85,5 +85,5 @@ section#order-confirm
                 | Hiermit erkläre ich mich mit den geltenden 
                 a(href='/legal#condition') Allgemeinen Geschäftsbedingungen
                 |  einverstanden.
-          div.col-md-6.col-md-offset-3
+          div.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-4
             button.btn.btn-sm.btn-primary.btn-block Abschicken
