@@ -3,42 +3,51 @@ include ../mixins/progress
 
 section#order-shipment
   div.row
-    div.col-md-6.col-md-offset-3
+    div.col-xs-8.col-xs-offset-2
+      h4.text-center Versandinformationen
       +progress(50)
   div.row
-    div.col-md-4.col-md-offset-2
+    div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-1
+      p.text-justify
+        | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich.
+        | Standard Versand ist per Deutsche Post Maxibrief. Falls dies
+        | versandtechnisch auf Grund der Größe Ihrer Bestellung nicht möglich
+        | ist, bekommen Sie die Ware per DHL Packet zugeschickt. Falls Sie
+        | doch lieber ein versichertes DHL Packet vorziehen, können Sie dies
+        | jederzeit selbst auswählen.
+    div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-0
       form(role='form' autocomplete='on')
         fieldset
           div.row
-            div.col-md-6
+            div.col-xs-6
               +control('name-first', 'Vorname')(
                 type='text', value=order && order.shipment.name.first,
                 placeholder='Max', required='required')
-            div.col-md-6
+            div.col-xs-6
               +control('name-last', 'Nachname')(
                 type='text', value=order && order.shipment.name.last,
                 placeholder='Mustermann', required='required')
           div.row
-            div.col-md-8
+            div.col-xs-8
               +control('address-street', 'Straße')(
                 type='text', value=order && order.shipment.address.street,
                 placeholder='Hauptstr.', required='required')
-            div.col-md-4
+            div.col-xs-4
               +control('address-streetNr', 'Nr.')(
                 type='text', value=order && order.shipment.address.streetNr,
                 placeholder='4A', required='required')
           div.row
-            div.col-md-6
+            div.col-xs-6
               +control('address-zipCode', 'Postleitzahl')(
                 type='number', value=order && order.shipment.address.zipCode,
                 placeholder='12345', required='required',
                 min='10000' max='99999')
-            div.col-md-6
+            div.col-xs-6
               +control('address-place', 'Ort')(
                 type='text', value=order && order.shipment.address.place,
                 placeholder='Berlin', required='required')
           div.row
-            div.col-md-12.div.col-md-offset-0
+            div.col-xs-12
               label.control-label Versandart
                 div.form-group
                   if (order && order.pricing.quantity < 4)
@@ -52,13 +61,4 @@ section#order-shipment
                       input(id='shipping', name='shipping', type='radio',
                         value='4.30', required='required')
                       | DHL Packet, versichert (Preis: 4.30€)
-          button.btn.btn-sm.btn-primary Fortfahren
-    div.col-md-4
-      h4.text-center Versandinformationen
-      p.text-justify
-        | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich.
-        | Standard Versand ist per Deutsche Post Maxibrief. Falls dies
-        | versandtechnisch auf Grund der Größe Ihrer Bestellung nicht möglich
-        | ist, bekommen Sie die Ware per DHL Packet zugeschickt. Falls Sie
-        | doch lieber ein versichertes DHL Packet vorziehen, können Sie dies
-        | jederzeit selbst auswählen.
+          button.btn.btn-sm.btn-primary.pull-right Fortfahren
