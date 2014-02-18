@@ -13,7 +13,7 @@ Navbar.prototype.setBrand = function(brand) {
 Navbar.prototype.setOrderBadge = function(badge) {
   if (!badge) badge = '';
 
-  this.element.querySelector('.navbar-form .badge').innerText = badge;
+  this.element.querySelector('.navbar-btn .badge').innerText = badge;
 
   return this;
 };
