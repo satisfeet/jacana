@@ -3,21 +3,17 @@
   border: none;
 }
 
-// no idea why I have to
-// overwrite navbar-height
-// setting min-height does
-// not work...
+// no idea why I have to overwrite navbar-height
+// setting min-height does not work...
 @navbar-height: 74px;
+
+// we dont want the navbar to collapse as long we
+// have to relay on a jquery plugin
+@grid-float-breakpoint: 0;
 
 .navbar-default .navbar-brand {
   color: @gray;
   font-size: 30px;
   font-weight: 200;
   padding-top: 30px;
-}
-
-// stops navbar button from sticking
-// on the right page side
-.navbar-form.navbar-right {
-  margin-right: 0 !important;
 }
