@@ -28,29 +28,25 @@ section#order-confirm
           tr
             td Rechnungsaddresse
             td
-              | #{order && order.payment.name.first} 
-              | #{order && order.payment.name.last}
-              if (order && order.payment.name.company)
-                #{' (' + order.payment.name.company + ')'}
+              | #{order && order.payment.forename}
+              |  #{order && order.payment.surname}
             td
-              | #{order && order.payment.address.street} 
-              | #{order && order.payment.address.streetNr}
+              | #{order && order.payment.street}
+              |  #{order && order.payment.streetNr}
             td
-              | #{order && order.payment.address.zipCode} 
-              | #{order && order.payment.address.place}
+              | #{order && order.payment.zipCode}
+              |  #{order && order.payment.place}
           tr
             td Versandaddresse
             td
-              | #{order && order.shipment.name.first} 
-              | #{order && order.shipment.name.last}
-              if (order && order.shipment.name.company)
-                #{' (' + order.shipment.name.company + ')'}
+              | #{order && order.shipment.forename}
+              |  #{order && order.shipment.surname}
             td
-              | #{order && order.shipment.address.street} 
-              | #{order && order.shipment.address.streetNr}
+              | #{order && order.shipment.street}
+              |  #{order && order.shipment.streetNr}
             td
-              | #{order && order.shipment.address.zipCode} 
-              | #{order && order.shipment.address.place}
+              | #{order && order.shipment.zipCode}
+              |  #{order && order.shipment.place}
   div.row
     div.col-xs-12.col-sm-10.col-sm-offset-1
       table.table.table-striped

@@ -1,32 +1,22 @@
 [
   {
     "payment": {
-      "name": {
-        "last": "Kaiser",
-        "first": "Bodo",
-        "company": null,
-        "email": "kyogron@gmail.com"
-      },
-      "address": {
-        "street": "Geiserichstraße",
-        "streetNr": "3",
-        "zipcode": 12105,
-        "place": "Berlin"
-      }
+      "forename": "Bodo",
+      "surname": "Kaiser",
+      "email": "kyogron@gmail.com",
+      "street": "Geiserichstraße",
+      "streetNr": "3",
+      "zipcode": 12105,
+      "place": "Berlin"
     },
     "shipment": {
-      "name": {
-        "last": "Kaiser",
-        "first": "Bodo",
-        "company": null,
-        "email": "kyogron@gmail.com"
-      },
-      "address": {
-        "street": "Geiserichstraße",
-        "streetNr": "3",
-        "zipcode": 12105,
-        "place": "Berlin"
-      }
+      "forename": "Bodo",
+      "surname": "Kaiser",
+      "email": "kyogron@gmail.com",
+      "street": "Geiserichstraße",
+      "streetNr": "3",
+      "zipcode": 12105,
+      "place": "Berlin"
     },
     "pricing": {
       "shipment": 2.11,
