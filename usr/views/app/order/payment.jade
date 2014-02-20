@@ -18,40 +18,40 @@ section#order-invoice
         fieldset
           div.row
             div.col-md-12
-              +control('name-company', 'Unternehmen')(
-                type='text', value=order && order.payment.name.company,
+              +control('company', 'Unternehmen')(
+                type='text', value=order && order.payment.company,
                 placeholder='satisfeet (optional)')
           div.row
             div.col-xs-6
-              +control('name-first', 'Vorname')(
-                type='text', value=order && order.payment.name.first,
+              +control('forename', 'Vorname')(
+                type='text', value=order && order.payment.forename,
                 placeholder='Max', required='required')
             div.col-xs-6
-              +control('name-last', 'Nachname')(
-                type='text', value=order && order.payment.name.last,
+              +control('surname', 'Nachname')(
+                type='text', value=order && order.payment.surname,
                 placeholder='Mustermann', required='required')
           div.row
             div.col-xs-12
-              +control('name-email', 'Email')(
-                type='email', value=order && order.payment.name.email,
+              +control('email', 'Email')(
+                type='email', value=order && order.payment.email,
                 placeholder='you@satisfeet.me', required='required')
           div.row
             div.col-xs-8
-              +control('address-street', 'Straße')(
-                type='text', value=order && order.payment.address.street,
+              +control('street', 'Straße')(
+                type='text', value=order && order.payment.street,
                 placeholder='Hauptstr.', required='required')
             div.col-xs-4
-              +control('address-streetNr', 'Nr.')(
-                type='text', value=order && order.payment.address.streetNr,
+              +control('streetNr', 'Nr.')(
+                type='text', value=order && order.payment.streetNr,
                 placeholder='4A', required='required')
           div.row
             div.col-xs-6
-              +control('address-zipCode', 'Postleitzahl')(
-                type='number', value=order && order.payment.address.zipCode,
+              +control('zipCode', 'Postleitzahl')(
+                type='number', value=order && order.payment.zipCode,
                 placeholder='12345', required='required',
                 min='10000' max='99999')
             div.col-xs-6
-              +control('address-place', 'Ort')(
-                type='text', value=order && order.payment.address.place,
+              +control('place', 'Ort')(
+                type='text', value=order && order.payment.place,
                 placeholder='Berlin', required='required')
         button.btn.btn-sm.btn-primary.pull-right Forfahren

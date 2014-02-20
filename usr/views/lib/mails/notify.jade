@@ -29,7 +29,7 @@ block content
       li Versandkosten: #{order.pricing.shipment}€ inkl. MwSt.
       li Gesamtpreis: #{order.pricing.total}€ inkl. MwSt.
     p.text-lg.text-justify
-      | Sehr geehrter #{order.payment.name.first} #{order.payment.name.last}
+      | Sehr geehrter #{order.payment.forename} #{order.payment.surname}
     p.text-md.text-justify
       | Sie haben vor kurzem eine Bestellung auf 
       a(href='http://www.satisfeet.me') satisfeet
