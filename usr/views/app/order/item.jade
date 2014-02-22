@@ -9,13 +9,13 @@ li.list-group-item
       div.col-xs-8
         ul.list-inline
           each attribute, name in item.attributes
-            li: small.text-muted= name + ': ' + attribute
+            li: small.text-muted #{name}: #{attribute}
       div.col-xs-4
         form.form-horizontal
           div.form-group
             div.col-xs-6
               input.input-sm.form-control(id='pricing-quantity',
               name='pricing-quantity', type='number',
-              value=item && item.pricing.quantity, min='1')
+              value=item.pricing.quantity, min='1')
             div.col-md-5
-              label.control-label.pull-right= ' x ' + item.pricing.retail + '€'
+              label.control-label.pull-right x #{item.pricing.retail}€

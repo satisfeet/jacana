@@ -6,7 +6,7 @@ section#order-list
     div.col-xs-8.col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-2
       p.lead.text-left
         | Gesamt: 
-        span#total= order && order.pricing.retail
+        span#total #{order && order.pricing.retail}
         | €
       p.text-muted.text-left
         | Inkl. MwSt., zzgl. Versandkosten

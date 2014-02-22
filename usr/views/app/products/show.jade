@@ -17,7 +17,7 @@ section#product-info(data-id=product._id)
                 td= value
           p.text-right
             | Preis pro Stück: 
-            strong= product.pricing.retail + '€'
+            strong #{product.pricing.retail}€
             br
             small.text-muted Alle Preise inkl. MwSt und zzgl. Versandkosten
       div.row
@@ -27,7 +27,7 @@ section#product-info(data-id=product._id)
               div.col-xs-8.col-xs-offset-2
                 each options, name in product.attributes
                   div.form-group
-                    h5.text-left= name + ':'
+                    h5.text-left #{name}:
                     each option in options
                       div.checkbox
                         label.radio-inline
