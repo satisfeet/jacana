@@ -22,43 +22,45 @@ section#order-shipment
             div.col-xs-6
               +control('forename', 'Vorname')(type='text',
                 value=order && order.shipment.forename,
-                placeholder='Max', required='required')
+                placeholder='Max', required=true)
             div.col-xs-6
               +control('surname', 'Nachname')(type='text',
                 value=order && order.shipment.surname,
-                placeholder='Mustermann', required='required')
+                placeholder='Mustermann', required=true)
           div.row
             div.col-xs-8
               +control('street', 'Straße')(type='text',
                 value=order && order.shipment.street,
-                placeholder='Hauptstr.', required='required')
+                placeholder='Hauptstr.', required=true)
             div.col-xs-4
               +control('streetNr', 'Nr.')(type='text',
                 value=order && order.shipment.streetNr,
-                placeholder='4A', required='required')
+                placeholder='4A', required=true)
           div.row
             div.col-xs-6
               +control('zipCode', 'Postleitzahl')(type='number',
                 value=order && order.shipment.zipCode,
-                placeholder='12345', required='required',
+                placeholder='12345', required=true,
                 min='10000' max='99999')
             div.col-xs-6
               +control('place', 'Ort')(type='text',
                 value=order && order.shipment.place,
-                placeholder='Berlin', required='required')
+                placeholder='Berlin', required=true)
           div.row
             div.col-xs-12
               label.control-label Versandart
                 div.form-group
-                  if (order && order.pricing.quantity < 4)
-                    div.radio
-                      label
-                        input(id='shipping', name='shipping', type='radio',
-                          value='2.40', required='required')
-                        | Deutsche Post Maxibrief (Preis: 2.40€)
                   div.radio
                     label
                       input(id='shipping', name='shipping', type='radio',
-                        value='4.30', required='required')
+                        value='2.40', required=true,
+                        disabled=order && order.pricing.quantity > 4
+                        checked=order && order.shipment.shipping === '2.40')
+                      | Deutsche Post Maxibrief (Preis: 2.40€)
+                  div.radio
+                    label
+                      input(id='shipping', name='shipping', type='radio',
+                        value='4.30', required=true,
+                        checked=order && order.shipment.shipping === '4.30')
                       | DHL Packet, versichert (Preis: 4.30€)
           button.btn.btn-sm.btn-primary.pull-right Fortfahren
