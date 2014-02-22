@@ -20,9 +20,10 @@ function listenToSubmitEvent(element, model, view) {
 
     var shipment = model.get('shipment');
     lodash.forEach(e.target.elements, function(element) {
-      if (element instanceof HTMLInputElement) {
-        shipment.set(element.name.split('-').join('.'), element.value);
-      }
+      if (!(element instanceof HTMLInputElement)) return;
+      if (element.type === 'radio' && !element.checked) return;
+
+      shipment.set(element.name, element.value);
     });
 
     page('/order/confirm');

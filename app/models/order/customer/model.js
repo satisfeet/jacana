@@ -4,13 +4,6 @@ var exempel = require('exempel');
 
 function Customer(source) {
   exempel.Model.call(this, source);
-
-  if (!this.has('name')) {
-    this.set('name', {});
-  }
-  if (!this.has('address')) {
-    this.set('address', {});
-  }
 }
 
 util.inherits(Customer, exempel.Model);
