@@ -1,16 +1,30 @@
-var page = require('page');
+var mockup = {
+  order: require('../../models/order'),
+  products: require('../../models/product')
+};
 
-var app = page;
+describe('app/models3', function() {
 
-app.offline = true;
+  describe('order', function() {
 
-require('../../../app/layout')(app);
+    require('./models/order/model')(mockup);
 
-require('../../../app/events')(app);
+    require('./models/order/item/model')(mockup);
 
-require('../../../app/models')(app);
+    require('./models/order/item/collection')(mockup);
 
-app.start();
+    require('./models/order/pricing/model')(mockup);
 
-// require test files
-require('./models')(app);
+    require('./models/order/customer/model')(mockup);
+
+  });
+
+  describe('product', function() {
+
+    require('./models/product/model')(mockup);
+
+    require('./models/product/collection')(mockup);
+
+  });
+
+});

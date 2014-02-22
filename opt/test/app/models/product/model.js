@@ -2,7 +2,7 @@ var chai    = require('chai');
 var lodash  = require('lodash');
 var exempel = require('exempel');
 
-module.exports = function(app, mockup) {
+module.exports = function(mockup) {
 
   var Product = require('../../../../../app/models/product/model');
 

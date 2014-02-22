@@ -1,7 +1,7 @@
 var chai    = require('chai');
 var exempel = require('exempel');
 
-module.exports = function(app) {
+module.exports = function(mockup) {
 
   var Pricing = require('../../../../../../app/models/order/pricing/model');
 
