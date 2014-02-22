@@ -14,44 +14,36 @@ section#order-invoice
         | Informationen. In der Warensendung ist zustäzlich eine gedruckte
         | Rechnung vorhanden.
     div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-0
+      - var payment = (order && order.payment) || {};
       form(role='form' autocomplete='on')
         fieldset
           div.row
             div.col-md-12
-              +control('company', 'Unternehmen')(
-                type='text', value=order && order.payment.company,
-                placeholder='satisfeet (optional)')
+              +control_text('company', 'Unternehmen', payment.company)(
+                placeholder='satisfeet', required=false)
           div.row
             div.col-xs-6
-              +control('forename', 'Vorname')(
-                type='text', value=order && order.payment.forename,
-                placeholder='Max', required='required')
+              +control_text('forename', 'Vorname', payment.forename)(
+                placeholder='Max')
             div.col-xs-6
-              +control('surname', 'Nachname')(
-                type='text', value=order && order.payment.surname,
-                placeholder='Mustermann', required='required')
+              +control_text('surname', 'Nachname', payment.surname)(
+                placeholder='Mustermann')
           div.row
             div.col-xs-12
-              +control('email', 'Email')(
-                type='email', value=order && order.payment.email,
-                placeholder='you@satisfeet.me', required='required')
+              +control_email('email', 'Email', payment.email)(
+                placeholder='you@satisfeet.me')
           div.row
             div.col-xs-8
-              +control('street', 'Straße')(
-                type='text', value=order && order.payment.street,
-                placeholder='Hauptstr.', required='required')
+              +control_text('street', 'Straße', payment.street)(
+                placeholder='Hauptstr.')
             div.col-xs-4
-              +control('streetNr', 'Nr.')(
-                type='text', value=order && order.payment.streetNr,
-                placeholder='4A', required='required')
+              +control_text('streetNr', 'Nr.', payment.streetNr)(
+                placeholder='4A')
           div.row
             div.col-xs-6
-              +control('zipCode', 'Postleitzahl')(
-                type='number', value=order && order.payment.zipCode,
-                placeholder='12345', required='required',
-                min='10000' max='99999')
+              +control_number('zipCode', 'Postleitzahl', payment.zipCode)(
+                placeholder='12345', min='10000' max='99999')
             div.col-xs-6
-              +control('place', 'Ort')(
-                type='text', value=order && order.payment.place,
-                placeholder='Berlin', required='required')
+              +control_text('place', 'Ort', payment.place)(
+                placeholder='Berlin')
         button.btn.btn-sm.btn-primary.pull-right Forfahren

@@ -2,5 +2,4 @@ mixin progress(value)
   div.progress
     div.progress-bar(role='progressbar', style='width: ' + value + '%;',
       aria-valuenow=value, aria-valuemin='0', aria-valuemax='100')
-        span.sr-only= value
-         | % Fertig.
+        span.sr-only #{value} % Fertig.

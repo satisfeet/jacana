@@ -4,3 +4,23 @@ mixin control(name, label)
     input.form-control(id=name, name=name, type!=attributes.type,
       value!=attributes.value, min!=attributes.min, max!=attributes.max,
       required!=attributes.required, placeholder!=attributes.placeholder)
+
+mixin control_text(name, label, value)
+  div.form-group
+    label.control-label(for=name)= label
+    input.form-control(id=name, name=name, type='text', value!=value,
+      placeholder!=attributes.placeholder,
+      required!=!attributes.required === false)
+
+mixin control_email(name, label, value)
+  div.form-group
+    label.control-label(for=name)= label
+    input.form-control(id=name, name=name, type='email', value!=value,
+      placeholder!=attributes.placeholder, required=true)
+
+mixin control_number(name, label, value)
+  div.form-group
+    label.control-label(for=name)= label
+    input.form-control(id=name, name=name, type='number', value!=value,
+      placeholder!=attributes.placeholder, required=true,
+      min!=attributes.min, max!=attributes.max)

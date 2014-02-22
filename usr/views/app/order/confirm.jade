@@ -17,6 +17,10 @@ section#order-confirm
         | auf "Abschicken".
   div.row
     div.col-xs-12.col-sm-8.col-sm-offset-2
+      - var shipment = (order && order.shipment) || {};
+      - var payment = (order && order.payment) || {};
+      - var pricing = (order && order.pricing) || {};
+      - var items = (order && order.items) || [];
       table.table.table-striped
         thead
           tr
@@ -27,26 +31,14 @@ section#order-confirm
         tbody
           tr
             td Rechnungsaddresse
-            td
-              | #{order && order.payment.forename}
-              |  #{order && order.payment.surname}
-            td
-              | #{order && order.payment.street}
-              |  #{order && order.payment.streetNr}
-            td
-              | #{order && order.payment.zipCode}
-              |  #{order && order.payment.place}
+            td #{payment.forename} #{payment.surname}
+            td #{payment.street} #{payment.streetNr}
+            td #{payment.zipCode} #{payment.place}
           tr
             td Versandaddresse
-            td
-              | #{order && order.shipment.forename}
-              |  #{order && order.shipment.surname}
-            td
-              | #{order && order.shipment.street}
-              |  #{order && order.shipment.streetNr}
-            td
-              | #{order && order.shipment.zipCode}
-              |  #{order && order.shipment.place}
+            td #{shipment.forename} #{shipment.surname}
+            td #{shipment.street} #{shipment.streetNr}
+            td #{shipment.zipCode} #{shipment.place}
   div.row
     div.col-xs-12.col-sm-10.col-sm-offset-1
       table.table.table-striped
@@ -57,19 +49,19 @@ section#order-confirm
             th Anzahl
             th Gesamt
         tbody
-          each item in order && order.items || []
+          each item in items
             tr
               td= item.name
               td
                 each key, value in item.attributes
                   #{key}: #{value}
-              td= item.pricing.quantity + ' x ' + item.pricing.retail + '€'
-              td= item.pricing.total + '€'
+              td #{item.pricing.quantity} x #{item.pricing.retail}€
+              td #{item.pricing.total}€
       small.text-muted Alle Preise inkl. MwSt.
       ul.list-inline.pull-right
-        li= 'Produke: ' + (order && order.pricing.retail) + '€'
-        li= 'Versand: ' + (order && order.pricing.shipment) + '€'
-        li= 'Gesamt: ' + (order && order.pricing.total) + '€'
+        li Produke:  #{pricing.retail}€
+        li Versand: #{pricing.shipment}€
+        li Gesamt: #{pricing.total}€
   div.row
     div.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
       form.form-horizontal(role='form', autocomplete='on')
@@ -78,8 +70,9 @@ section#order-confirm
             div.checkbox
               label
                 input(type='checkbox', required='required')
-                | Hiermit erkläre ich mich mit den geltenden 
-                a(href='/legal#condition') Allgemeinen Geschäftsbedingungen
+                | Hiermit erkläre ich mich mit den geltenden
+                a(href='/legal#condition')
+                  |  Allgemeinen Geschäftsbedingungen
                 |  einverstanden.
           div.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-4
             button.btn.btn-sm.btn-primary.btn-block Abschicken
