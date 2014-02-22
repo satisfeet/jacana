@@ -1,3 +1,5 @@
+var fade = require('fade');
+
 var Navbar = require('./navbar');
 
 module.exports = function(app) {
@@ -8,7 +10,7 @@ module.exports = function(app) {
   app('*', function(context, next) {
     context.element = content;
 
-    next();
+    fade.out(context.element, 200, next);
   });
 
   app('*', function(context, next) {

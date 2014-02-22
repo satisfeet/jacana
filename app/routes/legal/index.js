@@ -1,3 +1,5 @@
+var fade = require('fade');
+
 var template = require('../../views/legal');
 
 module.exports = function(app) {
@@ -8,6 +10,8 @@ module.exports = function(app) {
     if (!context.element.querySelector('#legal')) {
       context.element.innerHTML = template();
     }
+
+    fade.in(context.element);
   });
 
 };

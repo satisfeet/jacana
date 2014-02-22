@@ -1,4 +1,4 @@
-var template = require('../../views/errors');
+var template = require('../views/errors');
 
 module.exports = function(app) {
 

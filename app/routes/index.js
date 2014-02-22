@@ -1,3 +1,5 @@
+var fade = require('fade');
+
 module.exports = function(app) {
 
   require('./main')(app);
@@ -9,7 +11,5 @@ module.exports = function(app) {
   require('./order')(app);
 
   require('./products')(app);
-
-  require('./errors')(app);
 
 };
