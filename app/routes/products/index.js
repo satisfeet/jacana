@@ -1,3 +1,5 @@
+var fade = require('fade');
+
 var Show = require('./show');
 var List = require('./list');
 
@@ -27,6 +29,8 @@ function replace(element, view) {
     }
     element.appendChild(view.element);
   }
+  // fade in element
+  fade.in(element);
   // make function chainable
   return view;
 }
