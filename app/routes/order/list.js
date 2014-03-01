@@ -6,11 +6,9 @@ var template = require('../../views/order/list');
 var Item = require('./item');
 
 function ItemList(element, model) {
-  this.element = element.querySelector('#order-list');
-
-  if (!this.element) {
-    this.element = domify(template());
-  }
+  this.element = domify(template({
+    order: model.toJSON()
+  }));
 
   listenToPushEvent(this.element, model, this);
   listenToChangeEvent(this.element, model, this);
@@ -53,6 +51,11 @@ function listenToPushEvent(element, model, view) {
 }
 
 function listenToChangeEvent(element, model, view) {
+  model.get('items').on('change', function() {
+    if (model.get('items').length < 1) {
+      element.querySelector('a.btn').remove();
+    }
+  });
   model.get('pricing').on('change:retail', function(value) {
     view.setTotal(value);
   });
