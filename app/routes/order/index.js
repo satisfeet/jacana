@@ -1,3 +1,4 @@
+var page = require('page');
 var fade = require('fade');
 
 var List     = require('./list');
@@ -17,7 +18,7 @@ module.exports = function(app) {
     replace(element, new List(element, model));
   });
 
-  app('/order/payment', function(context, next) {
+  app('/order/payment', checkItems, function(context, next) {
     var model   = context.order;
     var element = context.element;
 
@@ -26,7 +27,7 @@ module.exports = function(app) {
     replace(element, new Payment(element, model));
   });
 
-  app('/order/shipment', function(context, next) {
+  app('/order/shipment', checkItems, function(context, next) {
     var model   = context.order;
     var element = context.element;
 
@@ -35,7 +36,7 @@ module.exports = function(app) {
     replace(element, new Shipment(element, model));
   });
 
-  app('/order/confirm', function(context, next) {
+  app('/order/confirm', checkItems, function(context, next) {
     var model   = context.order;
     var element = context.element;
 
@@ -44,7 +45,7 @@ module.exports = function(app) {
     replace(element, new Confirm(element, model));
   });
 
-  app('/order/goodbye', function(context, next) {
+  app('/order/goodbye', checkItems, function(context, next) {
     var model   = context.order;
     var element = context.element;
 
@@ -66,4 +67,10 @@ function replace(element, view) {
   fade.in(element);
   // make function chainable
   return view;
+}
+
+function checkItems(context, next) {
+  if (context.order.get('items').length) return next();
+
+  page('/products');
 }
