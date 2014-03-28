@@ -3,25 +3,25 @@
   "name": "satisfeet-store",
 
   "static": {
-    "path": "/srv",
+    "path": "/public",
     "index": false,
     "passthrough": true
   },
 
   "engine": {
     "views": {
-      "path": "/usr/views/lib",
+      "path": "/views/lib",
       "engine": "jade"
     },
     "styles": {
-      "src": "/usr/styles",
-      "dest": "/srv/stylesheets",
+      "src": "/styles",
+      "dest": "/public/stylesheets",
       "prefix": "/stylesheets"
     },
     "builder": {
       "entry": "/app/index.js",
       "aliases": {
-        "views": "../usr/views/app"
+        "views": "../views/app"
       },
       "extensions": [
         ".js",
@@ -29,7 +29,7 @@
         ".html",
         ".jade"
       ],
-      "output": "/srv/javascripts/build.js"
+      "output": "/public/javascripts/build.js"
     }
   }
 
