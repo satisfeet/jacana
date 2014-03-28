@@ -5,11 +5,11 @@ MOCHA_FLAGS = \
 	--reporter spec
 
 SUPERVISOR_FLAGS = \
-	--watch etc,lib		\
+	--ignore public	 \
 	--extensions js,json
 
 boot:
-	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
+	$(SUPERVISOR) $(SUPERVISOR_FLAGS) index
 
 test:
 	$(MOCHA) $(MOCHA_FLAGS) tests
