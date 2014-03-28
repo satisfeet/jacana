@@ -60,7 +60,7 @@ describe('GET /products', function() {
 	it('should respond json', function(done) {
 		supertest(app).get('/products').accept('json')
 			.expect('Content-Type', /json/)
-			.expect(200, [], done);
+			.expect(200, done);
 	});
 
 	it('should respond html', function(done) {

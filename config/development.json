@@ -1,9 +1,5 @@
 {
 
-  "store": {
-    "url": "mongodb://localhost/test"
-  },
-
   "engine": {
     "builder": {
       "debug": true
