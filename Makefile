@@ -9,7 +9,7 @@ SUPERVISOR_FLAGS = \
 	--extensions js,json
 
 boot:
-	$(SUPERVISOR) $(SUPERVISOR_FLAGS) index
+	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
 
 test:
 	$(MOCHA) $(MOCHA_FLAGS) tests
