@@ -2,11 +2,7 @@
 
   "name": "satisfeet-store",
 
-  "static": {
-    "path": "/public",
-    "index": false,
-    "passthrough": true
-  },
+  "static": "/public",
 
   "engine": {
     "views": {
