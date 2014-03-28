@@ -1,7 +1,7 @@
 var chai      = require('chai');
 var supertest = require('supertest');
 
-var app = require('../../lib');
+var app = require('../lib');
 
 describe('GET /products', function() {
 

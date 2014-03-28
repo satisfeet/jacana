@@ -1,11 +1,11 @@
 var supertest = require('supertest');
 
-var app = require('../../lib');
+var app = require('../lib');
 
-describe('GET /legal', function() {
+describe('GET /', function() {
 
 	it('should respond html', function(done) {
-		supertest(app).get('/legal').accept('html')
+		supertest(app).get('/').accept('html')
 			.expect('Content-Type', /html/)
 			.expect(200, done);
 	});
