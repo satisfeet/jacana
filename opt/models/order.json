@@ -6,7 +6,7 @@
       "email": "kyogron@gmail.com",
       "street": "Geiserichstraße",
       "streetNr": "3",
-      "zipcode": 12105,
+      "zipCode": 12105,
       "place": "Berlin"
     },
     "shipment": {
@@ -15,7 +15,7 @@
       "email": "kyogron@gmail.com",
       "street": "Geiserichstraße",
       "streetNr": "3",
-      "zipcode": 12105,
+      "zipCode": 12105,
       "place": "Berlin"
     },
     "pricing": {
