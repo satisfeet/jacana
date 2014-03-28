@@ -10,7 +10,11 @@ require('./mailer')(app);
 
 require('./models')(app);
 
-require('./engine')(app);
+require('./builder')(app);
+
+require('./styles')(app);
+
+require('./views')(app);
 
 require('./routes')(app);
 
