@@ -1,9 +1,3 @@
-var url = require('url');
-
-exports.store = {
-  url: process.env.OPENSHIFT_MONGODB_DB_URL + 'store'
-};
-
 exports.engine = {
   styles: {
     once: true,
