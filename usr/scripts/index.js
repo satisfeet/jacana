@@ -10,6 +10,6 @@ require('./models')(app);
 
 require('./routes')(app);
 
-require('./errors')(app);
-
 app.start();
+
+console.log('booted');

@@ -1,6 +1,4 @@
-var fade = require('fade');
-
-var template = require('../../views/about');
+var template = require('../../../views/about');
 
 module.exports = function(app) {
 
@@ -10,8 +8,6 @@ module.exports = function(app) {
     if (!context.element.querySelector('#about')) {
       context.element.innerHTML = template();
     }
-
-    fade.in(context.element);
   });
 
 };

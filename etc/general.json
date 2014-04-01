@@ -4,13 +4,12 @@
 
   "static": {
     "path": "/srv",
-    "index": false,
     "passthrough": true
   },
 
   "engine": {
     "views": {
-      "path": "/usr/views/lib",
+      "path": "/usr/views",
       "engine": "jade"
     },
     "styles": {
@@ -20,9 +19,6 @@
     },
     "builder": {
       "entry": "/usr/scripts/index.js",
-      "aliases": {
-        "views": "../views/app"
-      },
       "extensions": [
         ".js",
         ".json",
