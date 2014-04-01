@@ -6,14 +6,12 @@ The node.js powered web application store for satisfeet.
 
 Clone the repository:
 
-  git clone https://github.com/bodokaiser/satisfeet-store.git
+    git clone https://github.com/bodokaiser/satisfeet-store.git
 
 Install dependencies and start:
 
-  npm install && npm start
+    npm install && npm start
 
-## Dependencies
+## License
 
-* node
-* mongodb
-* phantomjs
+Copyright © 2014 Bodo Kaiser
