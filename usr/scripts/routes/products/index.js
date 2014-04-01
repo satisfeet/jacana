@@ -9,10 +9,10 @@ module.exports = function(app) {
     replace(context.element, new List(context.element, context.products));
   });
 
-  app('/products/:id', function(context, next) {
+  app('/products/:name', function(context, next) {
     context.navbar.setBrand('Produktansicht');
 
-    var model = context.products.find({ _id: context.params.id });
+    var model = context.products.find({ name: context.params.name });
 
     replace(context.element, new Show(context.element, model));
   });
