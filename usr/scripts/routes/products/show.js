@@ -2,7 +2,7 @@ var util   = require('util');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../views/products/show');
+var template = require('../../../views/products/show');
 
 function Product(element, model) {
   this.element = element.querySelector('#product-info');

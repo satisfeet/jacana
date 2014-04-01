@@ -1,4 +1,4 @@
-extends layout/base
+extends base
 
 block meta
   meta(charset='utf-8')
@@ -12,9 +12,9 @@ block link
   link(rel='stylesheet', href='/stylesheets/build.css')
 
 block main
-  include layout/header
-  include layout/content
-  include layout/footer
+  include header
+  include content
+  include footer
 
 block script
   script(src='/javascripts/build.js')

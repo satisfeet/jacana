@@ -1,8 +1,6 @@
-var fade = require('fade');
-
 module.exports = function(app) {
 
-  require('./main')(app);
+  require('./start')(app);
 
   require('./about')(app);
 

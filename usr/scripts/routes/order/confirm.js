@@ -1,7 +1,7 @@
 var page   = require('page');
 var domify = require('domify');
 
-var template = require('../../views/order/confirm');
+var template = require('../../../views/order/confirm');
 
 function Confirm(element, model) {
   this.element = domify(template({
