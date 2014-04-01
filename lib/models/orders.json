@@ -1,0 +1,55 @@
+[
+  {
+    "payment": {
+      "forename": "Bodo",
+      "surname": "Kaiser",
+      "email": "kyogron@gmail.com",
+      "street": "Geiserichstraße",
+      "streetNr": "3",
+      "zipcode": 12105,
+      "place": "Berlin"
+    },
+    "shipment": {
+      "forename": "Bodo",
+      "surname": "Kaiser",
+      "email": "kyogron@gmail.com",
+      "street": "Geiserichstraße",
+      "streetNr": "3",
+      "zipcode": 12105,
+      "place": "Berlin"
+    },
+    "pricing": {
+      "shipment": 2.11,
+      "retail": 8.97,
+      "total": 11.08,
+      "quantity": 3
+    },
+    "items": [
+      {
+        "name": "Grauen Socken",
+          "images": {
+            "main": {
+              "path": "/images/products/gray.jpeg"
+            }
+          },
+          "attributes": {
+            "sizes": "42-44"
+          },
+          "description": {
+            "preview": "Günstige Freizeitsocke für ein schönes Wochenende.",
+            "extended": "Die grauen Socken eignen sich gut für die legere Alltagsatmosphäre nach der Arbeit."
+          },
+          "elements": {
+            "Baumwolle": "80%",
+            "Polyamid": "15%",
+            "Elasthan": "5%"
+          },
+          "pricing": {
+            "quantity": 3,
+            "retail": 2.99,
+            "total": 8.97
+          }
+      }
+    ]
+  }
+]
