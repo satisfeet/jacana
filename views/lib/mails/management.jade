@@ -5,39 +5,6 @@ extends layout/base
 block content
   div.content
     h2.text-center Neue Bestellung ist eingegangen.
-		h3.text-center Rechnungsnummer:
-		table.table
-			thead.text-left
-				tr
-					th Email
-					th Vorname
-					th Nachname
-					th Straße
-					th Ort
-					th Postleitzahl
-			tbody.text-left
-				tr
-					td: strong= order.payment.email
-
-    table.table
-      thead.text-left
-        tr
-          th Name
-          th Größe
-          th Anzahl
-          th Stückpreis
-          th Gesamtpreis
-      tbody.text-left
-        each item in order.items
-          tr
-            td= item.name
-            td
-              each value, attribute in item.attributes
-                #{attribute}: #{value}
-            td #{item.pricing.quantity} x
-            td #{item.pricing.retail}€
-            td #{item.pricing.total}€
-    ul.list-unstyled.text-right
-      li Zwischensumme: #{order.pricing.retail}€ inkl. MwSt.
-      li Versandkosten: #{order.pricing.shipment}€ inkl. MwSt.
-      li Gesamtpreis: #{order.pricing.total}€ inkl. MwSt.
+    h3.text-center Rechnungsnummer:
+      - var object = JSON.stringify(order);
+      p= object
