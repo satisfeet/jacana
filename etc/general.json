@@ -2,7 +2,11 @@
 
   "name": "satisfeet-store",
 
-  "static": "/srv",
+  "static": {
+    "path": "/srv",
+    "index": false,
+    "passthrough": true
+  },
 
   "engine": {
     "views": {
