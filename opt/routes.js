@@ -44,11 +44,11 @@ describe('GET /order', function() {
 
 describe('POST /orders', function() {
 
-	xit('should respond json', function(done) {
+	it('should respond json', function(done) {
 		this.timeout(5000);
 
 		supertest(app).post('/orders').accept('json')
-			.send(order)
+			.send(app.orders[0])
 			.expect('Content-Type', /json/)
 			.expect(200, done);
 	});
