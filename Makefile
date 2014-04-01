@@ -5,13 +5,13 @@ MOCHA_FLAGS = \
 	--reporter spec
 
 SUPERVISOR_FLAGS = \
-	--ignore public	 \
+	--ignore srv,opt	 \
 	--extensions js,json
 
 boot:
 	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
 
 test:
-	$(MOCHA) $(MOCHA_FLAGS) tests
+	$(MOCHA) $(MOCHA_FLAGS) opt
 
 .PHONY: test

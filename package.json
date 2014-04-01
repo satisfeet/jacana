@@ -11,7 +11,7 @@
   },
 
   "scripts": {
-    "test": "mocha tests",
+    "test": "mocha opt",
     "start": "node lib"
   },
 
