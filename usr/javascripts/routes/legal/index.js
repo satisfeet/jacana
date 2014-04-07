@@ -1,4 +1,4 @@
-var template = require('../../../views/legal');
+var template = require('../../../templates/legal');
 
 module.exports = function(app) {
 

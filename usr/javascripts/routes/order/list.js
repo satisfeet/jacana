@@ -1,7 +1,7 @@
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../views/order/list');
+var template = require('../../../templates/order/list');
 
 var Item = require('./item');
 

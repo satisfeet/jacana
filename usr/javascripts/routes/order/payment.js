@@ -2,7 +2,7 @@ var page   = require('page');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../views/order/payment');
+var template = require('../../../templates/order/payment');
 
 function Payment(element, model) {
   this.element = element.querySelector('#order-payment');
