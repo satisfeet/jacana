@@ -9,16 +9,16 @@
 
   "engine": {
     "views": {
-      "path": "/usr/templates",
+      "path": "/usr/views",
       "engine": "jade"
     },
     "styles": {
-      "src": "/usr/stylesheets",
+      "src": "/app/stylesheets",
       "dest": "/srv/stylesheets",
       "prefix": "/stylesheets"
     },
     "builder": {
-      "entry": "/usr/javascripts/index.js",
+      "entry": "/app/javascripts/index.js",
       "extensions": [
         ".js",
         ".json",
