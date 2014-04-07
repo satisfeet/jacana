@@ -2,7 +2,7 @@ var page   = require('page');
 var domify = require('domify');
 var lodash = require('lodash');
 
-var template = require('../../../views/order/shipment');
+var template = require('../../../templates/order/shipment');
 
 function Shipment(element, model) {
   this.element = domify(template({

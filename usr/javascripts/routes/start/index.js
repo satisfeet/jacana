@@ -1,4 +1,4 @@
-var template = require('../../../views/start');
+var template = require('../../../templates/start');
 
 module.exports = function(app) {
 
