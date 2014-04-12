@@ -1,6 +1,6 @@
 {
 
-  "name": "satisfeet-store",
+  "name": "store",
 
   "version": "0.0.0",
 
@@ -42,11 +42,11 @@
   },
 
   "repository": {
-    "url": "git://github.com/bodokaiser/satisfeet-store.git"
+    "url": "git://github.com/satisfeet/store.git"
   },
 
   "bugs": {
-    "url": "https://github.com/bodokaiser/satisfeet-store/issues"
+    "url": "https://github.com/satisfeet/store/issues"
   }
 
 }

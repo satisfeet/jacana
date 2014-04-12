@@ -1,0 +1,27 @@
+{
+
+  "engine": {
+    "builder": {
+      "debug": true
+    },
+    "styles": {
+      "force": true
+    },
+    "views": {
+      "cache": false
+    }
+  },
+
+  "mailer": {
+    "auth": {
+      "user": "kyogron@googlemail.com",
+      "pass": "nambu007"
+    },
+    "service": "gmail"
+  },
+
+  "server": {
+    "port": 3000
+  }
+
+}
