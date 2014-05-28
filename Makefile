@@ -1,17 +1,16 @@
-MOCHA  		 = ./node_modules/.bin/mocha
-SUPERVISOR = ./node_modules/.bin/supervisor
-
-MOCHA_FLAGS = \
-	--reporter spec
-
-SUPERVISOR_FLAGS = \
-	--ignore srv,opt	 \
-	--extensions js,json
+SHELL := /bin/bash
+PATH  := node_modules/.bin:$(PATH)
 
 boot:
-	$(SUPERVISOR) $(SUPERVISOR_FLAGS) lib
+	@supervisor \
+	  --ignore srv,opt \
+	  --extensions js,json \
+	  	lib
 
+test: export NODE_ENV=test
 test:
-	$(MOCHA) $(MOCHA_FLAGS) opt
+	@mocha \
+	  --reporter spec
+		opt
 
-.PHONY: test
+.PHONY: boot test
