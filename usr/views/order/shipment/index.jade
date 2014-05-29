@@ -1,0 +1,21 @@
+include ../../mixins
+extends ../../layout
+
+block content
+  section#order-shipment
+    div.row
+      div.col-xs-8.col-xs-offset-2
+        h4.text-center Versandinformationen
+        +progress(50)
+    div.row
+      div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-1
+        p.text-justify
+          | Aktuell sind nur Lieferungen innerhalb Deutschlands möglich.
+          | Standard Versand ist per Deutsche Post Warensendung mit bis zu
+          | drei Socken. Falls Sie Ihre Socken möglichst schnell haben möchten
+          | sollten Sie eine Lieferung als DHL Maxibrief für bis zu zwei Socken
+          | in Betracht ziehen. Falls Ihre Bestellung größer als drei Socken sein
+          | sollte, können Sie nur die Lieferung als versichertes DHL Packet
+          | auswählen.
+			div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-0
+				include form

@@ -1,20 +1,20 @@
 extends ../layout
 
 block content
-  section#product-info(data-id=product._id)
+  section#product-info(data-id=product.id)
     div.row
       div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
         div.thumbnail
-          img.responsive(src=product.images.main.path)
+          img.responsive(src=product.images[0].url)
       div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
         div.row
           div.col-xs-10.col-xs-offset-1
             h3.text-center= product.name
-            p.text-justify= product.description.extended
+            p.text-justify= product.description
         div.row
           div.col-xs-8.col-xs-offset-2
             table.table
-              each value, key in product.elements
+              each value, key in product.details.material
                 tr
                   td= key
                   td= value
@@ -28,15 +28,15 @@ block content
             fieldset
               div.row
                 div.col-xs-8.col-xs-offset-2
-                  each options, name in product.attributes
+                  each variations, name in product.variations
                     div.form-group
                       h5.text-left #{name}:
-                      each option in options
+                      each variation in variations
                         div.checkbox
                           label.radio-inline
                             input(id=name, name=name, type='radio',
-                              required='required', value=option)
-                            span!= option
+                              required='required', value=variation)
+                            span!= variation
               div.row
                 div.col-xs-4.col-xs-offset-4
                   div.form-group

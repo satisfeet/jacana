@@ -1,0 +1,21 @@
+table.table.table-striped
+	thead
+		tr
+			th Name
+			th Version
+			th Anzahl
+			th Gesamt
+	tbody
+		each item in items
+			tr
+				td= item.name
+				td
+					each key, value in item.attributes
+						#{key}: #{value}
+				td #{item.pricing.quantity} x #{item.pricing.retail}€
+				td #{item.pricing.total}€
+small.text-muted Alle Preise inkl. MwSt.
+ul.list-inline.pull-right
+	li Produke:  #{pricing.retail}€
+	li Versand: #{pricing.shipment}€
+	li Gesamt: #{pricing.total}€

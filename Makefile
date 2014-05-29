@@ -3,6 +3,7 @@ PATH  := node_modules/.bin:$(PATH)
 
 boot:
 	@supervisor \
+	  --harmony \
 	  --ignore srv,opt \
 	  --extensions js,json \
 	  	lib
@@ -10,7 +11,11 @@ boot:
 test: export NODE_ENV=test
 test:
 	@mocha \
-	  --reporter spec
-		opt
+	  --harmony \
+	  --reporter spec \
+		test
 
-.PHONY: boot test
+clean:
+	@rm -rf node_modules
+
+.PHONY: boot test clean
