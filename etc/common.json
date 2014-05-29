@@ -13,19 +13,9 @@
       "engine": "jade"
     },
     "styles": {
-      "src": "/app/stylesheets",
+      "src": "/usr/styles",
       "dest": "/srv/stylesheets",
       "prefix": "/stylesheets"
-    },
-    "builder": {
-      "entry": "/app/javascripts/index.js",
-      "extensions": [
-        ".js",
-        ".json",
-        ".html",
-        ".jade"
-      ],
-      "output": "/srv/javascripts/build.js"
     }
   }
 

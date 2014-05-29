@@ -1,0 +1,50 @@
+include ../mixins
+extends ../layout
+
+block content
+  section#order-invoice
+    div.row
+      div.col-xs-8.col-xs-offset-2
+        h4.text-center Rechnungsinformationen
+        +progress(25)
+    div.row
+      div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-1
+        p.text-justify
+          | Bitte tragen Sie hier Ihre Rechnungsinformationen ein. Sie bekommen
+          | eine vorläufige Rechnung per Email auf die hier bestimmten
+          | Informationen. In der Warensendung ist zustäzlich eine gedruckte
+          | Rechnung vorhanden.
+      div.col-xs-10.col-xs-offset-1.col-md-5.col-md-offset-0
+        - var payment = (order && order.payment) || {};
+        form(role='form' autocomplete='on')
+          fieldset
+            div.row
+              div.col-md-12
+                +control_text('company', 'Unternehmen', payment.company)(
+                  placeholder='satisfeet', required=false)
+            div.row
+              div.col-xs-6
+                +control_text('forename', 'Vorname', payment.forename)(
+                  placeholder='Max')
+              div.col-xs-6
+                +control_text('surname', 'Nachname', payment.surname)(
+                  placeholder='Mustermann')
+            div.row
+              div.col-xs-12
+                +control_email('email', 'Email', payment.email)(
+                  placeholder='you@satisfeet.me')
+            div.row
+              div.col-xs-8
+                +control_text('street', 'Straße', payment.street)(
+                  placeholder='Hauptstr.')
+              div.col-xs-4
+                +control_text('streetNr', 'Nr.', payment.streetNr)(
+                  placeholder='4A')
+            div.row
+              div.col-xs-6
+                +control_number('zipCode', 'Postleitzahl', payment.zipCode)(
+                  placeholder='12345', min='10000' max='99999')
+              div.col-xs-6
+                +control_text('place', 'Ort', payment.place)(
+                  placeholder='Berlin')
+          button.btn.btn-sm.btn-primary.pull-right Forfahren
