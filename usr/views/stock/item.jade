@@ -1,0 +1,10 @@
+li.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-0.col-md-4.col-lg-3(data-id=product.id)
+  h4.text-center= product.title
+  a.thumbnail(href='/products/' + product.id)
+    img.img-rounded.img-responsive(src=product.images[0].url)
+  div.row
+    div.col-xs-12
+      p.text-left= product.description
+  div.row
+    div.col-xs-12
+      p.lead.text-right #{product.pricing.retail}€

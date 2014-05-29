@@ -1,0 +1,12 @@
+form.form-horizontal(role='form', autocomplete='on')
+	fieldset
+		div.form-group
+			div.checkbox
+				label
+					input(type='checkbox', required='required')
+					| Hiermit erkläre ich mich mit den geltenden
+					a(href='/legal#condition')
+						|  Allgemeinen Geschäftsbedingungen
+					|  einverstanden.
+		div.col-xs-8.col-xs-offset-2.col-sm-4.col-sm-offset-4
+			button.btn.btn-sm.btn-primary.btn-block Abschicken
