@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+  section#product-info(data-id=product.id)
+    div.row
+      div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
+        div.thumbnail
+          img.responsive(src=product.images[0].url)
+      div.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-0
+        div.row
+          div.col-xs-10.col-xs-offset-1
+            h3.text-center= product.name
+            p.text-justify= product.description
+        div.row
+          div.col-xs-8.col-xs-offset-2
+            table.table
+              each value, key in product.details.material
+                tr
+                  td= key
+                  td= value
+            p.text-right
+              | Preis pro Stück: 
+              strong #{product.pricing.retail}€
+              br
+              small.text-muted Alle Preise inkl. MwSt und zzgl. Versandkosten
+        div.row
+          form.form-horizontal(role='form')
+            fieldset
+              div.row
+                div.col-xs-8.col-xs-offset-2
+                  each variations, name in product.variations
+                    div.form-group
+                      h5.text-left #{name}:
+                      each variation in variations
+                        div.checkbox
+                          label.radio-inline
+                            input(id=name, name=name, type='radio',
+                              required='required', value=variation)
+                            span!= variation
+              div.row
+                div.col-xs-4.col-xs-offset-4
+                  div.form-group
+                    div.input-group
+                      input.form-control.input-sm(type='number',
+                        id='pricing-quantity', name='pricing-quantity', value=1)
+                      span.input-group-btn
+                        button.btn.btn-sm.btn-primary Hinzufügen

@@ -1,0 +1,22 @@
+- var shipment = (order && order.shipment) || {};
+- var payment = (order && order.payment) || {};
+- var pricing = (order && order.pricing) || {};
+- var items = (order && order.items) || [];
+table.table.table-striped
+	thead
+		tr
+			th Verwendungszweck
+			th Name (Unternehmen)
+			th Addresse
+			th Ort
+	tbody
+		tr
+			td Rechnungsaddresse
+			td #{payment.forename} #{payment.surname}
+			td #{payment.street} #{payment.streetNr}
+			td #{payment.zipCode} #{payment.place}
+		tr
+			td Versandaddresse
+			td #{shipment.forename} #{shipment.surname}
+			td #{shipment.street} #{shipment.streetNr}
+			td #{shipment.zipCode} #{shipment.place}

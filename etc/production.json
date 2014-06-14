@@ -1,15 +1,16 @@
 {
 
-  "mailer": {
-    "auth": {
-      "user": "example@googlemail.com",
-      "pass": "1234"
-    },
-    "service": "gmail"
+  "server": {
+    "port": 1000
   },
 
-  "server": {
-    "port": 5100
+  "styles": {
+    "once": true,
+    "compress": true
+  },
+
+  "views": {
+    "cache": true
   }
 
 }

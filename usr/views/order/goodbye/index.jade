@@ -1,0 +1,16 @@
+include ../../mixins
+extends ../../layout
+
+block content
+  section#order-goodbye
+    div.row
+      div.col-xs-8.col-xs-offset-2
+        h4.text-center Vielen Dank
+        +progress(100)
+    div.row
+      div.col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3
+        p.text-justify
+          | Ihre Bestellung ist bei uns eingegangen und wird nach Geldeingang sofort
+          | bearbeitet. Bis zum nächsten Mal können Sie noch festlegen, ob wir Ihre
+					| Kundendaten für den nächsten Einkauf in Ihrem Browser speichern sollen.
+				include form
