@@ -1,6 +1,6 @@
 var supertest = require('supertest');
 
-var app = require('../lib').listen();
+var app = require('../../lib').listen();
 
 describe('GET /images/brand/small.svg', function() {
 

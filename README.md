@@ -1,6 +1,7 @@
-# store
+# Jacana
 
-The store frontend service for [satisfeet](http://store.satisfeet.me)
+**Jacana** serves the public online store for
+[satisfeet](https://satisfeet.me).
 
 ## License
 

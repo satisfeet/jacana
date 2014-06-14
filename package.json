@@ -1,6 +1,6 @@
 {
 
-  "name": "store",
+  "name": "satisfeet-jacana",
 
   "version": "0.0.0",
 
@@ -11,8 +11,8 @@
   },
 
   "scripts": {
-    "test": "mocha opt",
-    "start": "node lib"
+    "start": "node lib",
+    "test": "mocha opt/test"
   },
 
   "main": "lib",
@@ -38,11 +38,11 @@
   },
 
   "repository": {
-    "url": "git://github.com/bodokaiser/satisfeet-store.git"
+    "url": "git://github.com/bodokaiser/satisfeet-jacana.git"
   },
 
   "bugs": {
-    "url": "https://github.com/bodokaiser/satisfeet-store/issues"
+    "url": "https://github.com/bodokaiser/satisfeet-jacana/issues"
   }
 
 }
